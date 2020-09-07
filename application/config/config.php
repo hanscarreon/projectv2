@@ -24,8 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // change this dependgin to your project base name
-$config['base_url'] = 'http://localhost/projectv2/';
-// $config['base_url'] = 'http://192.168.1.10/projectv2/';
+// $config['base_url'] = 'http://localhost/projectv2/';
+// $config['base_url'] = 'http://127.0.0.1/projectv2/';
+
+$config['base_url'] = 'http://192.168.1.10/projectv2/';
+// $config['base_url'] = 'http://10.0.2.2/projectv2/';
+
 
 
 /*
