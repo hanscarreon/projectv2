@@ -1,0 +1,48 @@
+  /* colors 
+  -----------------------------*/
+
+  .bg-color-dark-blue{
+    background-color: #152d65!important;
+    color: #F4F5F1!important;
+
+  }
+  .bg-color-dark-blue a{
+    color: #F4F5F1!important;
+  }
+  .text-color-dark-blue{
+    color: #152d65!important
+  }
+  .bg-color-gold{
+    background-color: #e9ad42!important;
+    color: #F4F5F1!important;
+  }
+  .text-color-white{
+    color:#F4F5F1!important;
+  }
+  .text-color-gold{
+    color:#e9ad42!important;
+  }
+  .text-color-white:hover{
+    color: #A2A7B2!important;
+  }
+  
+  .text-color-white >li > a{
+    color:#F4F5F1!important;
+  }
+  .text-color-white >li > a:hover{
+    color: #A2A7B2!important;
+  }
+  .border-left-gold{
+    border-left: .25rem solid #e9ad42!important;
+  }
+ .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: #163986!important;
+}
+.side-student{
+      border-right: solid .25rem #e9ad42;
+}
+.side-admin{
+      border-right: solid .25rem #EB4765;
+}
+  
+  
