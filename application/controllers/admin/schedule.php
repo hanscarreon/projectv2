@@ -171,6 +171,16 @@ class Schedule extends CI_Controller {
 		$body['meeting'] = $this->model_base->get_one($id,$col,$table_name);
 		$this->db->flush_cache();
 
+		$rece = $body['meeting'][0]["stud_id"];
+		$this->db->where('reciever_id', $rece);
+		$this->db->order_by('chat_id', 'ASC');
+		$body['right_messages'] = $this->model_base->get_all('chat');
+		$this->db->flush_cache();
+
+		$mese = $body['meeting'][0]["stud_id"];
+		$this->db->where('user_id', $mese);
+		$body['messenger_usernames'] = $this->model_base->get_all('user');
+		$this->db->flush_cache();
 
 		$col = "user_id";
 		$table_name = 'user';
