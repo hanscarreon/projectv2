@@ -87,7 +87,6 @@ class Dashboard extends CI_Controller {
 		// $offset = ($filter - 1) * $config["per_page"];
 		// $this->db->limit( $config["per_page"] , $offset);
 		$this->db->flush_cache();
-
 		$this->db->join("user", "sentiment_case.user_id = user.user_id");
 		$this->_sorting($name,$case,$con,$pos);
 		$this->db->where('sentiment_case.case_status','published');

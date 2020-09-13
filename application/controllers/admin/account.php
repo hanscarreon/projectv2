@@ -20,10 +20,23 @@ class Account extends CI_Controller {
 		$body = [];
 		$footer = [];
 		// $body["filter"] = $filter;
+
+		$pos = $this->session->userdata("user_pos");
+		$role = "student";
+
+		$this->_sort_acct($role,$pos);
+		$body['students'] = $this->model_base->get_all('user');
+		$this->db->flush_cache();
+
+
 		$this->load->view("template/site_admin_header",$header);
 		$this->load->view('admin/account/index',$body);
 		$this->load->view("template/site_admin_footer",$footer);
 
+	}
+	public function _sort_acct($role,$pos){
+		$this->db->where("user_role", $role);
+		$this->db->where("user_pos", $pos);
 	}
 
 	public function create(){
