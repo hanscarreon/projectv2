@@ -80,10 +80,15 @@ class Account extends CI_Controller {
 		$this->load->view("template/site_admin_footer",$footer);
 
 	}
-	public function view(){
+	public function view($id){
 		$header = [];
 		$body = [];
 		$footer = [];
+
+		$col = "user_id";
+		$table_name = 'user';
+		$body['student'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
 		
 		$this->load->view("template/site_admin_header",$header);
 		$this->load->view('admin/account/view',$body);

@@ -64,7 +64,7 @@
 	                        <td><?php echo !empty($student['user_pos']) ? $student['user_pos'] : 'N/A' ?></td>
 	                        <td><?php echo !empty($student['user_yr']) ? $student['user_yr'] : 'N/A' ?></td>
 	                        <td><?php echo !empty($student['user_gender']) ? $student['user_gender'] : 'N/A' ?></td>
-	                        <td><a  href="<?php echo base_url()?>" class="btn btn-block btn-outline-info">View</a></td>
+	                        <td><a  href="<?php echo base_url('admin/account/view/').$student["user_id"] ?>" class="btn btn-block btn-outline-info">View</a></td>
 	                      </tr>
 	                      <?php endforeach; ?>
 	                    
