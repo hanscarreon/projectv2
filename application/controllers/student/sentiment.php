@@ -39,6 +39,8 @@ class Sentiment extends CI_Controller{
       // form validation for inputs
       $this->form_validation->set_rules("case_text", "sentiment text", "required");
       $this->form_validation->set_rules("user_id", "sentiment text", "required");
+      $this->form_validation->set_rules("case_cause", "Reason", "required");
+      $this->form_validation->set_rules("case_res", "Response", "required");
       if($this->input->post("send_sentiment")){
         
         

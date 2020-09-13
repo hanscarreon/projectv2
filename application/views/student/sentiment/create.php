@@ -8,17 +8,49 @@
 	            </div>
 	            <form class="form-horizontal" id="case-form" method="post">
 	           		 <div class="card-body">
-	           		 	 <div class="form-group row">
-                          <label for="case_text" class="col-sm-2 col-form-label">Case Text *</label>
-                          <div class="err col-sm-10">
-                            <div class="input-group mb-3">
-                              <textarea  rows="4" cols="50" class="form-control" id="case_text" name="case_text" placeholder="Enter text yo analyze"></textarea> <!-- type="text"  value=""> -->
-                              <div class="input-group-append">
-                              </div>
+                    <div class="form-group row">
+                        <label for="case_text" class="col-sm-2 col-form-label">Write your concern*</label>
+                        <div class="err col-sm-10">
+                          <div class="input-group mb-3">
+                            <textarea  rows="4" cols="50" class="form-control" id="case_text" name="case_text" placeholder="Enter your text here"></textarea> <!-- type="text"  value=""> -->
+                            <div class="input-group-append">
                             </div>
                           </div>
                         </div>
-                        <!-- /. case text -->
+                      </div>
+                      <!-- /. case text -->
+                      <div class="form-group row">
+                        <label for="case_cause" class="col-sm-2 col-form-label">Counseling reasons *</label>
+                        <div class="err col-sm-10">
+                          <div class="input-group mb-3">
+                            <select class="form-control select2 select2-hidden-accessible" id="case_cause" name="case_cause" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                            <option value="">Select reason..</option>
+                            <option value="academic">academic</option>
+                            <option value="family">family</option>
+                            <option value="peers">peers</option>
+                            <option value="relationship">relationship</option>
+                            <option value="emotions">emotions</option>
+                            <option value="emotions">emotions</option>
+                            </select>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- /.reasons -->
+                      <div class="form-group row">
+                          <label for="case_res" class="col-sm-2 col-form-label">Response prepared via *</label>
+                          <div class="err col-sm-10">
+                            <div class="input-group mb-3">
+                              <select class="form-control select2 select2-hidden-accessible" id="case_res" name="case_res" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                              <option value="">Select reason..</option>
+                              <option value="email">email</option>
+                              <option value="zoom">zoom</option>
+                              <option value="sms">SMS</option>
+                              </select>
+                              </div>
+                            </div>
+                      </div>
+                        <!-- /. curiculum  -->
+                        <!-- /. curiculum  -->
                          <div class="card-footer text-right">
 	                        <button type="submit" value="create_account" name="create_account" class="btn btn-info ">Submit</button>
 	                     </div>
@@ -70,12 +102,24 @@
         required: true,
         minlength: 2,
       },
+      case_res:{
+        required:true
+      },
+      case_cause:{
+        required:true
+      }
     },
     messages: {
       case_text: {
         required: "Please enter a sentiment text ",
         minlength:'Your username must be at least 2 characters long'
       },
+      case_res:{
+        required:'Please select a prepared response type'
+      },
+      case_cause:{
+        required:'Please add your related concern'
+      }
      
     },
     errorElement: 'span',
@@ -93,6 +137,8 @@
 
 
   function rapid(sentiment){
+    var cause = $("#case_cause").val();
+    var res_type = $("#case_res").val();
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -132,6 +178,8 @@
           case_pos:data.pos,    // positive score
           case_pos_percent:data.pos_percent, // positive percentage
           case_total_lines:data.totalLines, // total lines count
+          case_cause:cause, // case cause
+          case_res:res_type, // total lines count
           user_id:<?php echo $this->session->userdata('user_id'); ?> // session
 
         },

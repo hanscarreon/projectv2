@@ -1,78 +1,6 @@
-<div class="row">
-    <div class="col-md-4 ">
-      <!-- DIRECT CHAT PRIMARY -->
-      <div class="card card-prirary cardutline direct-chat direct-chat-primary">
-        <div class="card-header" style="display: none;">
-          <h3 class="card-title">Send Meeting Link here </h3>
+<div class="container-fluid">
 
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body" style="display: none;">
-          <!-- Conversations are loaded here -->
-          <div class="direct-chat-messages">
-            <!-- Message. Default to the left -->
-            <div class="direct-chat-msg">
-              <div class="direct-chat-infos clearfix">
-                <?php
-                  foreach ($right_messages as $right_message):
-                    if($right_message['message_status'] == 0){
-                      echo "<span><i class='fa fa-user-circle-o' aria-hidden='true'></i><p class='usr-name'>".$right_message['chat_text']."</p></span>"; 
-
-                      // echo '<div class=" direct-chat-msg text-right alert alert-primary chatting" id="meet_link">" right" '.$right_message['chat_text'].'
-                           
-                      //     </div>';
-                    }
-                    // elseif($right_message['message_status'] == 1){
-                    //  echo '<div class="direct-chat-msg alert alert-info" style="width: 50%;">
-                    //        This is reply
-                    //       </div>';
-                    // }
-                     
-
-                    
-                ?>
-                 
-                  <?php endforeach; ?>
-
-
-
-
-
-             
-                <!-- <?php echo print_r($right_message); ?> -->
-                <!-- <a  target="_blank" href="<?php echo $meeting_chat[0]['chat_text'] ?>" id="meet_link" class="direct-chat-name float-left"><?php echo empty($meeting_chat[0]['chat_text']) ? 'no link yet' : $meeting_chat[0]['chat_text']  ?></a> -->
-              </div>
-              
-            </div>
-            <!-- /.direct-chat-msg -->
-            
-
-            <!-- Message to the right -->
-            <div class="direct-chat-msg right">
-              <div class="direct-chat-infos clearfix">
-              </div>
-              <!-- /.direct-chat-text -->
-            </div>
-            <!-- /.direct-chat-msg -->
-          </div>
-          <!--/.direct-chat-messages-->
-
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer" style="display: none;">
-          <form action="#" method="post">
-            <div class="input-group">
-              <input type="text" autocomplete="off"  name="chat_text" id="chat_text" placeholder="Send meeting link" class="form-control">
-              <span class="input-group-append">
-                <button  id="send_chat" type="submit" class="btn btn-primary">Send</button>
-              </span>
-            </div>
-          </form>
-        </div>
-
-        <!-- <a href="http://m.me/100013633363083" target="_blank">Open page in new window</a> -->
-        <!-- /.card-footer-->
-      </div>
+  <div class="row">
 
       <?php
         foreach ($messenger_usernames as $messenger_username):
@@ -83,36 +11,39 @@
 
        ?>
     <?php endforeach;?>
-    </div>
       <!--/.col-chat -->
-<div class="col-md-8 col-sm-12 col-12">
+<div class="col-md-12 col-sm-12 col-12">
     
   <div class="card card-info">
     <div class="card-header">
-      <h3 class="card-title">Meeting Note </h3>
+      <h3 class="card-title">Meeting  </h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
 
-          <div class="card-footer card-comments">
-            <div class="card-comment">
-              <!-- User image -->
-              <div class="comment-text" style="margin-left: 0">
-                <span class="username">
-                  <?php echo ucfirst($student[0]['user_fname']).' '.ucfirst($student[0]['user_mname']).'. '.ucfirst($student[0]['user_lname']); ?>
-                  <span class="text-muted float-right"><?php echo date("F j, Y, g:i a",strtotime($case[0]['case_created'])) ?></span>
-                </span><!-- /.username -->
-                  <span class="text-muted float-right">case created</span>
-
-                  <?php  echo $case[0]['case_text']; ?>
-              </div>
-              <!-- /.comment-text -->
-            </div>
-          </div>
+         
      <!-- /.card-sentiment -->
 
-    <form class="form-horizontal" method="post" >
+    
       <div class="card-body">
+        <div class="row info-sentiment">
+            <div class="col-12">
+              <h5>
+              <span class="text-dark"><?php echo ucfirst($student[0]['user_fname']).' '.ucfirst($student[0]['user_mname']).'. '.ucfirst($student[0]['user_lname']); ?> </span>
+                <span class="text-muted float-right"><?php echo date("F j, Y, g:i a",strtotime($case[0]['case_created'])) ?></span>
+              </h5>
+              <h6>
+              <span class="text-dark"> Reason : </span><?php  echo !empty($case[0]['case_cause'])? $case[0]['case_cause']: 'none' ?>
+              </h6>
+              <h6>
+               <span class="text-dark"> Prepared Contact  :</span><?php  echo !empty($case[0]['case_res'])? $case[0]['case_res']: 'none' ?>
+              </h6>
+              <?php  echo $case[0]['case_text']; ?>
+              
+            </div>
+        </div>
+      
+      <form class="form-horizontal" method="post" >
         <div class="form-group row">
           <label for="user_name" class="col-sm-2 col-form-label">Note</label>
           <div class="col-sm-10">
@@ -140,8 +71,8 @@
       </div>
      
       <!-- /.card-body -->
-      <div class="card-footer">
-        <button type="submit" value="case_review" name="case_review" class="btn btn-info">Submit</button>
+      <div class="card-footer ">
+        <button type="submit" value="case_review" name="case_review" class="btn btn-info float-right">Submit</button>
       </div>
       <!-- /.card-footer -->
     </form>
@@ -152,6 +83,8 @@
 
 </div>
 
+</div>
+<!-- /.container fluid -->
 <!-- chat ajax code -->
 <script>
 var meet_id = <?php echo $this->uri->segment("4"); ?>;
