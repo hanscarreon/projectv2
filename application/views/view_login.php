@@ -36,7 +36,8 @@
           <a class="nav-link" href="#">About </a>
         </li>
       </ul>
-        <button class="btn bg-color-gold my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login-modal">login</button>
+        <a style="cursor:pointer" class="d-block my-2 my-sm-0 mr-2"  data-toggle="modal" data-target="#login-modal">Login</a>
+        <a style="cursor:pointer" class=" my-2 my-sm-0 " href="<?php echo base_url('register') ?>" >Register</a>
     </div>
   </nav>
 </header>

@@ -188,8 +188,8 @@
                     </form>
                     <!-- /. form -->
 
-                      </div>
-                      <!-- /.card-body -->
+                </div>
+                <!-- /.card-body -->
               </div>
             </div>
           </div> 
