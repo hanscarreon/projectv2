@@ -17,7 +17,8 @@
     $('#dataTable').DataTable( {
     	pagingType: "full_numbers",
         dom: 'Bfrtip',
-    	processing: true,
+		processing: true,
+		"order": [[ 0, "desc" ]],
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',
         ]
@@ -110,6 +111,9 @@
 	                        <th>Case-ID No.</th>
 	                        <th>Name</th>
 	                        <th>Date created</th>
+	                        <th>Negative score</th>
+	                        <th>Positive score</th>
+	                        <th>Neutral score</th>
 	                        <th>Result</th>
 	                        <th>Sentiment</th>
 	                        <th>Action</th>
@@ -123,6 +127,9 @@
 	                      <td><?php echo $sentiment['case_id'] ?></td>
 	                        <td><?php echo ucfirst($sentiment['user_fname']); ?> <?php echo ucfirst($sentiment['user_mname']); ?> <?php echo ucfirst($sentiment['user_lname']); ?></td>
 	                        <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
+							<td><?php echo !empty($sentiment["case_neg_percent"]) ? $sentiment["case_neg_percent"]  : 'none'  ?></td>
+							<td><?php echo !empty($sentiment["case_pos_percent"]) ? $sentiment["case_pos_percent"] :'none' ?></td>
+							<td><?php echo !empty($sentiment["case_mid_percent"]) ? $sentiment["case_mid_percent"] : 'none' ?></td>
 	                        <td>
 	                            <?php  
 	                            if ($sentiment["case_study"] == 'positive') 

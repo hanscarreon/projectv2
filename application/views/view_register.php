@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="<?php echo base_url() ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>plugins/toastr/toastr.min.css">
 
   <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/carousel.css" >
@@ -23,20 +24,19 @@
 
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-color-dark-blue">
-    <a class="navbar-brand" href="#">Logo</a>
+    <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>resources/img/logos.png" style="height: auto;width: 50px;"> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home </a>
+          <a class="nav-link" href="<?php echo base_url() ?>">Home </a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">About </a>
         </li>
       </ul>
-        <a style="cursor:pointer" class="d-block my-2 my-sm-0 mr-2"  data-toggle="modal" data-target="#login-modal">Login</a>
         <a style="cursor:pointer" class=" my-2 my-sm-0 " href="<?php echo base_url('register') ?>" >Register</a>
     </div>
   </nav>
@@ -48,7 +48,7 @@
 <div class="container">
 
   <!-- Three columns of text below the carousel -->
-        <div class="card-body mt-3" style="background: #f7f7f7;"> 
+        <div id="forms-box" class="card-body mt-3" style="background: #f7f7f7;"> 
             <div class="card-title text-center">
                 <h2 class="">Student Registration Form</h2>
             </div>
@@ -56,17 +56,17 @@
             <!-- form start -->
             <form class="form-horizontal" id="account-form" method="post">
                 <div class="card-body">
-                <!--
+                
                 <div class="form-group row">
                     <label for="user_name" class="col-sm-2 col-form-label">Username *</label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Username" value="">
+                        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="00-0000000" value="">
                         <div class="input-group-append">
                         </div>
                     </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- /. username -->
                 <div class="form-group row">
                     <label for="user_email" class="col-sm-2 col-form-label">Email *</label>
@@ -92,7 +92,7 @@
                 </div>
                 <!-- /. first name -->
                 <div class="form-group row">
-                    <label for="user_mname" class="col-sm-2 col-form-label">Middle name  <small>(optional)</small></label>
+                    <label for="user_mname" class="col-sm-2 col-form-label">Middle name </label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="user_mname" name="user_mname" placeholder="Middle Name" value="">
@@ -114,10 +114,10 @@
                 </div>
                 <!-- /. Last name -->
                     <div class="form-group row">
-                    <label for="user_address" class="col-sm-2 col-form-label">Address <small>(optional)</small></label>
+                    <label for="user_address" class="col-sm-2 col-form-label">Address <small>*</small></label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_lname" name="user_address" placeholder="Last Name" value="">
+                        <input type="text" class="form-control" id="user_lname" name="user_address" placeholder="Address" value="">
                         <div class="input-group-append">
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                 </div>
 
                 <div class="card-footer text-right">
-                <button type="submit" value="create_account" name="create_account" class="btn btn-info ">Submit</button>
+                <button type="submit"  class="btn btn-info ">Submit</button>
                 </div>
                 <!-- /.card-footer -->
             </form>
@@ -220,17 +220,26 @@
         </div>
         <!-- /.card-body -->
 
-
-
-  
+<div class="modal fade" id="loader" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+          <div class="spinner-border text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
      
 
 
-<!-- jQuery -->
-<script src="<?php echo base_url() ?>plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 
 <!-- Toastr -->
@@ -238,6 +247,8 @@
 <!-- jquery-validation -->
 <script src="<?php echo base_url(); ?>plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- jquery mask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
 
 <script type="text/javascript">
@@ -257,7 +268,7 @@
 
 
 $(document).ready(function () {
-
+  $('#user_name').mask('00-0000000');
 
 
 // jQuery.validator.addMethod("tindahans.com", function(value, element) {
@@ -275,11 +286,26 @@ $.validator.addMethod("domain", function(value, element) {
     } else {
         return false;
     }
+     
 }, "Your email address is not valid.");
+
+jQuery.validator.addMethod("passwordCheck",
+        function(value, element, param) {
+            if (/[A-Z]/.test(value)) {
+                return true;
+            } {
+                return false;
+            } 
+
+            return true;
+      },'password atleast one uppercase');  
 
   $.validator.setDefaults({
     submitHandler: function (form) {
-      $(form).submit();
+        // loader();
+        $("#account-form").submit();
+        // setTimeout(function(){},3000)
+        
     }
   });
   $('#account-form').validate({
@@ -303,17 +329,29 @@ $.validator.addMethod("domain", function(value, element) {
       user_pass: {
         required: true,
         minlength: 6,
+        passwordCheck:true,
       },
       user_pass2 :{
           required: true,
           minlength : 6,
-          equalTo : "#user_pass"
+          equalTo : "#user_pass",
+          passwordCheck:true,
+
       },
       user_role:{
         required:true
       },
       user_pos:{
         required:true
+      },
+      user_yr:{
+        required:true
+      },
+      user_gender:{
+        required:true
+      },
+      user_address:{
+          required:true
       }
     },
     messages: {
@@ -336,18 +374,31 @@ $.validator.addMethod("domain", function(value, element) {
       },
       user_pass: {
         required: "Please provide a password",
-        minlength: "Your password must be at least 6 characters long"
+        minlength: "Your password must be at least 6 characters long",
+        passwordCheck:"password atleast one uppercase",
+
       },
       user_pass2: {
         required: "Please provide a password",
         minlength: "Your password must be at least 6 characters long",
-        equalTo:"Password not match"
+        equalTo:"Password not match",
+        passwordCheck:"password atleast one uppercase",
+
       },
       user_role:{
         required:'Please select user role'
       },
       user_pos:{
         required:'Please select Curriculum'
+      },
+      user_yr:{
+        required:"Please select Year/Grade level"
+      },
+      user_gender:{
+        required:"Please select gender"
+      },
+      user_address:{
+          required:'Provide address'
       }
     },
     errorElement: 'span',
@@ -362,6 +413,9 @@ $.validator.addMethod("domain", function(value, element) {
       $(element).removeClass('is-invalid');
     }
   });
+  function loader(){
+    $("#loader").modal('toggle');
+  }
 });
 </script>
 

@@ -42,6 +42,7 @@ class Account extends CI_Controller {
 		$this->form_validation->set_rules('user_lname', 'Lastname', 'required|trim');
 		$this->form_validation->set_rules('user_role', 'Role', 'required|trim|min_length[2]');
 		$this->form_validation->set_rules('user_pos', 'Curriculum', 'required|trim|min_length[2]');
+		$this->form_validation->set_rules('user_lvl', 'Yr/Grade level', 'required|trim|min_length[2]');
 
 		if($this->input->post("create_account")){
 			 if ($this->form_validation->run() == FALSE){

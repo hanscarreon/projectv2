@@ -140,7 +140,13 @@
       <div class="sidebar-heading">
         Settings
       </div>
-        <li class="nav-item">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/archive/') ?>">
+          <i class="fas fa-archive"></i>
+          <span>Archive</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/profile/').$this->session->userdata('user_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
@@ -156,10 +162,7 @@
       <div class="text-center d-none d-md-inline">
         <!-- <button class="rounded-circle border-0" id="sidebarToggle"></button> -->
       </div>
-
     </ul>
-
-
 
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
