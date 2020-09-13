@@ -141,7 +141,7 @@
         Settings
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/archive/') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/archive/index/') ?>">
           <i class="fas fa-archive"></i>
           <span>Archive</span></a>
       </li>
