@@ -30,7 +30,7 @@
             <!-- Page Heading -->
             <h1 class="col-12 h3 mb-2 text-gray-800">Meeting Schedules</h1>
 
-            <div class="col-12 col-md-4 col-sm-12 mb-4">
+            <div class="col-12 col-md-4 col-sm-12 mb-2">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Cases</h6>
@@ -44,7 +44,7 @@
          
 
             <!-- DataTales Example -->
-            <div class="col-md-8 col-sm-8 col-12 card shadow mb-4">
+            <div class="col-md-12 col-sm-12 col-12 card shadow mb-4">
               <div class="p-3 py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
               </div>
