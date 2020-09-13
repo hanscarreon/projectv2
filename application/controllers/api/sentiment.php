@@ -15,7 +15,7 @@ class Sentiment extends REST_Controller{
 	$this->load->model('model_base');
 
   }
-
+/// sample
   public function detect_sentiment($string){
 		$string = urlencode($string);
 		$api_key = "7b50350a2caa3035c741f773f8ad85";
