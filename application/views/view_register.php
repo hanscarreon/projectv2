@@ -303,7 +303,7 @@ jQuery.validator.addMethod("passwordCheck",
   $.validator.setDefaults({
     submitHandler: function (form) {
         // loader();
-        $("#account-form").submit();
+        $(form).submit();
         // setTimeout(function(){},3000)
         
     }

@@ -147,7 +147,7 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/profile/').$this->session->userdata('user_id') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/account/view/').$this->session->userdata('user_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
       </li>

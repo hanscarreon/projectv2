@@ -83,7 +83,6 @@ class Login extends CI_Controller {
 					unset($data['user_pass2']);
 
 					$data["user_role"] = "student";
-					// $data['user_name'] = $this->uuid->v4();
 					$table = "user";
 					$this->model_base->insert_data($data, $table);
 					$this->session->set_flashdata('msg_success', 'Successfully registered!');

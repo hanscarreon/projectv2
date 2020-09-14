@@ -6,7 +6,7 @@
         <div class="card-body box-profile">
 
           <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url() ?>dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url() ?>resources/img/stud.png" alt="User profile picture">
           </div>
             <!-- /.img div -->
             <h3 class="profile-username text-center"><?php echo ucfirst($student[0]['user_fname']); ?> <?php echo ucfirst($student[0]['user_mname']); ?> <?php echo ucfirst($student[0]['user_lname']); ?></h3>
@@ -61,7 +61,6 @@
         <div class="card-body box-profile">
 
           <div class="text-center">
-              <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url() ?>dist/img/user4-128x128.jpg" alt="User profile picture">
           </div>
             <!-- /.img div -->
             <h3 class="profile-username text-center"><?php echo ucfirst($student[0]['user_fname']); ?> <?php echo ucfirst($student[0]['user_mname']); ?> <?php echo ucfirst($student[0]['user_lname']); ?></h3>
