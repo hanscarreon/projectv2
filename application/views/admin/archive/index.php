@@ -86,7 +86,7 @@
 	                          <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
 	                        </td>
 
-	                        <td><a href="<?php echo base_url()?>admin/dashboard/delete_case/<?php echo $sentiment['case_id'] ?>"  class="btn btn-block btn-outline-warning">Restore</a></td>
+	                        <td><a href="<?php echo base_url()?>admin/archive/restore/<?php echo $sentiment['case_id'] ?>"  class="btn btn-block btn-outline-warning">Restore</a></td>
 	                      </tr>
 	                      <?php endforeach; ?>
 	                    

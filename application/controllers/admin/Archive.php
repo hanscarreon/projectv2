@@ -51,30 +51,20 @@ class Archive extends CI_Controller {
 		$this->db->where('case_status','deleted');
     	$this->db->where('user.user_pos',$pos);
     }
-    public function delete_case($case_id) {
-		$body['sentiments'] = $this->model_base->delete_data($case_id, 'case_id', 'case_status', 'sentiment_case');
-		$this->session->set_flashdata('msg_success', 'Case Deleted!');	
-		redirect('admin/dashboard/index/name/study/con','refresh');
+
+	public function restore($id){
+
+
+		$data = array('case_status' => 'published' );
+		$col = 'case_id';
+		$tbname = 'sentiment_case';
+		$this->model_base->update_data($id,$col,$data,$tbname);
+		$this->session->set_flashdata('msg_success', 'Restore success!');
+		$this->db->flush_cache();	
+		redirect('admin/archive/index/' ,'refresh');	
 		
+
 	}
-
-
-
-
-
-	public function detect_sentiment($string){
-		$string = urlencode($string);
-		$api_key = "7b50350a2caa3035c741f773f8ad85";
-		$url = 'https://api.paysify.com/sentiment?api_key='.$api_key.'&string='.$string.'';
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$result = curl_exec($ch);
-		$response = json_decode($result,true);
-		curl_close($ch);
-		return $response;
-    }
 	  
      
 
