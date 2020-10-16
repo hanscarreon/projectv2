@@ -7,17 +7,47 @@
 
     <div class="row">
 
-        <div class="card shadow mb-4 p-0 col-4">
+        <div class="card shadow mb-4 p-0 col-lg-5 col-md-4 col-sm-12 mx-auto" style="max-width: 100%;">
             <div class="card-header bg-primary text-white py-3">
-                <h6 class="m-0 font-weight-bold">Illustrations</h6>
+                    <h4 class="m-0 p-0 text-white">Nicole Pearson</h4>
             </div>
-            <div class="card-body">
-                <div class="text-center">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
+            <div class="card-body d-inline-flex">
+                <div class="col-6">
+                    <h4 class="text-bold text-primary">Digital Strategist</h4>
+                    <p><b>About:</b> Web Designer / UX / Graphic Artist Coffee Lover</p>
+                    <p><b>Address:</b> Sample Address street</p>
+                    <p><b>Contact:</b> +639 12 3456 789</p>
                 </div>
-                <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
+                <img class="rounded-circle col-6" style=" box-shadow: 0 0 10px 0px black; height: fit-content; padding: 0; margin: 0; align-self: center;" src="../../dist/img/avatar04.png" alt="">
+            </div>
+            <div class="card-footer justify-align-end d-flex mx-3">
+                <button class="btn btn-primary mx-auto">
+                    <i class="fas fa-user-alt"></i>
+                    <label class="m-0" for="">view more</label>
+                </button>
             </div>
         </div>
+
+        <div class="card shadow mb-4 p-0 col-lg-5 col-md-4 col-sm-12 mx-auto" style="max-width: 100%;">
+            <div class="card-header bg-primary text-white py-3">
+                    <h4 class="m-0 p-0 text-white">Nicole Pearson</h4>
+            </div>
+            <div class="card-body d-inline-flex">
+                <div class="col-6">
+                    <h4 class="text-bold text-primary">Digital Strategist</h4>
+                    <p><b>About:</b> Web Designer / UX / Graphic Artist Coffee Lover</p>
+                    <p><b>Address:</b> Sample Address street</p>
+                    <p><b>Contact:</b> +639 12 3456 789</p>
+                </div>
+                <img class="rounded-circle col-6" style=" box-shadow: 0 0 10px 0px black; height: fit-content; padding: 0; margin: 0; align-self: center;" src="../../dist/img/avatar04.png" alt="">
+            </div>
+            <div class="card-footer justify-align-end d-flex mx-3">
+                <button class="btn btn-primary mx-auto">
+                    <i class="fas fa-user-alt"></i>
+                    <label class="m-0" for="">view more</label>
+                </button>
+            </div>
+        </div>
+
     </div>
 </div>

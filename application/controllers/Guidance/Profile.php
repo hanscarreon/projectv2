@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Meeting extends CI_Controller {
+class Profile extends CI_Controller {
 
 
 	public function __construct()
@@ -18,7 +18,7 @@ class Meeting extends CI_Controller {
 
         $this->load->view('Guidance/Header');
         $this->load->view('Guidance/Sidenav');
-		$this->load->view('Guidance/Meeting/Meeting_view');
+		$this->load->view('Guidance/Profile/Profile_view');
 		$this->load->view('Guidance/Footer');
         
     }

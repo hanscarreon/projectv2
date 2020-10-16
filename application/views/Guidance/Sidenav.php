@@ -71,7 +71,7 @@
         Settings
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('student/profile/index/').$this->session->userdata('user_id') ?>">
+        <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('user_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
       </li>
