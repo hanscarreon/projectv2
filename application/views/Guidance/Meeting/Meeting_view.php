@@ -19,7 +19,23 @@
         </div>
       </div>
       <div class="card-body">
-      <p></p>
+      
+      <!-- paki edit na lang -->
+      <br>
+        <div class="form-check">
+          <div class="form-group">
+            <label for="inputState">Case:</label>
+            <select id="inputState" class="form-control">
+              <option selected>Select Case</option>
+              <option value="Close case">Close case</option>
+              <option value="Recommended to SDO or Pyschologist">Recommended to SDO or Pyschologist</option>
+              <option value="Intervention plan">Intervention plan</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+
       </div>
     </div>
   </div>

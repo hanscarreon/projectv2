@@ -1,9 +1,6 @@
-<div class="col-12 d-flex justify-content-between text-primary align-text-bottom" style="
-    position: absolute;
-    bottom: 0px;
-    margin: 0px;
-    width: 78vw;
-">
+<nav class="text-white bg-primary static-bottom shadow p-2 shadow">
+
+    <!-- Bottom Navbar -->
     <div class="icons">
         <i class="fab fa-facebook"></i>
         <i class="fab fa-twitter"></i>
@@ -13,4 +10,5 @@
     <div class="rights">
         GMSUSA ©
     </div>
-</div>
+
+</nav>
