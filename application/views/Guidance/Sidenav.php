@@ -55,7 +55,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">options</h6>
-            <a class="collapse-item" href="<?php echo base_url('guidance/sentiment/view') ?>">Create Sentiment</a>
+            <a class="collapse-item" href="<?php echo base_url('guidance/sentiment/create') ?>">Create Sentiment</a>
             <!-- <a class="collapse-item" href="buttons.html">Closed Case</a>
             <a class="collapse-item" href="buttons.html">Recommended to</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Intervention</a> -->
@@ -177,7 +177,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo ucfirst($this->session->userdata('user_fname')).' '.ucfirst($this->session->userdata('user_mname')).'. '.ucfirst($this->session->userdata('user_lname'));?></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="../../resources/img/stud.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

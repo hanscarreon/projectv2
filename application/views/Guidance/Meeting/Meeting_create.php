@@ -18,22 +18,23 @@
       </div>
       <div class="card-body">
         <p>lorem ipsum dolor lsjfdhg lsdfkjg hdnflkj dnfgl skjg nsdfkgjsndlfgkjsdnglskjdh lkjg dsnlfkjgengl skdjfhg lksdjfghls dfkjg dflskgj hsdlg sjldfsfkjg dhslfkjg h</p>
+
         <div class="form-check">
           <div class="form-group">
             <label for="inputState">Case:</label>
             <select id="inputState" class="form-control">
-              <option selected>Select Case</option>
-              <option value="intervention plan">intervention plan</option>
-              <option value="close case">close case</option>
-              <option value="refer to SDO">refer to SDO</option>
-              <option value="refer to mental health professionals">refer to mental health professionals</option>
-              <option value="refer to clinic">refer to clinic</option>
-              <option value="refer to other">refer to other</option>
+                <option selected>Select Case</option>
+                <option value="intervention plan">intervention plan</option>
+                <option value="close case">close case</option>
+                <option value="refer to SDO">refer to SDO</option>
+                <option value="refer to mental health professionals">refer to mental health professionals</option>
+                <option value="refer to clinic">refer to clinic</option>
+<option value="refer to other">refer to other</option>
             </select>
           </div>
         </div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer text-center">
         <button class="btn btn-primary">Submit</button>
       </div>
     </div>

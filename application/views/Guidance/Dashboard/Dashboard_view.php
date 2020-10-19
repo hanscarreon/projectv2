@@ -1,53 +1,55 @@
-<div class="container col-10 mr-auto">
-    <div class="row">
-        <h1 class="title text-warning">Guidance Dashboard</h1>
-    </div>
-
-    <hr>
-
+<div class="container-fluid">
     <div class="row">
 
-        <div class="card shadow mb-4 p-0 col-lg-5 col-md-4 col-sm-12 mx-auto" style="max-width: 100%;">
-            <div class="card-header bg-primary text-white py-3">
-                    <h4 class="m-0 p-0 text-white">Nicole Pearson</h4>
-            </div>
-            <div class="card-body d-inline-flex">
-                <div class="col-6">
-                    <h4 class="text-bold text-primary">Digital Strategist</h4>
-                    <p><b>About:</b> Web Designer / UX / Graphic Artist Coffee Lover</p>
-                    <p><b>Address:</b> Sample Address street</p>
-                    <p><b>Contact:</b> +639 12 3456 789</p>
-                </div>
-                <img class="rounded-circle col-6" style=" box-shadow: 0 0 10px 0px black; height: fit-content; padding: 0; margin: 0; align-self: center;" src="../../dist/img/avatar04.png" alt="">
-            </div>
-            <div class="card-footer justify-align-end d-flex mx-3">
-                <button class="btn btn-primary mx-auto">
-                    <i class="fas fa-user-alt"></i>
-                    <label class="m-0" for="">view more</label>
-                </button>
+        <!-- Page Heading -->
+        <h1 class="col-12 h3 mb-2 text-warning">Guidance Dashboard</h1>
+        <div class="col-12 card shadow mb-4">
+        <div class="p-3 py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
+            <a href="#" class="btn btn-primary btn-icon-split mt-2">
+            <span class="icon text-white-50">
+                <i class="far fa-plus-square"></i>
+            </span>
+            <span class="text">Add sentiment</span>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Case-ID No.</th>
+                    <th>Name</th>
+                    <th>Date created</th>
+                    <th>Result</th>
+                    <th>Sentiment</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>case id</td>
+                        <td>user full name</td>
+                        <td>case created</td>
+                        <td>case study positive, neutral, negative</td>
+                        <td>case text</td>
+                        <td><a  href="#" class="btn btn-block btn-outline-info">View</a></td>
+                        <td><a href="#"  class="btn btn-block btn-outline-danger">Delete</a></td>
+                    </tr>
+                    <tr>
+                        <td>no laman</td>
+                        <td>waray quarta</td>
+                        <td>waray bugas</td>
+                        <td>nothing</td>
+                        <td>looking something?</td>
+                        <td>button here</td>
+                        <td>and here also</td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
         </div>
-
-        <div class="card shadow mb-4 p-0 col-lg-5 col-md-4 col-sm-12 mx-auto" style="max-width: 100%;">
-            <div class="card-header bg-primary text-white py-3">
-                    <h4 class="m-0 p-0 text-white">Nicole Pearson</h4>
-            </div>
-            <div class="card-body d-inline-flex">
-                <div class="col-6">
-                    <h4 class="text-bold text-primary">Digital Strategist</h4>
-                    <p><b>About:</b> Web Designer / UX / Graphic Artist Coffee Lover</p>
-                    <p><b>Address:</b> Sample Address street</p>
-                    <p><b>Contact:</b> +639 12 3456 789</p>
-                </div>
-                <img class="rounded-circle col-6" style=" box-shadow: 0 0 10px 0px black; height: fit-content; padding: 0; margin: 0; align-self: center;" src="../../dist/img/avatar04.png" alt="">
-            </div>
-            <div class="card-footer justify-align-end d-flex mx-3">
-                <button class="btn btn-primary mx-auto">
-                    <i class="fas fa-user-alt"></i>
-                    <label class="m-0" for="">view more</label>
-                </button>
-            </div>
         </div>
-
-    </div>
+    </div> 
 </div>

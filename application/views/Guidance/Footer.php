@@ -1,4 +1,4 @@
-<nav class="text-white bg-primary static-bottom shadow p-2 shadow">
+<nav class="text-white bg-primary static-bottom shadow p-2 shadow" style="">
 
     <!-- Bottom Navbar -->
     <div class="icons">
@@ -12,3 +12,9 @@
     </div>
 
 </nav>
+<!-- jquery -->
+<script src="../../jquery/jquery.js"></script>
+<script src="../../jquery/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

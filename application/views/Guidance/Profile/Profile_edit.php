@@ -36,6 +36,7 @@
                 <label class="col-lg-2 col-sm-12" for="yearlevel">Year Level:</label>
                 <input class="col-lg-9 col-sm-12 form-control" type="text" name="yearlevel" id="yearlevel">
             </form>
+            <button class="mt-4 btn btn-primary text-center">edit</button>
         </div>
     </div>
 </div>
