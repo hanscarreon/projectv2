@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Archive extends CI_Controller {
 
 
 	public function __construct()
@@ -11,15 +11,12 @@ class Dashboard extends CI_Controller {
 		$this->load->helper(array('url','date', 'form'));
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
-
     }
     
     public function view(){
-
         $this->load->view('User/Header_user');
-		$this->load->view('User/Dashboard/Dashboard_view');
+		$this->load->view('User/Archive/Archive_view');
 		$this->load->view('User/Footer_user');
-        
     }
     public function edit(){
         $this->load->view('Guidance/Header');

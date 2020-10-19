@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Meeting extends CI_Controller {
 
 
 	public function __construct()
@@ -15,11 +15,9 @@ class Dashboard extends CI_Controller {
     }
     
     public function view(){
-
         $this->load->view('User/Header_user');
-		$this->load->view('User/Dashboard/Dashboard_view');
+		$this->load->view('User/Meeting/Meeting_view');
 		$this->load->view('User/Footer_user');
-        
     }
     public function edit(){
         $this->load->view('Guidance/Header');
