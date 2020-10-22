@@ -45,14 +45,13 @@
 	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                  <thead>
 	                    <tr>
-	                        <th>Case-ID No.</th>
+							<th>Case-ID No.</th>
 	                        <th>Name</th>
 	                        <th>Meeting date</th>
 	                        <th>Result</th>
 	                        <th>Meeting Link</th>
 	                        <th>Sentiment</th>
-	                        <th>Action</th>
-	                        <th></th>
+	                        <th colspan="3">Action</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody>

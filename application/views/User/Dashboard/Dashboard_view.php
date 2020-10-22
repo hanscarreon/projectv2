@@ -122,32 +122,40 @@
             <div class="card-body table-responsive">
                 <table class="table table-striped  ">
                     <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
+	                    <tr>
+                        <!-- <th>Case-ID No.</th> -->
+                        <th>Name</th>
+                        <th>Date created</th>
+                        <th>Negative percentage</th>
+                        <th>Negative Score</th>
+                        <th>Positive percentage</th>
+                        <th>Positive Score</th>
+                        <th>Neutral percentage</th>
+                        <th>Neutral Score</th>
+                        <th>Result</th>
+                        <th>Sentiment</th>
+                        <th  colspan="3" >Action</th>
+                        
+	                    </tr>
+	                  </thead>
                     <tbody>
                         <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <!-- <th scope="row"></th> -->
+                        <td>Name</td>
+                        <td>Date created</td>
+                        <td>Negative percentage</td>
+                        <td>Negative Score</td>
+                        <td>Positive percentage</td>
+                        <td>Positive Score</td>
+                        <td>Neutral percentage</td>
+                        <td>Neutral Score</td>
+                        <td>Result</td>
+                        <td>Sentiment</td>
+                        <td><a href> <i class="fa fa-eye"></i> </a></td>
+                        <td><a href> <i class="fa fa-edit"></i> </a></td>
+                        <td><a href> <i class="fa fa-trash"></i> </a></td>
                         </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                  
                     </tbody>
                 </table>
             </div>

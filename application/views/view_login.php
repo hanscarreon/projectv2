@@ -209,10 +209,10 @@
      
 
 
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>resources/bs/3_5_1.js"></script>
-<script src="<?php echo base_url() ?>resources/bs/popper.js" ></script>
-<script src="<?php echo base_url() ?>resources/bs/bs.js"></script>
+<!-- Bootstrap 4 jquery -->
+<script src="<?php echo base_url() ?>resources/newui-cdn/js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>resources/newui-cdn/js/popper.min.js" ></script>
+<script src="<?php echo base_url() ?>resources/newui-cdn/js/bootstrap.min.js" ></script>
 
 
 
