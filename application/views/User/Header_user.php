@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-color-dark-blue side-student sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/dashboard') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -46,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>student/dashboard/index/study/con">
+        <a class="nav-link" href="<?php echo base_url(); ?>user/dashboard/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -61,7 +61,7 @@
 
        <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>student/schedule/index/case/status">
+        <a class="nav-link" href="<?php echo base_url() ?>user/meeting">
           <i class="far fa-calendar-alt"></i>
           <span>Meeting Schedule</span></a>
       </li>
@@ -84,7 +84,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">options</h6>
-            <a class="collapse-item" href="<?php echo base_url('student/sentiment/create') ?>">Create Sentiment</a>
+            <a class="collapse-item" href="<?php echo base_url('user/sentiment/create') ?>">Create Sentiment</a>
             <!-- <a class="collapse-item" href="buttons.html">Closed Case</a>
             <a class="collapse-item" href="buttons.html">Recommended to</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Intervention</a> -->

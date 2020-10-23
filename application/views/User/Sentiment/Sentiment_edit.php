@@ -97,7 +97,7 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">View Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit Sentiment</h6>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -282,7 +282,6 @@
                     </div>
                     <!-- /.row -->
                 </div>
-                <a href="<?php echo base_url('user/sentiment/edit') ?>" type="button" class="btn btn-primary">Edit</a>
                     
                 </form>
                 

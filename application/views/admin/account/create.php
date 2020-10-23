@@ -102,7 +102,6 @@
                           </div>
                         </div>
                         <!-- /. password -->
-
                         <div class="form-group row">
                           <label for="user_pass2" class="col-sm-2 col-form-label">Confirm Password *</label>
                           <div class="err col-sm-10">
@@ -152,9 +151,12 @@
                             <div class="input-group mb-3">
                               <select class="form-control select2 select2-hidden-accessible" name="user_pos" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                               <option value="">Select Curriculum Level</option>
-                              <option value="col">College Student</option>
-                              <option value="hs">Secondary Student / Grade Student</option>
-                              <option value="elem">Elementary Student / Grade Student</option>
+                              <option value="GRADUATE ">GRADUATE   SCHOOL</option>
+                              <option value="LAW">LAW  SCHOOL</option>
+                              <option value="COLLEGE">SENIOR  COLLEGE</option>
+                              <option value="SENIOR HIGHSCHOOL">SENIOR  HIGHSCHOOL</option>
+                              <option value="JUNIOR HIGHSCHOOL">JUNIOR  HIGHSCHOOL</option>
+                              <option value="ELEMENTARY SCHOOL">ELEMENTARY SCHOOL</option>
                               </select>
                               </div>
                             </div>

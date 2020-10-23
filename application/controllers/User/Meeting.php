@@ -12,11 +12,22 @@ class Meeting extends CI_Controller {
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
 
+	}
+	
+	public function index(){
+        $this->load->view('User/Header_user');
+		$this->load->view('User/Meeting/Meeting_index');
+		$this->load->view('User/Footer_user');
     }
     
     public function view(){
         $this->load->view('User/Header_user');
 		$this->load->view('User/Meeting/Meeting_view');
+		$this->load->view('User/Footer_user');
+	}
+	public function create(){
+        $this->load->view('User/Header_user');
+		$this->load->view('User/Meeting/Meeting_create');
 		$this->load->view('User/Footer_user');
     }
     public function edit(){
