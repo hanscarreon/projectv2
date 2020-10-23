@@ -46,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>user/dashboard/">
+        <a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard/index/name/study/con">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -54,23 +54,39 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('student/profile/index/').$this->session->userdata('user_id') ?>">
-          <i class="fas fa-user-alt"></i>
-          <span>Profile</span></a>
-      </li>
-
       <!-- Heading -->
       <div class="sidebar-heading">
         Interface
       </div>
+
+       <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url() ?>admin/schedule/index/name/case/status">
+          <i class="far fa-calendar-alt"></i>
+          <span>Meeting Schedule</span></a>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-plus-square"></i>
+          <span>Account</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-color-dark-blue py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Options</h6>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index">View Accounts</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Create Account</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        My Sentiment
+        Sentiment
       </div>
 
        <!-- Nav Item - Pages Collapse Menu -->
@@ -81,12 +97,10 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
-            <h6 class="collapse-header">options</h6>
-            <a class="collapse-item" href="<?php echo base_url('user/sentiment/create') ?>">Create Sentiment</a>
-            <a class="collapse-item" href="<?php echo base_url('user/sentiment/index') ?>">Results Sentiment</a>
-            <!-- <a class="collapse-item" href="buttons.html">Closed Case</a>
-            <a class="collapse-item" href="buttons.html">Recommended to</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Intervention</a> -->
+            <h6 class="collapse-header">status</h6>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/sentiment/index/name/closed/">Closed Case</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/sentiment/index/name/recommended/">Recommended to</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/intervention/index/name/ongoing">Intervention</a>
           </div>
         </div>
       </li>
@@ -98,7 +112,17 @@
       <div class="sidebar-heading">
         Settings
       </div>
-     
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/archive/index/') ?>">
+          <i class="fas fa-archive"></i>
+          <span>Archive</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/account/view/').$this->session->userdata('user_id') ?>">
+          <i class="fas fa-user-alt"></i>
+          <span>Profile</span></a>
+      </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url() ?>login/logout">
