@@ -14,21 +14,27 @@ class Profile extends CI_Controller {
 
     }
     
-    public function view(){
+    public function index(){
 
-        $this->load->view('Guidance/Header');
-        $this->load->view('Guidance/Sidenav');
+        $this->load->view('Guidance/Header_guidance');
+		$this->load->view('Guidance/Profile/Profile_index');
+		$this->load->view('Guidance/Footer_guidance');
+        
+	}
+	
+	public function view(){
+
+        $this->load->view('Guidance/Header_guidance');
 		$this->load->view('Guidance/Profile/Profile_view');
-		$this->load->view('Guidance/Footer');
+		$this->load->view('Guidance/Footer_guidance');
         
     }
 
     public function edit(){
 
-        $this->load->view('Guidance/Header');
-        $this->load->view('Guidance/Sidenav');
+		$this->load->view('Guidance/Header_guidance');
 		$this->load->view('Guidance/Profile/Profile_edit');
-		$this->load->view('Guidance/Footer');
+		$this->load->view('Guidance/Footer_guidance');
         
     }
 }
