@@ -31,10 +31,9 @@ class Profile extends CI_Controller {
 		$this->load->view('User/Footer_user');
     }
     public function edit(){
-        $this->load->view('Guidance/Header');
-        $this->load->view('Guidance/Sidenav');
-		$this->load->view('Guidance/Profile/Profile_edit');
-		$this->load->view('Guidance/Footer');
+        $this->load->view('User/Header_user');
+		$this->load->view('User/Profile/Profile_edit');
+		$this->load->view('User/Footer_user');
     }
 
 

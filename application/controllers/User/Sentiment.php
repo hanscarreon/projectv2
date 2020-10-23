@@ -33,10 +33,9 @@ class Sentiment extends CI_Controller {
 	
 
     public function edit(){
-        $this->load->view('Guidance/Header');
-        $this->load->view('Guidance/Sidenav');
-		$this->load->view('Guidance/Dashboard/Dashboard_edit');
-		$this->load->view('Guidance/Footer');
+		$this->load->view('User/Header_user');
+		$this->load->view('User/Sentiment/Sentiment_edit');
+		$this->load->view('User/Footer_user');
     }
 
 

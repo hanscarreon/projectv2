@@ -116,7 +116,7 @@
             </div>
         </div>
         <!-- /. Year/Section -->
-        <button type="submit" value="create_account" name="create_account" class="btn btn-primary ">Submit</button>
+        <button type="submit" value="create_account" name="create_account" class="btn btn-primary ">edit</button>
     </form>
 
     

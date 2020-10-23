@@ -98,13 +98,6 @@
       <div class="sidebar-heading">
         Settings
       </div>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>user/archive">
-          <i class="fas fa-archive"></i>
-          <span> Archive</span></a>
-      </li>
      
       <!-- Nav Item - Tables -->
       <li class="nav-item">

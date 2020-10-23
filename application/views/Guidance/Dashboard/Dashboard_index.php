@@ -6,12 +6,6 @@
         <div class="col-12 card shadow mb-4">
         <div class="p-3 py-3">
             <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
-            <a href="#" class="btn btn-primary btn-icon-split mt-2">
-            <span class="icon text-white-50">
-                <i class="far fa-plus-square"></i>
-            </span>
-            <span class="text">Add sentiment</span>
-            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

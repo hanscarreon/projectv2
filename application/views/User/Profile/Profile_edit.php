@@ -106,13 +106,18 @@
         </div>
         <!-- /. Year/Section -->
         <div class="form-group row">
-            <label for="user_fname" class="col-sm-2 col-form-label">Contact #</label>
+            <label for="user_contact" class="col-sm-2 col-form-label">Contact #</label>
             <div class="err col-sm-10">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="user_contact" name="user_contact" placeholder="Contact #:" value="">
+                <input type="text" class="form-control" id="user_contact" name="user_contact" placeholder="Contact #" value="">
                 <div class="input-group-append">
                 </div>
             </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="err col-sm-10">
+                <input type="file" class="form-control" id="user_pic" name="user_pic" placeholder="" value="">
             </div>
         </div>
         <!-- /. Year/Section -->

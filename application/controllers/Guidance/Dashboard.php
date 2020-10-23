@@ -12,6 +12,13 @@ class Dashboard extends CI_Controller {
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
 
+	}
+	
+	public function index(){
+
+        $this->load->view('Guidance/Header_guidance');
+		$this->load->view('Guidance/Dashboard/Dashboard_index');
+		$this->load->view('Guidance/Footer_guidance');
     }
     
     public function view(){
@@ -20,7 +27,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('Guidance/Sidenav');
 		$this->load->view('Guidance/Dashboard/Dashboard_view');
 		$this->load->view('Guidance/Footer');
-        
     }
     
     public function edit(){
