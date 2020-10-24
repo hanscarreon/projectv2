@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->load->database();
+		$this->load->database();
 		$this->load->helper(array('url','date', 'form'));
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 		$body = [];
 		$footer = [];
 		if($this->have_sess_user() == true){
-			redirect('student/dashboard','refresh');
+			redirect('users/dashboard','refresh');
 		}
 		if ( $this->have_sess_admin() == true ){
 			redirect('admin/dashboard/index/name/study/con/col/','refresh');
@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 				}else{
 					$data = $this->input->post();
 					$data["user_email"] = $data["user_name"];
-					$table = "user";
+					$table = "users";
 					$account = $this->model_login->login($data, $table);
 					if( count($account) >= 1){
 	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 						if($account[0]['user_role'] == 'admin'){
 							redirect('admin/dashboard/index/name/study/con/col/','refresh');
 						}else{
-							redirect('student/dashboard','refresh');
+							redirect('user/dashboard','refresh');
 						}	
 					}else{
 	    				$body['msg_error'] = 'Invalid Account';
@@ -59,37 +59,78 @@ class Login extends CI_Controller {
 		$header = [];
 		$body = [];
 		$footer = [];
-		if($this->have_sess_user() == true){
-			redirect('student/dashboard','refresh');
-		}
-		if ( $this->have_sess_admin() == true ){
-			redirect('admin/dashboard/index/name/study/con/col/','refresh');
-		}
+		// if($this->have_sess_user() == true){
+		// 	redirect('student/dashboard','refresh');
+		// }
+		// if ( $this->have_sess_admin() == true ){
+		// 	redirect('admin/dashboard/index/name/study/con/col/','refresh');
+		// }
 			// form validation create account
-			$this->form_validation->set_rules('user_email', 'Email', 'required|trim|is_unique[user.user_email]');
+			$this->form_validation->set_rules('user_email', 'Email', 'required|trim|is_unique[users.user_email]');
+			$this->form_validation->set_rules('user_name', 'Username', 'required|trim|is_unique[users.user_name]');
 			$this->form_validation->set_rules('user_pass', 'Password', 'trim|required|min_length[6]|md5'); 
-			$this->form_validation->set_rules('user_pass2', 'Password not Match', 'trim|required|matches[user_pass]|min_length[5]|md5'); 
-			$this->form_validation->set_rules('user_fname', 'Firstname', 'required|trim');
-			$this->form_validation->set_rules('user_lname', 'Lastname', 'required|trim');
+			// $this->form_validation->set_rules('user_pass2', 'Password not Match', 'trim|required|matches[user_pass]|min_length[5]|md5'); 
+			$this->form_validation->set_rules('user_fname', 'Full Name', 'required|trim');
 			$this->form_validation->set_rules('user_address', 'Address', 'required|trim');
 			$this->form_validation->set_rules('user_gender', 'Gender', 'required|trim');
-			$this->form_validation->set_rules('user_pos', 'Curriculum', 'required|trim|min_length[2]');
-
+			$this->form_validation->set_rules('user_division', 'Division', 'required|trim|min_length[2]');
+			$this->form_validation->set_rules('user_contact', 'Contact', 'required|trim|min_length[2]');
 			if($this->input->post()) {
 				if ($this->form_validation->run() == FALSE) {
 					$body['msg_error'] = validation_errors();
 				}else{
 					$data = $this->input->post();
 					unset($data['user_pass2']);
-
 					$data["user_role"] = "student";
-					$table = "user";
-					$this->model_base->insert_data($data, $table);
+					$table = "users";
+					$this->model_base->insert_data($data,$table);
 					$this->session->set_flashdata('msg_success', 'Successfully registered!');
+					// unset($data);
 					redirect('login', 'refresh'); 
 				}
 			}
+
 		$this->load->view('view_register',$body);
+	}
+
+	public function reg(){
+		$body = [];
+
+
+		$this->form_validation->set_rules('user_name', 'Username', 'required|is_unique[users.user_name]');
+
+		$body["value"]="0";
+		if($this->input->post()) {
+			$data = $this->input->post();
+				$body["value"] = $data['user_name'];
+				if($this->form_validation->run() == FALSE){
+					$body['msg_error'] = validation_errors();
+					
+
+				}else{
+					$data = $this->input->post();
+					$table = "users";
+					$this->model_base->insert_data($data,$table);
+					$this->session->set_flashdata('msg_success', 'Successfully registered!');
+				}
+			// if ($this->form_validation->run() == FALSE) {
+			// 	$body['msg_error'] = validation_errors();
+			// }else{
+			// 	$data = $this->input->post();
+			// 	$body["value"] = $data['user_name'];
+			// 	// unset($data['user_pass2']);
+			// 	$data["user_role"] = "student";
+			// 	$table = "users";
+			// 	$this->model_base->insert_data($data,$table);
+			// 	$this->session->set_flashdata('msg_success', 'Successfully registered!');
+			// 	// unset($data);
+			// 	redirect('login', 'refresh'); 
+			// }
+		}
+
+
+		$this->load->view('view_register',$body);
+
 	}
 
 	public function forgot(){
@@ -133,6 +174,45 @@ class Login extends CI_Controller {
 			}
 		$this->load->view('view_forgot',$body);
 	}
+
+	public function admin(){
+		$header = [];
+		$body = [];
+		$footer = [];
+		if($this->have_sess_user() == true){
+			redirect('users/dashboard','refresh');
+		}
+		if ( $this->have_sess_admin() == true ){
+			redirect('admin/dashboard/index/name/study/con/col/','refresh');
+		}
+		$this->load->model('model_login');
+			$this->form_validation->set_rules('user_name', 'Username', 'required|trim');
+			$this->form_validation->set_rules('user_pass', 'Password', 'required|trim|min_length[6]');
+			if($this->input->post()) {
+				if ($this->form_validation->run() == FALSE) {
+					$body['msg_error'] = validation_errors();
+				}else{
+					$data = $this->input->post();
+					$data["user_email"] = $data["user_name"];
+					$table = "users";
+					$account = $this->model_login->login($data, $table);
+					if( count($account) >= 1){
+	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
+						$this->session->set_userdata($account[0]);
+						if($account[0]['user_role'] == 'admin'){
+							redirect('superadmin/dashboard','refresh');
+						}else{
+							redirect('guidance/dashboard','refresh');
+						}	
+					}else{
+	    				$body['msg_error'] = 'Invalid Account';
+					}
+				}
+			}
+		$this->load->view('admin',$body);
+	}
+
+
 }
 
 

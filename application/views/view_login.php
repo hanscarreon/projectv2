@@ -221,7 +221,8 @@
 <!-- jquery-validation -->
 <script src="<?php echo base_url(); ?>plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>plugins/jquery-validation/additional-methods.min.js"></script>
-
+<!-- jquery mask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
 <?php if ( isset( $msg_error ) ): ?>
   <div id="dom-target" style="display: none;">  
@@ -251,6 +252,8 @@
 </script>
 <script>
 $(document).ready(function () {
+  $('#user_name').mask('00-0000000');
+
   $.validator.setDefaults({
     submitHandler: function (form) {
       $(form).submit();

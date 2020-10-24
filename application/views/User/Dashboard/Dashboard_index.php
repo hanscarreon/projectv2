@@ -1,6 +1,8 @@
 
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
-
+    
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -98,7 +100,7 @@
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
-                <a href="<?php  echo base_url('student/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
+                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="far fa-plus-square"></i>
                     </span>
@@ -119,8 +121,8 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body table-responsive">
-                <table class="table table-striped  ">
+            <div class="card-body ">
+                <table class="table table-striped table-responsive " id="dataTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->
@@ -137,32 +139,52 @@
                         <th>Name of Counselor</th>
                         <th>Meeting Date</th>
                         <th>Reasons</th>
+                        <th>status</th>
                         
-                        <th  colspan="3" >Action</th>
+                        <!-- <th  colspan="3" >Action</th> -->
+                        <th >Action</th>
+                        <th ></th>
+                        <th ></th>
                         
 	                    </tr>
 	                  </thead>
                     <tbody>
+                    <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
+                      <?php echo  print_r($sentiments) ?>
+                     
+                      <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
-                        <!-- <th scope="row"></th> -->
-                        <td>Name</td>
-                        <td>Date created</td>
-                        <td>Negative percentage</td>
-                        <td>Negative Score</td>
-                        <td>Positive percentage</td>
-                        <td>Positive Score</td>
-                        <td>Neutral percentage</td>
-                        <td>Neutral Score</td>
-                        <td>Result</td>
-                        <td>Sentiment</td>
-                        <td>Name of Counselor</td>
-                        <td>Meeting Date</td>
-                        <td>Reasons</td>
-                        <td><a href> <i class="fa fa-eye"></i> </a></td>
-                        <td><a href> <i class="fa fa-edit"></i> </a></td>
-                        <td><a href> <i class="fa fa-trash"></i> </a></td>
+                          <!-- <th scope="row"></th> -->
+                          <td><?php echo $sentiment['user_fname'] ?></td>
+                          <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
+                          <td>Negative percentage</td>
+                          <td>Negative Score</td>
+                          <td>Positive percentage</td>
+                          <td>Positive Score</td>
+                          <td>Neutral percentage</td>
+                          <td>Neutral Score</td>
+                          <td>Result</td>
+                          <td>
+                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
+                          </td>
+                          <td><?php echo $sentiment['admin_fname'] ?></td>
+                          <td>Meeting Date</td>
+                          <td><?php echo $sentiment['case_reason'] ?></td>
+                          <td><?php echo $sentiment['case_con'] ?></td>
+                          <td class="text-right"><a href="<?php echo base_url('user/sentiment/view').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          <td><a href="<?php echo base_url('user/sentiment/edit').$sentiment['case_id'] ?>"> <i class="fa fa-edit"></i> </a></td>
+                          <td><a href="<?php echo base_url('user/sentiment/delete/').$sentiment['case_id'] ?>"> <i class="fa fa-trash"></i> </a></td>
                         </tr>
-                  
+                      <?php endforeach; ?>
+
+                    <?php else: ?>
+                      <tr>
+                        <!-- <th scope="row"></th> -->
+                        <td colspan="18" class="text-center">No data</td>
+                        </tr>
+	                  <?php endif;?>
+
+                       
                     </tbody>
                 </table>
             </div>
@@ -172,3 +194,4 @@
     
     </div>
  
+

@@ -115,28 +115,28 @@
             <!-- Card Body -->
             <div class="card-body ">
 
-            <form>
+            <form method="post">
                 <div class="form-group row">
                     <div class="col-sm-2">Checkbox</div>
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason">
+                            <input class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
                             <label class="form-check-label" for="academic">academic</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="family" value="family" name="case_reason">
+                            <input class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
                             <label class="form-check-label" for="family">family</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason">
+                            <input class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
                             <label class="form-check-label" for="peers">peers</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason">
+                            <input class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
                             <label class="form-check-label" for="relationship">relationship</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason">
+                            <input class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
                             <label class="form-check-label" for="emotion">emotion</label>
                         </div>
                         
@@ -146,8 +146,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text">
-                    </textarea>
+                    <textarea class="form-control" id="case_text" name="case_text"></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -177,115 +176,92 @@
                     </div>
                 </fieldset>
                 <!-- /. contact -->
-                <div class="form-group">
-                    <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                        <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i> View Profile
-                                        </a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user2-160x160.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                        <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i> View Profile
-                                        </a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                                <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                        <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i> View Profile
-                                        </a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.col -->
 
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <a href="<?php echo base_url('user/sentiment/save') ?>" type="button" class="btn btn-primary">Save</a>
+                <div class="form-check form-check-inline mb-2">
+                            <input class="form-check-input" type="radio" id="sir1" value="1" name="guidance_id">
+                            <label class="form-check-label" for="sir1">
+                              <div class="card bg-light">
+                                    <div class="card-header text-muted border-bottom-0">
+                                    Digital Strategist
+                                    </div>
+                                    <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
+                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                        </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    </div>
+                            
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline mb-2">
+                            <input class="form-check-input" type="radio" id="sir2" value="2" name="guidance_id">
+                            <label class="form-check-label" for="sir2">
+                              <div class="card bg-light">
+                                    <div class="card-header text-muted border-bottom-0">
+                                    Digital Strategist
+                                    </div>
+                                    <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
+                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                        </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    </div>
+                            
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline mb-2">
+                            <input class="form-check-input" type="radio" id="sir3" value="3" name="guidance_id">
+                            <label class="form-check-label" for="sir3">
+                              <div class="card bg-light">
+                                    <div class="card-header text-muted border-bottom-0">
+                                    Digital Strategist
+                                    </div>
+                                    <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
+                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                        </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </label>
+                        </div>
+                        
+                <br>
+                <button type="submit" class="btn btn-primary">Create</button>
 
                     
                 </form>
+
                 
            
             </div>

@@ -14,10 +14,31 @@ class Dashboard extends CI_Controller {
 
 	}
 	public function index(){
+
+		$body = [];
+
+		$user_id = $this->session->userdata('user_id');
+		$status = 'published';
+
+		$this->_filter_sentiment($user_id,$status);
+		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+		$this->db->flush_cache();
+
+
 		$this->load->view('User/Header_user');
-		$this->load->view('User/Dashboard/Dashboard_index');
+		$this->load->view('User/Dashboard/Dashboard_index',$body);
 		$this->load->view('User/Footer_user');
 
+	}
+
+	public function _filter_sentiment($user_id,$status){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+
+		$this->db->where('sc.user_id',$user_id);
+		if($status){
+			$this->db->where('sc.case_status','published');
+		}
 	}
     
     public function view(){
@@ -32,7 +53,9 @@ class Dashboard extends CI_Controller {
         $this->load->view('Guidance/Sidenav');
 		$this->load->view('Guidance/Dashboard/Dashboard_edit');
 		$this->load->view('Guidance/Footer');
-    }
+	}
+	
+	
 
 
 

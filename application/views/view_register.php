@@ -50,7 +50,7 @@
   <!-- Three columns of text below the carousel -->
         <div id="forms-box" class="card-body mt-3" style="background: #f7f7f7;"> 
             <div class="card-title text-center">
-                <h2 class="">Student Registration Form</h2>
+                <h2 class="">Student Registration Form  </h2>
             </div>
 
             <!-- form start -->
@@ -81,39 +81,17 @@
                 </div>
                 <!-- /. email -->
                 <div class="form-group row">
-                    <label for="user_fname" class="col-sm-2 col-form-label">First name *</label>
+                    <label for="user_fname" class="col-sm-2 col-form-label">Full Name *</label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_fname" name="user_fname" placeholder="First Name" value="">
+                        <input type="text" class="form-control" id="user_fname" name="user_fname" placeholder="Full Name" value="">
                         <div class="input-group-append">
                         </div>
                     </div>
                     </div>
                 </div>
-                <!-- /. first name -->
+                <!-- /. Full name -->
                 <div class="form-group row">
-                    <label for="user_mname" class="col-sm-2 col-form-label">Middle name </label>
-                    <div class="err col-sm-10">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_mname" name="user_mname" placeholder="Middle Name" value="">
-                        <div class="input-group-append">
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- /. middle name -->
-                <div class="form-group row">
-                    <label for="user_lname" class="col-sm-2 col-form-label">Last name *</label>
-                    <div class="err col-sm-10">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_lname" name="user_lname" placeholder="Last Name" value="">
-                        <div class="input-group-append">
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- /. Last name -->
-                    <div class="form-group row">
                     <label for="user_address" class="col-sm-2 col-form-label">Address <small>*</small></label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
@@ -124,6 +102,17 @@
                     </div>
                 </div>
                 <!-- /. Address -->
+                <div class="form-group row">
+                    <label for="user_contact" class="col-sm-2 col-form-label">Contact # <small>*</small></label>
+                    <div class="err col-sm-10">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="user_contact" name="user_contact" placeholder="Contact #" value="">
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- /. Contact -->
                 <div class="form-group row">
                     <label for="user_bod" class="col-sm-2 col-form-label">Birth Date <small>(optional)</small></label>
                     <div class="err col-sm-10">
@@ -168,6 +157,7 @@
                         <option value="">Select ...</option>
                         <option value="male">male</option>
                         <option value="female">female</option>
+                        <option value="lgbtq">lgbtq</option>
                         </select>
                         <div class="input-group-append">
                         </div>
@@ -176,39 +166,21 @@
                 </div>
                 <!-- /. gender  -->
                 <div class="form-group row">
-                    <label for="user_pos" class="col-sm-2 col-form-label">Curriculum *</label>
+                    <label for="user_division" class="col-sm-2 col-form-label">Division *</label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <select class="form-control select2 select2-hidden-accessible" name="user_pos" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                        <select class="form-control select2 select2-hidden-accessible" id="user_division" name="user_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         <option value="">Select Curriculum Level</option>
-                        <option value="col">College Student</option>
-                        <option value="hs">Secondary Student / Grade Student</option>
-                        <option value="elem">Elementary Student / Grade Student</option>
+                        <option value="junior highschool">junior highschool</option>
+                        <option value="senior highschool">senior highschool</option>
+                        <option value="college">college</option>
+                        <option value="law school">law school</option>
+                        <option value="graduate">graduate</option>
                         </select>
                         </div>
                     </div>
-                    </div>
+                  </div>
                 <!-- /. curiculum  -->
-
-                <div class="form-group row">
-                    <label for="user_yr" class="col-sm-2 col-form-label">Year Level <small>(optional)</small></label>
-                    <div class="err col-sm-10">
-                    <div class="input-group mb-3">
-                        <select class="form-control select2 select2-hidden-accessible" name="user_yr" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                        <option value="">Select ...</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="4">4th</option>
-                        <option value="5">5th</option>
-                        <option value="6">6th</option>
-                        </select>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- /. curiculum  -->
-                </div>
 
                 <div class="card-footer text-right">
                 <button type="submit"  class="btn btn-info ">Submit</button>
@@ -253,7 +225,31 @@
 
 
 <script type="text/javascript">
+function testss(){
+  console.log("rte")
+  var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://microsoft-text-analytics1.p.rapidapi.com/sentiment",
+	"method": "POST",
+	"headers": {
+		"x-rapidapi-host": "microsoft-text-analytics1.p.rapidapi.com",
+		"x-rapidapi-key": "6db84a91bamsh3c9e7e9bcee897cp145162jsne1bf89f9e4e0",
+		"content-type": "application/json",
+		"accept": "application/json"
+	},
+	"processData": false,
+	"data":{"documents":[
+    {   "id": "1",   "language": "en",   "text": "Hello world. This is some input text that I love."  },  {   "id": "2",   "language": "en",   "text": "It's incredibly sunny outside! I'm so happy."  },  {   "id": "3",   "language": "en",   "text": "Pike place market is my favorite Seattle attraction."  }
+  ]}
+}
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+}
     function toogle_pass(id){
+      testss();
        $('button[data-target="'+id+'"]').find('i').toggleClass("fas fa-eye-slash");
         var input = $("#"+id);
         if(input.attr("type") == 'password'){
@@ -261,6 +257,7 @@
           } else {
             input.attr("type", "password");
           }
+          
     }
 </script>
 
@@ -320,10 +317,6 @@ jQuery.validator.addMethod("passwordCheck",
         domain: true,
       },
       user_fname:{
-        required : true,
-        minlength: 2,
-      },
-      user_lname:{
         required : true,
         minlength: 2,
       },
