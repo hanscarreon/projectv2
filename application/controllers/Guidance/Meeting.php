@@ -75,16 +75,17 @@ class Meeting extends CI_Controller {
 				$table = "sentiment_meeting";
 				$data['meet_created'] = $this->getDatetimeNow();
 
-				$this->model_base->insert_data($data,$table);
+				$last_id = $this->model_base->insert_data($data,$table);
 				// create meeting
 
 				$tbname = 'sentiment_case';
 				$col = 'case_id';
 				$id = $data['case_id'];
 				$data_update = array('case_con' =>'meeting',
-									'case_updates' => $this->getDatetimeNow()
+									'case_updates' => $this->getDatetimeNow(),
+									'meet_id'=>$last_id
 									);
-				$last_id = $this->model_base->update_data($id,$col,$data_update,$tbname);
+				 $this->model_base->update_data($id,$col,$data_update,$tbname);
 				// update case con
 
 
