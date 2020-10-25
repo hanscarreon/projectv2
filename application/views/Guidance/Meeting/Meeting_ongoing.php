@@ -156,23 +156,110 @@
                     </div>
                 </fieldset>
                 <!-- /. contact -->
-                <form method="post">
-                  <?php echo $test ?>
                   <div class="form-group row">
                       <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                       <div class="col-sm-10">
                       <input type="datetime-local" class="form-control" id="meet_date" name="meet_date" >
                       </div>
                   </div>
-                  <div hidden >
-                  <input type="number" class="form-control" id="user_id" name="user_id" value="<?php echo $user_id ?>" >
+                  <div  hidden>
                   <input type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
+                  <input type="number" class="form-control" id="user_id" name="user_id" value="<?php echo $user_id ?>" >
+                  <input type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
                     
                   </div>
-                 <button type="submit" class="btn btn-primary">Set Date</button>
+
+                  <div class="form-group row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
+
+                  </div>
+
+                      <div class="col-sm-10 col-12">
+                        <form method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
+                            <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">send link</button>
+                            </div>
+                        </div>
+                        </form>
+
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
+
+                  </div>
+
+                      <div class="col-sm-10 col-12">
+                          <form method="post" enctype="multipart/form-data">
+                          <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
+                            <div class="input-group">
+                                  <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="meet_file" name="meet_file" >
+                                      <label class="custom-file-label" for="">Choose file</label>
+                                  </div>
+                                  <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                                  </div>
+
+                            </div>
+                          </form>
+                      </div>
+                      <div class="col-12 text-center mt-3 mb-3">
+                                  
+                        <?php if(!empty($meet[0]['meet_file'])): ?>
+                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="">Download file</a>
+                        <?php else: ?>
+                          no file yet
+                        <?php endif; ?>
+                      </div>
+                  </div>
+
+               
+                  <form method="post" >
+
+                  <div class="form-group row">
+                      <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
+                      <div class="col-sm-10">
+                      <textarea class="form-control" id="meet_note" name="meet_note" ><?php echo $meet[0]['meet_note'] ?></textarea>
+                      </div>
+                  </div>
+
+
+                  <input hidden  type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
+                  <input hidden  type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
+                    <fieldset class="form-group">
+                        <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Case status?</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="case_con" id="closed" value="closed">
+                                <label class="form-check-label" for="closed">
+                                closed
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio"    name="case_con" id="recommended" value="recommended">
+                                <label class="form-check-label" for="recommeded">
+                                    recommeded to...
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan" >
+                                <label class="form-check-label" for="plan">
+                                    intervention plan
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                        <button type="submit" value="done" name="done" class="btn btn-primary">done</button>
+                  </form>
 
                     
-                </form>
 
                 
            

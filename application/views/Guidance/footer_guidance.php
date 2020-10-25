@@ -59,6 +59,32 @@
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url() ?>js/sb-admin-2.min.js"></script>
 
+  <!-- Toastr -->
+  <script src="<?php echo base_url() ?>plugins/toastr/toastr.min.js"></script>
+
+
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('#dataTable').DataTable( {
+    	pagingType: "full_numbers",
+        dom: 'Bfrtip',
+    	processing: true,
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print',
+        ]
+    } );
+} );
+</script>
+
 
   <?php if ( isset( $msg_error ) ): ?>
   <div id="dom-target" style="display: none;">  

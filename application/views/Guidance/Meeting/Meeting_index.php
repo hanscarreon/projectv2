@@ -1,4 +1,7 @@
 
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
+
 
 
     <!-- Page Heading -->
@@ -113,13 +116,13 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body table-responsive">
-                <table class="table table-striped  ">
+            <div class="card-body ">
+                <table class="table table-striped table-responsive " id="dataTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->
                         <th>Name</th>
-                        <th>Date created</th>
+                        <th>Meet date</th>
                         <th>Negative percentage</th>
                         <th>Negative Score</th>
                         <th>Positive percentage</th>
@@ -128,8 +131,6 @@
                         <th>Neutral Score</th>
                         <th>Result</th>
                         <th>Sentiment</th>
-                        <th>Name of Counselor</th>
-                        <th>Meeting Date</th>
                         <th>Reasons</th>
                         
                         <th  colspan="" >Action</th>
@@ -137,23 +138,35 @@
 	                    </tr>
 	                  </thead>
                     <tbody>
+                    <?php  if ( isset( $meetings ) && count($meetings) >= 1 ):?>
+                      <?php echo  print_r($meetings) ?>
+                     
+                      <?php $x=1; foreach($meetings as $meeting): ?>
                         <tr>
-                        <!-- <th scope="row"></th> -->
-                            <td>Name</td>
-                            <td>Date created</td>
-                            <td>Negative percentage</td>
-                            <td>Negative Score</td>
-                            <td>Positive percentage</td>
-                            <td>Positive Score</td>
-                            <td>Neutral percentage</td>
-                            <td>Neutral Score</td>
-                            <td>Result</td>
-                            <td>Sentiment</td>
-                            <td>Name of Counselor</td>
-                            <td>Meeting Date</td>
-                            <td>Reasons</td>
-                            <td><a href class="btn btn-primary"> Accept </a></td>
+                          <!-- <th scope="row"></th> -->
+                          <td><?php echo $meeting['user_fname'] ?></td>
+                          <td><?php echo date("F j, Y, g:i a",strtotime($meeting['meet_date'])) ?></td>
+                          <td>Negative percentage</td>
+                          <td>Negative Score</td>
+                          <td>Positive percentage</td>
+                          <td>Positive Score</td>
+                          <td>Neutral percentage</td>
+                          <td>Neutral Score</td>
+                          <td>Result</td>
+                          <td>
+                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting["case_text"]; ?></p>
+                          </td>
+                          <td style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting['case_reason'] ?></td>
+                          <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/ongoing/').$meeting['case_id'].'/'.$meeting['user_id'].'/'.$meeting['meet_id'] ?>"> proceed </a></td>
                         </tr>
+                      <?php endforeach; ?>
+
+                    <?php else: ?>
+                      <tr>
+                        <!-- <th scope="row"></th> -->
+                        <td colspan="18" class="text-center">No data</td>
+                      </tr>
+	                  <?php endif;?>
                     </tbody>
                 </table>
             </div>

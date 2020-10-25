@@ -58,6 +58,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url() ?>js/sb-admin-2.min.js"></script>
+  <!-- Toastr -->
+  <script src="<?php echo base_url() ?>plugins/toastr/toastr.min.js"></script>
 
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>

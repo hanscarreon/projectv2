@@ -252,7 +252,7 @@
 </script>
 <script>
 $(document).ready(function () {
-  $('#user_name').mask('00-0000000');
+  // $('#user_name').mask('00-0000000');
 
   $.validator.setDefaults({
     submitHandler: function (form) {

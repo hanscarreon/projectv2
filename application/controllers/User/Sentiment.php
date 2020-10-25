@@ -35,10 +35,10 @@ class Sentiment extends CI_Controller {
 		$body = [];
 
 			
-			$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
-			$this->form_validation->set_rules('guidance_id', 'Select Counselor', 'required|trim');
-			$this->form_validation->set_rules('case_reason[]', 'Pick atlest one reason', 'required|trim');
-			$this->form_validation->set_rules('case_res', 'choose you prefer contact', 'required');
+		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
+		$this->form_validation->set_rules('guidance_id', 'Select Counselor', 'required|trim');
+		$this->form_validation->set_rules('case_reason[]', 'Pick atlest one reason', 'required|trim');
+		$this->form_validation->set_rules('case_res', 'choose you prefer contact', 'required');
 
 		if($this->input->post()){
 			$data = $this->input->post();

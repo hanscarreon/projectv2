@@ -21,6 +21,9 @@
   <!-- colors -->
   <link rel="stylesheet" href="<?php echo base_url() ?>resources/css/colors.css" >
 
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>plugins/toastr/toastr.min.css">
+
 
 
 </head>
@@ -46,7 +49,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard/index/name/study/con">
+        <a class="nav-link" href="<?php echo base_url(); ?>guidance/dashboard/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -61,7 +64,7 @@
 
        <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>admin/schedule/index/name/case/status">
+        <a class="nav-link" href="<?php echo base_url() ?>guidance/meeting/">
           <i class="far fa-calendar-alt"></i>
           <span>Meeting Schedule</span></a>
       </li>
@@ -98,9 +101,9 @@
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">status</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/sentiment/index/name/closed/">Closed Case</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/sentiment/index/name/recommended/">Recommended to</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/intervention/index/name/ongoing">Intervention</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>guidance/sentiment/index/name/closed/">Closed Case</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>guidance/sentiment/index/name/recommended/">Recommended to</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>guidance/intervention/index/name/ongoing">Intervention</a>
           </div>
         </div>
       </li>
@@ -113,13 +116,13 @@
         Settings
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/archive/index/') ?>">
+        <a class="nav-link" href="<?php echo base_url('guidance/archive/index/') ?>">
           <i class="fas fa-archive"></i>
           <span>Archive</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/account/view/').$this->session->userdata('user_id') ?>">
+        <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('user_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
       </li>

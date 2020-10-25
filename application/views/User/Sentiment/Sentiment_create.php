@@ -117,7 +117,7 @@
 
             <form method="post">
                 <div class="form-group row">
-                    <div class="col-sm-2">Checkbox</div>
+                    <div class="col-sm-2">Reason</div>
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
