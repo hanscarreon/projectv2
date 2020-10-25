@@ -5,6 +5,7 @@ class Dashboard extends CI_Controller {
 
 	public function __construct()
 	{
+
 		parent::__construct();
 		$this->load->database();
 		$this->load->helper(array('url','date', 'form'));
@@ -14,6 +15,8 @@ class Dashboard extends CI_Controller {
 			$this->logout_admin();	
 		}
 	}
+
+	
 	public function index($name="name",$case="study",$con="con",$pos='all',$filter="1"){
 
 		$header = [];
