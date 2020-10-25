@@ -23,6 +23,17 @@ class Model_login extends CI_Model {
 		return $query->result_array(); 		
 	}
 
+	public function admin_login ($data, $table) {
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->or_having('admin_uname', $data['admin_uname']); 
+		$this->db->or_having('admin_email', $data['admin_email']); 
+		$this->db->where('admin_pass', md5($data['admin_pass'])); 
+		// $this->db->where('user_role', 'admin'); 
+		$query = $this->db->get();
+		return $query->result_array(); 		
+	}
+
 	public function login_normal ($data, $table) {
 		$this->db->select('*');
 		$this->db->from($table);

@@ -179,27 +179,27 @@ class Login extends CI_Controller {
 		$header = [];
 		$body = [];
 		$footer = [];
-		if($this->have_sess_user() == true){
-			redirect('users/dashboard','refresh');
-		}
-		if ( $this->have_sess_admin() == true ){
-			redirect('admin/dashboard/index/name/study/con/col/','refresh');
-		}
+		// if($this->have_sess_user() == true){
+		// 	redirect('users/dashboard','refresh');
+		// }
+		// if ( $this->have_sess_admin() == true ){
+		// 	redirect('admin/dashboard/index/name/study/con/col/','refresh');
+		// }
 		$this->load->model('model_login');
-			$this->form_validation->set_rules('user_name', 'Username', 'required|trim');
-			$this->form_validation->set_rules('user_pass', 'Password', 'required|trim|min_length[6]');
+			$this->form_validation->set_rules('admin_uname', 'Username', 'required|trim');
+			$this->form_validation->set_rules('admin_pass', 'Password', 'required|trim|min_length[6]');
 			if($this->input->post()) {
 				if ($this->form_validation->run() == FALSE) {
 					$body['msg_error'] = validation_errors();
 				}else{
 					$data = $this->input->post();
-					$data["user_email"] = $data["user_name"];
-					$table = "users";
-					$account = $this->model_login->login($data, $table);
+					$data["admin_email"] = $data["admin_uname"];
+					$table = "admin";
+					$account = $this->model_login->admin_login($data, $table);
 					if( count($account) >= 1){
 	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
 						$this->session->set_userdata($account[0]);
-						if($account[0]['user_role'] == 'admin'){
+						if($account[0]['admin_role'] == 'admin'){
 							redirect('superadmin/dashboard','refresh');
 						}else{
 							redirect('guidance/dashboard','refresh');

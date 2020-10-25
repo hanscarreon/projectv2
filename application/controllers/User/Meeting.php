@@ -11,6 +11,9 @@ class Meeting extends CI_Controller {
 		$this->load->helper(array('url','date', 'form'));
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
+		if ( $this->have_sess_user() != true ){
+			$this->logout_user();	
+		}
 
 	}
 	

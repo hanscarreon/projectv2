@@ -109,9 +109,16 @@ class CI_Controller {
 	}
 
 	public function have_sess_admin(){
-		if ($this->session->userdata('user_role') == 'super admin' && $this->session->userdata('user_status') != 'deleted' 
-			|| $this->session->userdata('user_role') == 'admin' && $this->session->userdata('user_status') != 'deleted'
-			|| $this->session->userdata('user_role') == 'base' && $this->session->userdata('user_status') != 'deleted') {
+		if ($this->session->userdata('admin_role') == 'super admin' && $this->session->userdata('admin_status') != 'deleted' 
+			|| $this->session->userdata('admin_role') == 'admin' && $this->session->userdata('admin_status') != 'deleted'
+			|| $this->session->userdata('admin_role') == 'base' && $this->session->userdata('admin_status') != 'deleted') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public function have_sess_guidance(){
+		if ($this->session->userdata('admin_role') == 'guidance' && $this->session->userdata('admin_status') != 'deleted' ) {
 			return true;
 		} else {
 			return false;
