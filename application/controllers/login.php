@@ -200,7 +200,7 @@ class Login extends CI_Controller {
 	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
 						$this->session->set_userdata($account[0]);
 						if($account[0]['admin_role'] == 'admin'){
-							redirect('superadmin/dashboard','refresh');
+							redirect('admin/dashboard','refresh');
 						}else{
 							redirect('guidance/dashboard','refresh');
 						}	
