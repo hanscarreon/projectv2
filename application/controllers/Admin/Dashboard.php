@@ -17,7 +17,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	
-	public function index($name="name",$case="study",$con="con",$pos='all',$filter="1"){
+	public function index(){
 
 		$header = [];
 		$body = [];
@@ -25,10 +25,10 @@ class Dashboard extends CI_Controller {
 
 		$pos =  $this->session->userdata('user_pos');
 
-		$body["user_name"] = $this->uri->segment("4");
-		$body["case_study"] = $this->uri->segment("5");
-		$body["case_con"] = $this->uri->segment("6");
-		$body["user_pos"] = $pos;
+		// $body["user_name"] = $this->uri->segment("4");
+		// $body["case_study"] = $this->uri->segment("5");
+		// $body["case_con"] = $this->uri->segment("6");
+		// $body["user_pos"] = $pos;
 
 		if($this->input->post("search_mode")){
 			$this->form_validation->set_rules('search_name', 'search name', 'trim');
@@ -89,51 +89,51 @@ class Dashboard extends CI_Controller {
 		// $this->pagination->initialize($config);
 		// $offset = ($filter - 1) * $config["per_page"];
 		// $this->db->limit( $config["per_page"] , $offset);
-		$this->db->flush_cache();
-		$this->db->join("user", "sentiment_case.user_id = user.user_id");
-		$this->_sorting($name,$case,$con,$pos);
-		$this->db->where('sentiment_case.case_status','published');
-		// // $this->db->group_by('sentiment.user_id,user.user_id');
-		$body['sentiments'] = $this->model_base->get_all('sentiment_case');
-		$this->db->flush_cache();
+		// $this->db->flush_cache();
+		// $this->db->join("user", "sentiment_case.user_id = user.user_id");
+		// $this->_sorting($name,$case,$con,$pos);
+		// $this->db->where('sentiment_case.case_status','published');
+		// // // $this->db->group_by('sentiment.user_id,user.user_id');
+		// $body['sentiments'] = $this->model_base->get_all('sentiment_case');
+		// $this->db->flush_cache();
 
 
-		$col = "case_study";
-		$val = "positive";
-		$this->_count_sort($pos);
-		$body["positive"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
-		$this->db->flush_cache();
+		// $col = "case_study";
+		// $val = "positive";
+		// $this->_count_sort($pos);
+		// $body["positive"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
+		// $this->db->flush_cache();
 
-		$col = "case_study";
-		$val = "neutral";
-		$this->_count_sort($pos);
-		$body["neutral"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
-		$this->db->flush_cache();
-
-
-		$col = "case_study";
-		$val = "negative";
-		$this->_count_sort($pos);
-		$body["negative"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
-		$this->db->flush_cache();
+		// $col = "case_study";
+		// $val = "neutral";
+		// $this->_count_sort($pos);
+		// $body["neutral"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
+		// $this->db->flush_cache();
 
 
-		$this->db->where("user_pos",$pos);
-		$this->db->where("user_role","student");
-		$body["total_user"] = $this->model_base->count_data("user");
-		$this->db->flush_cache();
-
-		$this->db->join("user", "sentimend_meeting.stud_id = user.user_id");
-		$this->db->where("user.user_pos",$pos);
-		$this->db->where("user.user_role","student");
-		$body["total_meetings"] = $this->model_base->count_data("sentimend_meeting");
-		$this->db->flush_cache();
+		// $col = "case_study";
+		// $val = "negative";
+		// $this->_count_sort($pos);
+		// $body["negative"] = $this->model_base->count_data_status("sentiment_case",$col,$val);
+		// $this->db->flush_cache();
 
 
-		$this->_count_sort($pos);
-		$overall = $this->model_base->count_data('sentiment_case');
-		// $body["total"]= $config["total_rows"];
-		$body["total"]= $overall;
+		// $this->db->where("user_pos",$pos);
+		// $this->db->where("user_role","student");
+		// $body["total_user"] = $this->model_base->count_data("user");
+		// $this->db->flush_cache();
+
+		// $this->db->join("user", "sentimend_meeting.stud_id = user.user_id");
+		// $this->db->where("user.user_pos",$pos);
+		// $this->db->where("user.user_role","student");
+		// $body["total_meetings"] = $this->model_base->count_data("sentimend_meeting");
+		// $this->db->flush_cache();
+
+
+		// $this->_count_sort($pos);
+		// $overall = $this->model_base->count_data('sentiment_case');
+		// // $body["total"]= $config["total_rows"];
+		// $body["total"]= $overall;
 		$this->load->view("template/site_admin_header",$header);
 		$this->load->view('admin/view_dashboard',$body);
 		$this->load->view("template/site_admin_footer",$footer);
