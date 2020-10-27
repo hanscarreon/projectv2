@@ -61,16 +61,11 @@ class Meeting extends CI_Controller {
 		if($this->input->post()){
 			$data = $this->input->post();
 			$body["test"]= "run";
-
-
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
 				$body["test"]= "err";
-
-
 			}else{
-			$body["test"]= "go";
-
+				$body["test"]= "go";
 				$data["admin_id"] =  $this->session->userdata('admin_id');
 				$table = "sentiment_meeting";
 				$data['meet_created'] = $this->getDatetimeNow();

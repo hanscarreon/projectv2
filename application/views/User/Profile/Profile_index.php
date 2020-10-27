@@ -2,8 +2,23 @@
     <div class="card-body box-profile">
     <div class="text-center">
         <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url().$profile[0]['user_pic'] ?>" alt="no profile picture available">
-        <form>
-            
+        <form method="post" class="mb-5" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-10">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="number" value="<?php echo $profile[0]['user_id'] ?>" name="user_id" id="user_id">
+                            <input type="file" class="custom-file-input" id="user_pic" name="user_pic" >
+                            <label class="custom-file-label" for="">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
     <form class="form-horizontal" id="account-form" method="post">

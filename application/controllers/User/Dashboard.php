@@ -17,6 +17,15 @@ class Dashboard extends CI_Controller {
 
 	}
 	public function index(){
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 
 		$body = [];
 
@@ -28,7 +37,7 @@ class Dashboard extends CI_Controller {
 		$this->db->flush_cache();
 
 
-		$this->load->view('User/Header_user');
+		$this->load->view('User/Header_user',$header);
 		$this->load->view('User/Dashboard/Dashboard_index',$body);
 		$this->load->view('User/Footer_user');
 
@@ -45,14 +54,32 @@ class Dashboard extends CI_Controller {
 	}
     
     public function view(){
+		$header = []; // header
+		$body = [];
 
-        $this->load->view('User/Header_user');
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+
+        $this->load->view('User/Header_user',$header);
 		$this->load->view('User/Dashboard/Dashboard_view');
 		$this->load->view('User/Footer_user');
         
     }
     public function edit(){
-        $this->load->view('Guidance/Header');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+        $this->load->view('Guidance/Header',$header);
         $this->load->view('Guidance/Sidenav');
 		$this->load->view('Guidance/Dashboard/Dashboard_edit');
 		$this->load->view('Guidance/Footer');

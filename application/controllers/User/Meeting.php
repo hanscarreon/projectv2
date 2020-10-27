@@ -18,23 +18,59 @@ class Meeting extends CI_Controller {
 	}
 	
 	public function index(){
-        $this->load->view('User/Header_user');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+        $this->load->view('User/Header_user',$header);
 		$this->load->view('User/Meeting/Meeting_index');
 		$this->load->view('User/Footer_user');
     }
     
     public function view(){
-        $this->load->view('User/Header_user');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+        $this->load->view('User/Header_user',$header);
 		$this->load->view('User/Meeting/Meeting_view');
 		$this->load->view('User/Footer_user');
 	}
 	public function create(){
-        $this->load->view('User/Header_user');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+        $this->load->view('User/Header_user',$header);
 		$this->load->view('User/Meeting/Meeting_create');
 		$this->load->view('User/Footer_user');
     }
     public function edit(){
-        $this->load->view('Guidance/Header');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+        $this->load->view('Guidance/Header'.$header);
         $this->load->view('Guidance/Sidenav');
 		$this->load->view('Guidance/Dashboard/Dashboard_edit');
 		$this->load->view('Guidance/Footer');

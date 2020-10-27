@@ -31,8 +31,15 @@ class Sentiment extends CI_Controller {
 	}
 	
 	public function create(){
-       
+		$header = []; // header
 		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 
 			
 		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
@@ -75,7 +82,7 @@ class Sentiment extends CI_Controller {
 		}
 
 
-		$this->load->view('User/Header_user');
+		$this->load->view('User/Header_user',$header);
 		$this->load->view('User/Sentiment/Sentiment_create',$body);
 		$this->load->view('User/Footer_user');
 
@@ -88,7 +95,16 @@ class Sentiment extends CI_Controller {
 	
 
     public function edit(){
-		$this->load->view('User/Header_user');
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$this->load->view('User/Header_user',$header);
 		$this->load->view('User/Sentiment/Sentiment_edit');
 		$this->load->view('User/Footer_user');
 	}
