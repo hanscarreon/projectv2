@@ -211,7 +211,7 @@
                       <div class="col-12 text-center mt-3 mb-3">
                                   
                         <?php if(!empty($meet[0]['meet_file'])): ?>
-                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="">Download file</a>
+                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">Download file</a>
                         <?php else: ?>
                           no file yet
                         <?php endif; ?>

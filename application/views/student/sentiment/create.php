@@ -50,7 +50,6 @@
                             </div>
                       </div>
                         <!-- /. curiculum  -->
-                        <!-- /. curiculum  -->
                          <div class="card-footer text-right">
 	                        <button type="submit" value="create_account" name="create_account" class="btn btn-info ">Submit</button>
 	                     </div>

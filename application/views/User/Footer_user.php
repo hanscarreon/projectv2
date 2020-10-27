@@ -14,7 +14,7 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Your Website 2020</span>
+      <span>Copyright &copy; GMASUSA WEB/APP</span>
     </div>
   </div>
 </footer>
@@ -82,7 +82,69 @@
     } );
 } );
 </script>
+<!-- /. tables -->
 
+
+<script>
+
+function rapid(sentiment){
+    var cause = $("#case_cause").val();
+    var res_type = $("#case_res").val();
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://text-sentiment.p.rapidapi.com/analyze",
+      "method": "POST",
+      "headers": {
+        "x-rapidapi-host": "text-sentiment.p.rapidapi.com",
+        "x-rapidapi-key": "02c3f30502msh33401f4eaac2e5ep146922jsn081be928bb38",
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      "data": {
+        "text": sentiment
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      var data = JSON.parse(response);
+      var study = '';
+      if(parseInt(data.neg) > parseInt(data.pos) && parseInt(data.neg) > parseInt(data.mid) ){
+        study = 'negative';
+      }else if (parseInt(data.pos) > parseInt(data.neg) && parseInt(data.pos) > parseInt(data.mid)){
+        study = 'positive';
+      }else{
+        study = 'neutral';
+      }
+      console.log(study);
+      console.log(data)
+      if(data && study){
+        $('#case_neg').val(data.neg)
+        $('#case_neg_percent').val(data.neg_percent)
+        // negative
+        $('#case_mid').val(data.mid)
+        $('#case_mid_percent').val(data.mid_percent)
+        // mid
+        $('#case_pos').val(data.pos)
+        $('#case_pos_percent').val(data.pos_percent)
+        // positive
+        $('#case_result').val(study)
+        $('#case_line').val(data.totalLines)
+        // result
+        setTimeout(()=>{
+          $('#send-btn').click();
+          console.log('done');},1000)
+      }
+    });
+  }
+   $(document).ready(function(){
+     $('#senti-btn').click(function(){
+      case_text_val = $('#case_text').val()
+      // console.log(case_text_val)
+      rapid(case_text_val);
+     });
+   })
+ </script>
+ <!-- /. create sentiment -->
 
   <?php if ( isset( $msg_error ) ): ?>
   <div id="dom-target" style="display: none;">  

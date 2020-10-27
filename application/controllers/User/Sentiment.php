@@ -36,9 +36,23 @@ class Sentiment extends CI_Controller {
 
 			
 		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
-		$this->form_validation->set_rules('guidance_id', 'Select Counselor', 'required|trim');
+		$this->form_validation->set_rules('admin_id', 'Select Counselor', 'required|trim');
 		$this->form_validation->set_rules('case_reason[]', 'Pick atlest one reason', 'required|trim');
 		$this->form_validation->set_rules('case_res', 'choose you prefer contact', 'required');
+		$this->form_validation->set_rules('case_neg', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_neg_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_mid', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_mid_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_pos', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_pos_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_result', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_line', 'error slow internet connection', 'required');
+		
+		$role = 'guidance';
+		$status = 'published';
+		$this->_filter_guidance($role,$status);
+		$body['guidances'] = $this->model_base->get_all('admin as a');
+		$this->db->flush_cache();
 
 		if($this->input->post()){
 			$data = $this->input->post();
@@ -81,7 +95,6 @@ class Sentiment extends CI_Controller {
 	
 	public function delete($id){
 
-
 		$data = $this->input->post();
 		unset($data["create_case"]);
 		$tbname = 'sentiment_case';
@@ -90,13 +103,22 @@ class Sentiment extends CI_Controller {
 							'case_updates' => $this->getDatetimeNow()
 							);
 		$this->model_base->update_data($id,$col,$data_update,$tbname);
-
 		
 		$this->session->set_flashdata('msg_success', 'retrieve success!');
 		redirect('user/archive' ,'refresh');
+		
+	}
 
-		
-		
+	public function _filter_guidance ($role,$status){
+
+		if(!empty($role)){
+			$this->db->where('a.admin_role', $role);
+		}
+
+		if(!empty($status)){
+			$this->db->where('a.admin_status',$status);
+		}
+
 	}
 
 

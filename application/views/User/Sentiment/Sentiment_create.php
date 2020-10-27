@@ -167,7 +167,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="gridRadios3" value="Zoom">
+                            <input class="form-check-input" type="radio" name="case_res" id="gridRadios3" value="Zoom" id="Zoom">
                             <label class="form-check-label" for="Zoom">
                                 Zoom
                             </label>
@@ -177,97 +177,64 @@
                 </fieldset>
                 <!-- /. contact -->
 
-                <div class="form-check form-check-inline mb-2">
-                            <input class="form-check-input" type="radio" id="sir1" value="1" name="guidance_id">
-                            <label class="form-check-label" for="sir1">
-                              <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
-                            
-                                </div>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline mb-2">
-                            <input class="form-check-input" type="radio" id="sir2" value="2" name="guidance_id">
-                            <label class="form-check-label" for="sir2">
-                              <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
-                            
-                                </div>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline mb-2">
-                            <input class="form-check-input" type="radio" id="sir3" value="3" name="guidance_id">
-                            <label class="form-check-label" for="sir3">
-                              <div class="card bg-light">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    Digital Strategist
-                                    </div>
-                                    <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-7">
-                                        <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                        </ul>
-                                        </div>
-                                        <div class="col-5 text-center">
-                                        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
-                                        </div>
-                                    </div>
-                                    </div>
+                <!-- <?php echo print_r($guidances) ?> -->
+                <?php  if(empty($guidances) || count($guidances) <= 0):  ?>
+                  <div class="col-12 text-center">
+                    <h1>No guidance counsilor available ...</h1>
+                  </div>
+                <?php  else: ?>
 
-                                </div>
-                            </label>
-                        </div>
-                        
+                  <?php if (isset($guidances) && count($guidances) >= 1  ) ?>
+                  <?php  foreach($guidances as $guidance): ?>
+                    <div class="form-check form-check-inline mb-2">
+                      <input class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id">
+                      <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>">
+                        <div class="card bg-light">
+                              <div class="card-header text-muted border-bottom-0">
+                              <?php echo $guidance['admin_role'] ?>
+                              </div>
+                              <div class="card-body pt-0">
+                              <div class="row">
+                                  <div class="col-7">
+                                  <h2 class="lead"><b><?php echo $guidance['admin_fname'] ?></b></h2>
+                                  <p class="text-muted text-sm"><b>About: </b> <?php echo $guidance['admin_expertise'] ?> </p>
+                                  <ul class="ml-4 mb-0 fa-ul text-muted">
+                                      <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contact #: <?php  echo $guidance['admin_contact'] ?></li>
+                                  </ul>
+                                  </div>
+                                  <div class="col-5 text-center">
+                                  <img src="<?php echo base_url().$guidance['admin_pic'] ?>" alt="no image available" class="img-circle img-fluid">
+                                  </div>
+                              </div >
+                              </div>
+                          </div>
+                      </label>
+                  </div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
                 <br>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <div hidden>
+                    <input type="number" name="case_neg" id="case_neg"  >
+                    <input type="text" name="case_neg_percent" id="case_neg_percent"  >
+                    <!-- /. neg -->
+                    <input type="number" name="case_mid" id="case_mid" >
+                    <input  type="text" name="case_mid_percent" id="case_mid_percent" >
+                    <!-- /. neutral -->
+                    <input type="number" name="case_pos" id="case_pos"  >
+                    <input  type="text" name="case_pos_percent" id="case_pos_percent"  >
+                    <!-- /. positive -->
+                    <input  type="text" name="case_result" id="case_result"  >
+                    <input  type="number" name="case_line" id="case_line" >
 
-                    
+                </div>
+                <button type="button" class="btn btn-primary " id="senti-btn"> Create</button>
+                <button hidden type="submit" class="btn btn-primary " id="send-btn">Create</button>
                 </form>
 
                 
-           
             </div>
         </div>
     </div>
 
     
     </div>
- 
