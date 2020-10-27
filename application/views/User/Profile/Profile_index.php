@@ -115,7 +115,7 @@
             <div class="err col-sm-10">
                 <div class="input-group mb-3">
                     <select class="form-control select2 select2-hidden-accessible" id="user_gender" name="user_gender"  style="width: 100%;" disabled data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option value="">Strand/Degree Program</option>
+                    <option value="">select gender</option>
                     <option value="male" <?php echo $profile[0]['user_gender'] == 'male' ? 'selected':'' ?>>male</option>
                     <option value="female" <?php echo $profile[0]['user_gender'] == 'female' ? 'selected':'' ?>>female</option>
                     <option value="lgbtq"  <?php echo $profile[0]['user_gender'] == 'lgbtq' ? 'selected':'' ?> >lgbtq</option>

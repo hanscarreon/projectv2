@@ -69,21 +69,6 @@
           <span>Meeting Schedule</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-plus-square"></i>
-          <span>Account</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-color-dark-blue py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Options</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index">View Accounts</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Create Account</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -115,14 +100,9 @@
       <div class="sidebar-heading">
         Settings
       </div>
+     
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('guidance/archive/index/') ?>">
-          <i class="fas fa-archive"></i>
-          <span>Archive</span></a>
-      </li>
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('user_id') ?>">
+        <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('admin_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
       </li>
@@ -270,8 +250,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo ucwords($dp[0]['admin_fname']) ?></span>
+                <img class="img-profile rounded-circle" src="<?php echo base_url().$dp[0]['admin_pic'] ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -148,20 +148,19 @@
 	                  </thead>
                     <tbody>
                     <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
-                      <?php echo  print_r($sentiments) ?>
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $sentiment['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
-                          <td>Negative percentage</td>
-                          <td>Negative Score</td>
-                          <td>Positive percentage</td>
-                          <td>Positive Score</td>
-                          <td>Neutral percentage</td>
-                          <td>Neutral Score</td>
-                          <td>Result</td>
+                          <td><?php echo $sentiment['case_neg_percent'] ?></td>
+                          <td><?php echo $sentiment['case_neg'] ?></td>
+                          <td><?php echo $sentiment['case_pos_percent'] ?></td>
+                          <td><?php echo $sentiment['case_pos'] ?></td>
+                          <td><?php echo $sentiment['case_mid_percent'] ?></td>
+                          <td><?php echo $sentiment['case_mid'] ?></td>
+                          <td><?php echo $sentiment['case_result'] ?></td>
                           <td>
                             <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
                           </td>

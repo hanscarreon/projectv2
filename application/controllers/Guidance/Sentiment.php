@@ -18,6 +18,14 @@ class Sentiment extends CI_Controller {
     }
     
     public function view(){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 
         $this->load->view('Guidance/Header');
         $this->load->view('Guidance/Sidenav');
@@ -27,6 +35,14 @@ class Sentiment extends CI_Controller {
     }
 
     public function edit(){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 
         $this->load->view('Guidance/Header');
         $this->load->view('Guidance/Sidenav');

@@ -1,9 +1,6 @@
-
-
-
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Sentiment</h1>
+    <h1 class="h3 mb-0 text-gray-800">Set Meeting</h1>
     </div>
 
     <!-- Content Row -->
@@ -115,8 +112,9 @@
             <!-- Card Body -->
             <div class="card-body ">
 
-            <form method="post">
-                <div class="form-group row">
+            <?php $reasons = explode(',', $case[0]["case_reason"]);  ?>
+
+                 <div class="form-group row">
                     <div class="col-sm-2">Reason</div>
                     <div class="col-sm-10">
                    
@@ -149,7 +147,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]["case_text"] ?></textarea>
+                    <textarea class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]['case_text'] ?></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -158,19 +156,19 @@
                     <legend class="col-form-label col-sm-2 pt-0">Which do you prefer to receive a response?</legend>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" <?php echo $case[0]["case_res"] == 'email'?'checked' :'' ?> type="radio" name="case_res" id="email" value="email" disabled>
+                            <input class="form-check-input" type="radio" <?php  echo $case[0]['case_res'] == 'email' ? 'checked' : '' ?> disabled name="case_res" id="Email" value="email">
                             <label class="form-check-label" for="Email">
                                 Email
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php echo $case[0]["case_res"] == 'SMS'?'checked' :'' ?> disabled >
+                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php  echo $case[0]['case_res'] == 'SMS' ? 'checked' : '' ?> disabled>
                             <label class="form-check-label" for="SMS">
                                 SMS
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="zoom" value="zoom" id="zoom" <?php echo $case[0]["case_res"] == 'zoom'?'checked' :'' ?> disabled>
+                            <input class="form-check-input" type="radio" name="case_res" id="gridRadios3" value="Zoom" <?php  echo $case[0]['case_res'] == 'zoom' ? 'checked' : '' ?> disabled>
                             <label class="form-check-label" for="Zoom">
                                 Zoom
                             </label>
@@ -179,64 +177,117 @@
                     </div>
                 </fieldset>
                 <!-- /. contact -->
-
-                <!-- <?php echo print_r($guidances) ?> -->
-                <?php  if(empty($guidances) || count($guidances) <= 0):  ?>
-                  <div class="col-12 text-center">
-                    <h1>No guidance counsilor available ...</h1>
+                  <div class="form-group row">
+                      <label for="case_text" class="col-sm-2 col-form-label">Meeting date</label>
+                      <div class="col-sm-10">
+                      <input type="text" disabled class="form-control" id="meet_date" name="meet_date" value="<?php echo  date("F j, Y, g:i a",strtotime($meet[0]['meet_date'])) ?>" >
+                      </div>
                   </div>
-                <?php  else: ?>
-
-                  <?php if (isset($guidances) && count($guidances) >= 1  ) ?>
-                  <?php  foreach($guidances as $guidance): ?>
-                    <div class="form-check form-check-inline mb-2">
-                      <input <?php echo $case[0]["admin_id"] == $guidance['admin_id'] ?'checked' :'' ?> class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id" disabled>
-                      <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>">
-                        <div class="card bg-light">
-                              <div class="card-header text-muted border-bottom-0">
-                              <?php echo $guidance['admin_role'] ?>
-                              </div>
-                              <div class="card-body pt-0">
-                              <div class="row">
-                                  <div class="col-7">
-                                  <h2 class="lead"><b><?php echo $guidance['admin_fname'] ?></b></h2>
-                                  <p class="text-muted text-sm"><b>Expertise: </b> <?php echo $guidance['admin_expertise'] ?> </p>
-                                  <ul class="ml-4 mb-0 fa-ul text-muted">
-                                      <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contact #: <?php  echo $guidance['admin_contact'] ?></li>
-                                  </ul>
-                                  </div>
-                                  <div class="col-5 text-center">
-                                  <img src="<?php echo base_url().$guidance['admin_pic'] ?>" alt="no image available" class="img-circle img-fluid">
-                                  </div>
-                              </div >
-                              </div>
-                          </div>
-                      </label>
+                  <div  hidden>
+                  <input type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
+                  <input type="number" class="form-control" id="user_id" name="user_id" value="<?php echo $user_id ?>" >
+                  <input type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
+                    
                   </div>
-                  <?php endforeach; ?>
-                <?php endif; ?>
-                <br>
-                <div hidden>
-                    <input type="number" name="case_neg" id="case_neg"  >
-                    <input type="text" name="case_neg_percent" id="case_neg_percent"  >
-                    <!-- /. neg -->
-                    <input type="number" name="case_mid" id="case_mid" >
-                    <input  type="text" name="case_mid_percent" id="case_mid_percent" >
-                    <!-- /. neutral -->
-                    <input type="number" name="case_pos" id="case_pos"  >
-                    <input  type="text" name="case_pos_percent" id="case_pos_percent"  >
-                    <!-- /. positive -->
-                    <input  type="text" name="case_result" id="case_result"  >
-                    <input  type="number" name="case_line" id="case_line" >
 
-                </div>
-                <a href="<?php echo base_url('user/sentiment/edit/').$case[0]['case_id'] ?>" type="button" class="btn btn-primary "> edit</a>
-                </form>
+                  <div class="form-group row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
+
+                  </div>
+
+                      <div class="col-sm-10 col-12">
+                        <form method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
+                            <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">send link</button>
+                            </div>
+                        </div>
+                        </form>
+
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
+
+                  </div>
+
+                      <div class="col-sm-10 col-12">
+                          <form method="post" enctype="multipart/form-data">
+                          <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
+                            <div class="input-group">
+                                  <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="meet_file" name="meet_file" >
+                                      <label class="custom-file-label" for="">Choose file</label>
+                                  </div>
+                                  <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                                  </div>
+
+                            </div>
+                          </form>
+                      </div>
+                      <div class="col-12 text-center mt-3 mb-3">
+                                  
+                        <?php if(!empty($meet[0]['meet_file'])): ?>
+                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">Download file</a>
+                        <?php else: ?>
+                          no file yet
+                        <?php endif; ?>
+                      </div>
+                  </div>
+
+               
+                  <form method="post" >
+
+                  <div class="form-group row">
+                      <label for="meet_note" class="col-sm-2 col-form-label">Meeting note</label>
+                      <div class="col-sm-10">
+                      <textarea class="form-control" id="meet_note" name="meet_note" disabled ><?php echo $meet[0]['meet_note'] ?></textarea>
+                      </div>
+                  </div>
+
+
+                  <input hidden  type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
+                  <input hidden  type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
+                    <fieldset class="form-group">
+                        <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Case status?</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="case_con" id="closed" value="closed" disabled <?php  echo $case[0]['case_con'] == 'closed' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="closed">
+                                closed
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio"    name="case_con" id="recommended" disabled value="recommended"  <?php  echo $case[0]['case_con'] == 'recommended' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="recommended">
+                                    recommeded to...
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan" disabled  <?php  echo $case[0]['case_con'] == 'plan' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="plan">
+                                    intervention plan
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                        <!-- <button type="submit" value="done" name="done" class="btn btn-primary">done</button> -->
+                  </form>
+
+                    
 
                 
+           
             </div>
         </div>
     </div>
 
     
     </div>
+ 

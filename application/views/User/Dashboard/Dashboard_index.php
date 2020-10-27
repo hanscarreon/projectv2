@@ -150,29 +150,28 @@
 	                  </thead>
                     <tbody>
                     <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
-                      <?php echo  print_r($sentiments) ?>
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $sentiment['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
-                          <td>Negative percentage</td>
-                          <td>Negative Score</td>
-                          <td>Positive percentage</td>
-                          <td>Positive Score</td>
-                          <td>Neutral percentage</td>
-                          <td>Neutral Score</td>
-                          <td>Result</td>
+                          <td><?php echo $sentiment['case_neg_percent'] ?></td>
+                          <td><?php echo $sentiment['case_neg'] ?></td>
+                          <td><?php echo $sentiment['case_pos_percent'] ?></td>
+                          <td><?php echo $sentiment['case_pos'] ?></td>
+                          <td><?php echo $sentiment['case_mid_percent'] ?></td>
+                          <td><?php echo $sentiment['case_mid'] ?></td>
+                          <td><?php echo $sentiment['case_result'] ?></td>
                           <td>
                             <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
                           </td>
                           <td><?php echo $sentiment['admin_fname'] ?></td>
-                          <td>Meeting Date</td>
+                          <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['meet_date'])) ?></td>
                           <td><?php echo $sentiment['case_reason'] ?></td>
                           <td><?php echo $sentiment['case_con'] ?></td>
-                          <td class="text-right"><a href="<?php echo base_url('user/sentiment/view').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
-                          <td><a href="<?php echo base_url('user/sentiment/edit').$sentiment['case_id'] ?>"> <i class="fa fa-edit"></i> </a></td>
+                          <td class="text-right"><a href="<?php echo base_url('user/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          <td><a href="<?php echo base_url('user/sentiment/edit/').$sentiment['case_id'] ?>"> <i class="fa fa-edit"></i> </a></td>
                           <td><a href="<?php echo base_url('user/sentiment/delete/').$sentiment['case_id'] ?>"> <i class="fa fa-trash"></i> </a></td>
                         </tr>
                       <?php endforeach; ?>

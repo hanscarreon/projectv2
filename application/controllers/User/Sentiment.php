@@ -24,9 +24,34 @@ class Sentiment extends CI_Controller {
 		$this->load->view('User/Footer_user');
     }
     
-    public function view(){
-        $this->load->view('User/Header_user');
-		$this->load->view('User/Sentiment/Sentiment_view');
+    public function view($case_id){
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		//  info user
+
+
+		$role = 'guidance';
+		$status = 'published';
+		$this->_filter_guidance($role,$status);
+		$body['guidances'] = $this->model_base->get_all('admin as a');
+		$this->db->flush_cache();
+		// guidance
+
+		
+		$col = "case_id";
+		$table_name = 'sentiment_case';
+		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
+		$this->db->flush_cache();
+		//  info user
+		
+        $this->load->view('User/Header_user',$header);
+		$this->load->view('User/Sentiment/Sentiment_view',$body);
 		$this->load->view('User/Footer_user');
 	}
 	
@@ -40,6 +65,7 @@ class Sentiment extends CI_Controller {
 		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
 		$this->db->flush_cache();
 		// header info update
+		
 
 			
 		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
@@ -66,9 +92,7 @@ class Sentiment extends CI_Controller {
 
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
-				
 				$body["test"] = $this->Convert_string_array($data["case_reason"]);
-				
 
 			}else{
 				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
@@ -94,7 +118,7 @@ class Sentiment extends CI_Controller {
 	}
 	
 
-    public function edit(){
+    public function edit($case_id){
 		$header = []; // header
 		$body = [];
 
@@ -103,9 +127,63 @@ class Sentiment extends CI_Controller {
 		$table_name = 'users';
 		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
 		$this->db->flush_cache();
-		// header info update
+		//  info user
+
+
+		$role = 'guidance';
+		$status = 'published';
+		$this->_filter_guidance($role,$status);
+		$body['guidances'] = $this->model_base->get_all('admin as a');
+		$this->db->flush_cache();
+		// guidance
+
+		
+		$col = "case_id";
+		$table_name = 'sentiment_case';
+		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
+		$this->db->flush_cache();
+		//  info user
+
+
+		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
+		$this->form_validation->set_rules('admin_id', 'Select Counselor', 'required|trim');
+		$this->form_validation->set_rules('case_reason[]', 'Pick atlest one reason', 'required|trim');
+		$this->form_validation->set_rules('case_res', 'choose you prefer contact', 'required');
+		$this->form_validation->set_rules('case_neg', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_neg_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_mid', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_mid_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_pos', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_pos_percent', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_result', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_line', 'error slow internet connection', 'required');
+		$this->form_validation->set_rules('case_id', 'error slow internet connection', 'required');
+
+
+		if($this->input->post()){
+			$data = $this->input->post();
+
+			if ($this->form_validation->run() == FALSE) {
+				$body['msg_error'] = validation_errors();
+				$body["test"] = $this->Convert_string_array($data["case_reason"]);
+
+			}else{
+				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
+				
+				unset($data['case_id']);
+				$table = "sentiment_case";
+				$data['case_updates'] = $this->getDatetimeNow();
+				$col = 'case_id';
+				$this->model_base->update_data($case_id,$col,$data,$table);
+				$this->db->flush_cache();
+				$this->session->set_flashdata('msg_success', 'Successfully edit!');
+				
+				redirect('user/sentiment/view/'.$case_id,'refresh'); 
+			}
+		}
+
 		$this->load->view('User/Header_user',$header);
-		$this->load->view('User/Sentiment/Sentiment_edit');
+		$this->load->view('User/Sentiment/Sentiment_edit',$body);
 		$this->load->view('User/Footer_user');
 	}
 	

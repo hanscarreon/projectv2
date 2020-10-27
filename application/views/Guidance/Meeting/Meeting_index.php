@@ -139,20 +139,19 @@
 	                  </thead>
                     <tbody>
                     <?php  if ( isset( $meetings ) && count($meetings) >= 1 ):?>
-                      <?php echo  print_r($meetings) ?>
                      
                       <?php $x=1; foreach($meetings as $meeting): ?>
                         <tr>
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $meeting['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($meeting['meet_date'])) ?></td>
-                          <td>Negative percentage</td>
-                          <td>Negative Score</td>
-                          <td>Positive percentage</td>
-                          <td>Positive Score</td>
-                          <td>Neutral percentage</td>
-                          <td>Neutral Score</td>
-                          <td>Result</td>
+                          <td><?php echo $meeting['case_neg_percent'] ?></td>
+                          <td><?php echo $meeting['case_neg'] ?></td>
+                          <td><?php echo $meeting['case_pos_percent'] ?></td>
+                          <td><?php echo $meeting['case_pos'] ?></td>
+                          <td><?php echo $meeting['case_mid_percent'] ?></td>
+                          <td><?php echo $meeting['case_mid'] ?></td>
+                          <td><?php echo $meeting['case_result'] ?></td>
                           <td>
                             <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting["case_text"]; ?></p>
                           </td>

@@ -94,7 +94,7 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Create Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Meeting Sentiment</h6>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,11 +112,32 @@
             <!-- Card Body -->
             <div class="card-body ">
 
-                <div class="form-group row">
-                    <div class="col-sm-2">case_reason</div>
+            <div class="form-group row">
+                    <div class="col-sm-2">Reason</div>
                     <div class="col-sm-10">
-                      <h1><?php echo $case[0]['case_reason'] ?></h1>
-                        
+                   
+                      <?php $reasons = explode(',', $case[0]["case_reason"]);  ?>
+                    
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
+                            <label class="form-check-label" for="academic">academic</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
+                            <label class="form-check-label" for="family">family</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
+                            <label class="form-check-label" for="peers">peers</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
+                            <label class="form-check-label" for="relationship">relationship</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
+                            <label class="form-check-label" for="emotion">emotion</label>
+                        </div>
                         
                     </div>
                 </div>
@@ -156,10 +177,10 @@
                     </div>
                 </fieldset>
                 <!-- /. contact -->
-                  <div class="form-group row">
-                      <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
+                <div class="form-group row">
+                      <label for="case_text" class="col-sm-2 col-form-label">Meeting Date</label>
                       <div class="col-sm-10">
-                      <input type="datetime-local" class="form-control" id="meet_date" name="meet_date" >
+                      <input type="text" class="form-control" id="meet_date" name="meet_date" value="<?php echo  date("F j, Y, g:i a",strtotime($meet[0]['meet_date'])) ?>" >
                       </div>
                   </div>
                   <div  hidden>
@@ -211,7 +232,7 @@
                       <div class="col-12 text-center mt-3 mb-3">
                                   
                         <?php if(!empty($meet[0]['meet_file'])): ?>
-                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">Download file</a>
+                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">file available (click to download)</a>
                         <?php else: ?>
                           no file yet
                         <?php endif; ?>
@@ -222,7 +243,7 @@
                   <form method="post" >
 
                   <div class="form-group row">
-                      <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
+                      <label for="meet_note" class="col-sm-2 col-form-label">Meeting note</label>
                       <div class="col-sm-10">
                       <textarea class="form-control" id="meet_note" name="meet_note" ><?php echo $meet[0]['meet_note'] ?></textarea>
                       </div>

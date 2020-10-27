@@ -18,7 +18,14 @@ class Meeting extends CI_Controller {
 	}
 	
 	public function index(){
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 
 		$user_id = $this->session->userdata('admin_id');
 		$status = 'published';
@@ -28,23 +35,37 @@ class Meeting extends CI_Controller {
 		$body['meetings'] = $this->model_base->get_all('sentiment_meeting as sm');
 		$this->db->flush_cache();
 
-        $this->load->view('Guidance/Header_guidance');
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Meeting/Meeting_index',$body);
 		$this->load->view('Guidance/Footer_guidance');
         
     }
     
     public function view(){
+		$header = []; // header
+		$body = [];
 
-        $this->load->view('Guidance/Header_guidance');
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Meeting/Meeting_view');
 		$this->load->view('Guidance/Footer_guidance');
         
     }
 
     public function create($case_id,$user_id){
+		$header = []; // header
 		$body = [];
 
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 		$body['case_id']= $case_id;
 		$body['user_id']= $user_id;
 
@@ -97,13 +118,20 @@ class Meeting extends CI_Controller {
 			}
 		}
 
-        $this->load->view('Guidance/Header_guidance');
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Meeting/Meeting_create',$body);
 		$this->load->view('Guidance/Footer_guidance');
         
 	}
 	public function ongoing($case_id,$user_id,$meet_id){
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 
 		
 
@@ -169,13 +197,14 @@ class Meeting extends CI_Controller {
 				$tbname = 'sentiment_meeting';
 				$col = 'meet_id';
 				$data_update = array('meet_con' =>'done',
-									'meet_update' => $this->getDatetimeNow()
+									'meet_update' => $this->getDatetimeNow(),
+									'meet_note'=> $dataPost['meet_note']
 									);
 				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
 				// meeting
 
 				$this->session->set_flashdata('msg_success', 'Meeting Done');
-				redirect('guidance/case/','refresh');
+				redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
 				
 			}
 		}
@@ -219,14 +248,22 @@ class Meeting extends CI_Controller {
 
 		}
 
-        $this->load->view('Guidance/Header_guidance');
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Meeting/Meeting_ongoing',$body);
 		$this->load->view('Guidance/Footer_guidance');
         
 	}
 	public function edit(){
+		$header = []; // header
+		$body = [];
 
-        $this->load->view('Guidance/Header_guidance');
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Meeting/Meeting_edit');
 		$this->load->view('Guidance/Footer_guidance');
         

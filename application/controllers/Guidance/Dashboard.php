@@ -18,8 +18,14 @@ class Dashboard extends CI_Controller {
 	}
 	
 	public function index(){
+		$header = []; // header
 		$body = [];
 
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 		$user_id = $this->session->userdata('admin_id');
 		$status = 'published';
 		$con = 'ongoing';
@@ -28,12 +34,20 @@ class Dashboard extends CI_Controller {
 		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
 		$this->db->flush_cache();
 
-        $this->load->view('Guidance/Header_guidance');
+        $this->load->view('Guidance/Header_guidance',$header);
 		$this->load->view('Guidance/Dashboard/Dashboard_index',$body);
 		$this->load->view('Guidance/Footer_guidance');
     }
     
     public function view(){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
 
         $this->load->view('Guidance/Header');
         $this->load->view('Guidance/Sidenav');
@@ -42,6 +56,14 @@ class Dashboard extends CI_Controller {
     }
     
     public function edit(){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
         
         $this->load->view('Guidance/Header');
         $this->load->view('Guidance/Sidenav');
