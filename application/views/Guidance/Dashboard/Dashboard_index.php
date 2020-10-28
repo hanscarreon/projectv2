@@ -122,7 +122,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body ">
-                <table class="table table-striped table-responsive " id="dataTable">
+                <table class="table table-striped table-responsive " id="dashboardTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->

@@ -41,8 +41,11 @@
 .side-student{
       border-right: solid .25rem #e9ad42;
 }
-.side-admin{
+.side-guidance{
       border-right: solid .25rem #EB4765;
+}
+.side-admin{
+  border-right: solid .25rem #0000;
 }
   
   

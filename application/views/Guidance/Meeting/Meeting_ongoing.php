@@ -145,9 +145,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" disabled>
-                    <?php echo $case[0]['case_text'] ?>
-                    </textarea>
+                    <textarea rows="6"  class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]['case_text'] ?></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -245,7 +243,7 @@
                   <div class="form-group row">
                       <label for="meet_note" class="col-sm-2 col-form-label">Meeting note</label>
                       <div class="col-sm-10">
-                      <textarea class="form-control" id="meet_note" name="meet_note" ><?php echo $meet[0]['meet_note'] ?></textarea>
+                      <textarea rows="6"  class="form-control" id="meet_note" name="meet_note"  ><?php echo $meet[0]['meet_note'] ?></textarea>
                       </div>
                   </div>
 
@@ -264,7 +262,7 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio"    name="case_con" id="recommended" value="recommended">
-                                <label class="form-check-label" for="recommeded">
+                                <label class="form-check-label" for="recommended">
                                     recommeded to...
                                 </label>
                             </div>

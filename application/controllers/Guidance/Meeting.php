@@ -163,8 +163,7 @@ class Meeting extends CI_Controller {
 
 				$tbname = 'sentiment_meeting';
 				$col = 'meet_id';
-				$data_update = array('meet_link' =>$this->input->post('meet_link'),
-									'meet_update' => $this->getDatetimeNow()
+				$data_update = array('meet_link' =>$this->input->post('meet_link')
 									);
 				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
 
@@ -197,7 +196,6 @@ class Meeting extends CI_Controller {
 				$tbname = 'sentiment_meeting';
 				$col = 'meet_id';
 				$data_update = array('meet_con' =>'done',
-									'meet_update' => $this->getDatetimeNow(),
 									'meet_note'=> $dataPost['meet_note']
 									);
 				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
@@ -237,9 +235,7 @@ class Meeting extends CI_Controller {
 					$this->model_base->update_data($meet_id,$col,$upload_data,$table);
 					$this->db->flush_cache();
 					$this->session->set_flashdata('msg_success', 'File uploaded');
-					// redirect('guidance/meeting/ongoing/'.$case_id.'/'.$user_id.'/'.$meet_id,'refresh');
-
-					// redirect('/guidance/case/' ,'refresh');
+					redirect('guidance/meeting/ongoing/'.$case_id.'/'.$user_id.'/'.$meet_id,'refresh');
 				}
 			
 			

@@ -147,7 +147,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]['case_text'] ?></textarea>
+                    <textarea rows="6" class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]['case_text'] ?></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -198,10 +198,10 @@
                       <div class="col-sm-10 col-12">
                         <form method="post">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
-                            <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
+                            <input disabled type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
+                            <input disabled type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">send link</button>
+                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false" disabled>send link</button>
                             </div>
                         </div>
                         </form>
@@ -219,11 +219,11 @@
                           <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
                             <div class="input-group">
                                   <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="meet_file" name="meet_file" >
+                                      <input disabled type="file" class="custom-file-input" id="meet_file" name="meet_file" >
                                       <label class="custom-file-label" for="">Choose file</label>
                                   </div>
                                   <div class="input-group-append">
-                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="" disabled>upload</button>
                                   </div>
 
                             </div>
@@ -232,7 +232,7 @@
                       <div class="col-12 text-center mt-3 mb-3">
                                   
                         <?php if(!empty($meet[0]['meet_file'])): ?>
-                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">Download file</a>
+                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">file available (click to download)</a>
                         <?php else: ?>
                           no file yet
                         <?php endif; ?>
@@ -245,7 +245,7 @@
                   <div class="form-group row">
                       <label for="meet_note" class="col-sm-2 col-form-label">Meeting note</label>
                       <div class="col-sm-10">
-                      <textarea class="form-control" id="meet_note" name="meet_note" disabled ><?php echo $meet[0]['meet_note'] ?></textarea>
+                      <textarea rows="6" class="form-control" id="meet_note" name="meet_note" disabled ><?php echo $meet[0]['meet_note'] ?></textarea>
                       </div>
                   </div>
 

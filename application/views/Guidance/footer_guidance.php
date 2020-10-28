@@ -14,7 +14,7 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Your Website 2020</span>
+      <span>Copyright &copy; GMSUSA WEB/APP 2020</span>
     </div>
   </div>
 </footer>
@@ -81,6 +81,16 @@
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',
         ]
+    } );
+
+    $('#dashboardTable').DataTable( {
+    	pagingType: "full_numbers",
+        dom: 'Bfrtip',
+    	processing: true,
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print',
+        ],
+      order: [[ 3, "desc" ]]
     } );
 } );
 </script>

@@ -1,6 +1,11 @@
+
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
+
+    
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Set Meeting</h1>
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
     <!-- Content Row -->
@@ -94,7 +99,13 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Meeting Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
+                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="far fa-plus-square"></i>
+                    </span>
+                    <span class="text">Sentiment</span>
+                </a>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -111,158 +122,65 @@
             </div>
             <!-- Card Body -->
             <div class="card-body ">
-
-                <div class="form-group row">
-                    <div class="col-sm-2">case_reason</div>
-                    <div class="col-sm-10">
-                      <h1><?php echo $case[0]['case_reason'] ?></h1>
+                <table class="table table-striped table-responsive " id="dashboardTable">
+                    <thead>
+	                    <tr>
+                        <!-- <th>Case-ID No.</th> -->
+                        <th>Name</th>
+                        <th>Date created</th>
+                        <th>Negative percentage</th>
+                        <th>Negative Score</th>
+                        <th>Positive percentage</th>
+                        <th>Positive Score</th>
+                        <th>Neutral percentage</th>
+                        <th>Neutral Score</th>
+                        <th>Result</th>
+                        <th>Sentiment</th>
+                        <th>Name of Counselor</th>
+                        <th>Meeting Date</th>
+                        <th>Reasons</th>
+                        <th>status</th>
                         
+                        <!-- <th  colspan="3" >Action</th> -->
+                        <th >Action</th>
                         
-                    </div>
-                </div>
-                <!-- /. checkbox -->
-                <div class="form-group row">
-                    <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
-                    <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" disabled>
-                    <?php echo $case[0]['case_text'] ?>
-                    </textarea>
-                    </div>
-                </div>
-                <!-- /. text -->
-                <fieldset class="form-group">
-                    <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Which do you prefer to receive a response?</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" <?php  echo $case[0]['case_res'] == 'email' ? 'checked' : '' ?> disabled name="case_res" id="Email" value="email">
-                            <label class="form-check-label" for="Email">
-                                Email
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php  echo $case[0]['case_res'] == 'SMS' ? 'checked' : '' ?> disabled>
-                            <label class="form-check-label" for="SMS">
-                                SMS
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="gridRadios3" value="Zoom" <?php  echo $case[0]['case_res'] == 'zoom' ? 'checked' : '' ?> disabled>
-                            <label class="form-check-label" for="Zoom">
-                                Zoom
-                            </label>
-                        </div>
-                    </div>
-                    </div>
-                </fieldset>
-                <!-- /. contact -->
-                <div class="form-group row">
-                      <label for="case_text" class="col-sm-2 col-form-label">Meeting Date</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control" id="meet_date" name="meet_date" value="<?php echo  date("F j, Y, g:i a",strtotime($meet[0]['meet_date'])) ?>" >
-                      </div>
-                  </div>
-                  <div  hidden>
-                  <input type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
-                  <input type="number" class="form-control" id="user_id" name="user_id" value="<?php echo $user_id ?>" >
-                  <input type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
-                    
-                  </div>
+	                    </tr>
+	                  </thead>
+                    <tbody>
+                    <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
+                     
+                      <?php $x=1; foreach($sentiments as $sentiment): ?>
+                        <tr>
+                          <!-- <th scope="row"></th> -->
+                          <td><?php echo $sentiment['user_fname'] ?></td>
+                          <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
+                          <td><?php echo $sentiment['case_neg_percent'] ?></td>
+                          <td><?php echo $sentiment['case_neg'] ?></td>
+                          <td><?php echo $sentiment['case_pos_percent'] ?></td>
+                          <td><?php echo $sentiment['case_pos'] ?></td>
+                          <td><?php echo $sentiment['case_mid_percent'] ?></td>
+                          <td><?php echo $sentiment['case_mid'] ?></td>
+                          <td><?php echo $sentiment['case_result'] ?></td>
+                          <td>
+                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
+                          </td>
+                          <td><?php echo $sentiment['admin_fname'] ?></td>
+                          <td>Meeting Date</td>
+                          <td><?php echo $sentiment['case_reason'] ?></td>
+                          <td><?php echo $sentiment['case_con'] ?></td>
+                          <td class="text-right"><a class="" href="<?php echo base_url('guidance/cases/view/').$sentiment['case_id'].'/'.$sentiment['meet_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                        </tr>
+                      <?php endforeach; ?>
 
-                  <div class="form-group row">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
+                    <?php else: ?>
+                      <tr>
+                        <!-- <th scope="row"></th> -->
+                        <td colspan="18" class="text-center">No data</td>
+                      </tr>
+	                  <?php endif;?>
 
-                  </div>
-
-                      <div class="col-sm-10 col-12">
-                        <form method="post">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
-                            <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">send link</button>
-                            </div>
-                        </div>
-                        </form>
-
-                      </div>
-                  </div>
-
-                  <div class="form-group row">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-0">
-
-                  </div>
-
-                      <div class="col-sm-10 col-12">
-                          <form method="post" enctype="multipart/form-data">
-                          <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
-                            <div class="input-group">
-                                  <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="meet_file" name="meet_file" >
-                                      <label class="custom-file-label" for="">Choose file</label>
-                                  </div>
-                                  <div class="input-group-append">
-                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
-                                  </div>
-
-                            </div>
-                          </form>
-                      </div>
-                      <div class="col-12 text-center mt-3 mb-3">
-                                  
-                        <?php if(!empty($meet[0]['meet_file'])): ?>
-                          <a href="<?php echo base_url().$meet[0]['meet_file'] ?>" download="" target="_blank">file available (click to download)</a>
-                        <?php else: ?>
-                          no file yet
-                        <?php endif; ?>
-                      </div>
-                  </div>
-
-               
-                  <form method="post" >
-
-                  <div class="form-group row">
-                      <label for="meet_note" class="col-sm-2 col-form-label">Meeting note</label>
-                      <div class="col-sm-10">
-                      <textarea class="form-control" id="meet_note" name="meet_note" ><?php echo $meet[0]['meet_note'] ?></textarea>
-                      </div>
-                  </div>
-
-
-                  <input hidden  type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
-                  <input hidden  type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
-                    <fieldset class="form-group">
-                        <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Case status?</legend>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="case_con" id="closed" value="closed">
-                                <label class="form-check-label" for="closed">
-                                closed
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio"    name="case_con" id="recommended" value="recommended">
-                                <label class="form-check-label" for="recommeded">
-                                    recommeded to...
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan" >
-                                <label class="form-check-label" for="plan">
-                                    intervention plan
-                                </label>
-                            </div>
-                        </div>
-                        </div>
-                    </fieldset>
-                        <button type="submit" value="done" name="done" class="btn btn-primary">done</button>
-                  </form>
-
-                    
-
-                
-           
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -270,3 +188,4 @@
     
     </div>
  
+

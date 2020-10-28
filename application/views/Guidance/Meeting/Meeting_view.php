@@ -17,7 +17,6 @@
         </div>
       </div>
       <div class="card-body">
-        <p>lorem ipsum dolor lsjfdhg lsdfkjg hdnflkj dnfgl skjg nsdfkgjsndlfgkjsdnglskjdh lkjg dsnlfkjgengl skdjfhg lksdjfghls dfkjg dflskgj hsdlg sjldfsfkjg dhslfkjg h</p>
         <div class="form-check">
           <div class="form-group">
             <label for="inputState">Case:</label>

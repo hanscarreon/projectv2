@@ -94,7 +94,7 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Create Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Set Meeting</h6>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,10 +113,31 @@
             <div class="card-body ">
 
                 <div class="form-group row">
-                    <div class="col-sm-2">case_reason</div>
+                    <div class="col-sm-2">Reason</div>
                     <div class="col-sm-10">
-                      <h1><?php echo $case[0]['case_reason'] ?></h1>
-                        
+                   
+                      <?php $reasons = explode(',', $case[0]["case_reason"]);  ?>
+                    
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
+                            <label class="form-check-label" for="academic">academic</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
+                            <label class="form-check-label" for="family">family</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
+                            <label class="form-check-label" for="peers">peers</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
+                            <label class="form-check-label" for="relationship">relationship</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input disabled  <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
+                            <label class="form-check-label" for="emotion">emotion</label>
+                        </div>
                         
                     </div>
                 </div>
@@ -124,9 +145,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" disabled>
-                    <?php echo $case[0]['case_text'] ?>
-                    </textarea>
+                    <textarea rows="6"  class="form-control" id="case_text" name="case_text" disabled><?php echo $case[0]['case_text'] ?></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -159,7 +178,7 @@
                 <form method="post">
                   <?php echo $test ?>
                   <div class="form-group row">
-                      <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
+                      <label for="case_text" class="col-sm-2 col-form-label">Set meeting date</label>
                       <div class="col-sm-10">
                       <input type="datetime-local" class="form-control" id="meet_date" name="meet_date" >
                       </div>
