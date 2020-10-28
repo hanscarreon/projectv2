@@ -15,8 +15,15 @@ class Schedule extends CI_Controller {
 		}
 	}
 	public function index($name="name", $case="case",$status="case",$pos='all',$filter="1"){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$pos =  $this->session->userdata('user_pos');
@@ -106,8 +113,15 @@ class Schedule extends CI_Controller {
 		}
 	}
 	public function set($user,$senti){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 
@@ -162,8 +176,15 @@ class Schedule extends CI_Controller {
 
 	}
 	public function ongoing($id){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$col = "meet_id";

@@ -16,8 +16,15 @@ class Sentiment extends CI_Controller {
 	}
 
 	public function index($name="name",$con="con",$pos="pos",$filter="1"){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$pos =  $this->session->userdata('user_pos');

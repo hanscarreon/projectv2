@@ -16,10 +16,15 @@ class Account extends CI_Controller {
 
 	}
 	public function index(){
-		$header = [];
+		$header = []; // header
 		$body = [];
-		$footer = [];
-		// $body["filter"] = $filter;
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 
 		$pos = $this->session->userdata("user_pos");
 		$role = "student";
@@ -31,7 +36,7 @@ class Account extends CI_Controller {
 
 		$this->load->view("template/header",$header);
 		$this->load->view('admin/account/index',$body);
-		$this->load->view("template/site_admin_footer",$footer);
+		$this->load->view("template/site_admin_footer",);
 
 	}
 	public function _sort_acct($role,$pos){
@@ -40,8 +45,15 @@ class Account extends CI_Controller {
 	}
 
 	public function create(){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 		$body["data"] = "test";
 
@@ -79,8 +91,15 @@ class Account extends CI_Controller {
 
 	}
 	public function view($id){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$col = "user_id";

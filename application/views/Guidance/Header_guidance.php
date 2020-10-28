@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-color-dark-blue side-guidance sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('guidance/dashboard') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>

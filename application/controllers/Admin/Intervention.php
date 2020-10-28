@@ -16,8 +16,15 @@ class Intervention extends CI_Controller {
 
 	}
 	public function index($name='name',$case='case',$pos="pos",$filter="1"){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		
@@ -97,8 +104,15 @@ class Intervention extends CI_Controller {
 
 	}
 	public function create($user_id,$senti_id,$sched_id){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$col = "user_id";
@@ -155,8 +169,15 @@ class Intervention extends CI_Controller {
 
 	}
 	public function view($id){
-		$header = [];
+		$header = []; // header
 		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
 		$footer = [];
 
 		$this->form_validation->set_rules('plan_id', 'ID', 'required|trim');

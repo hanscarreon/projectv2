@@ -61,6 +61,9 @@
 
   <!-- Toastr -->
   <script src="<?php echo base_url() ?>plugins/toastr/toastr.min.js"></script>
+    <!-- jquery-validation -->
+  <script src="<?php echo base_url(); ?>plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script src="<?php echo base_url(); ?>plugins/jquery-validation/additional-methods.min.js"></script>
 
 
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>

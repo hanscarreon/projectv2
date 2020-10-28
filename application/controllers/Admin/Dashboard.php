@@ -19,10 +19,16 @@ class Dashboard extends CI_Controller {
 	
 	public function index(){
 
-		$header = [];
+		$header = []; // header
 		$body = [];
-		$footer = [];
 
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		
 		$user_id = $this->session->userdata('admin_id');
 		$status = 'published';
 		$con = 'ongoing';
@@ -31,7 +37,7 @@ class Dashboard extends CI_Controller {
 		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
 		$this->db->flush_cache();
 
-		$this->load->view('Admin/Header_admin');
+		$this->load->view('Admin/Header_admin',$header);
 		$this->load->view('Admin/Dashboard/Dashboard_index',$body);
 		$this->load->view('Admin/Footer_admin');
 

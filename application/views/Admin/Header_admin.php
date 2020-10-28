@@ -34,10 +34,10 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-color-dark-blue side-student sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav bg-color-dark-blue side-admin sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -49,7 +49,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>guidance/dashboard/">
+        <a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -64,7 +64,7 @@
 
        <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url() ?>guidance/meeting/">
+        <a class="nav-link" href="<?php echo base_url() ?>admin/meeting/">
           <i class="far fa-calendar-alt"></i>
           <span>Meeting Schedule</span></a>
       </li>
@@ -78,7 +78,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">Options</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index">View Accounts</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/student">View Accounts</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/guidance">View Accounts</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Create Account</a>
           </div>
         </div>
@@ -101,9 +102,9 @@
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">status</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/closed/">Closed Case</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/recommended/">Recommended to</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>guidance/intervention/index/name/ongoing">Intervention</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/cases/index/closed/">Closed Case</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/cases/index/recommended/">Recommended to</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/intervention/index/name/ongoing">Intervention</a>
           </div>
         </div>
       </li>
@@ -116,13 +117,13 @@
         Settings
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('guidance/archive/index/') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/archive/index/') ?>">
           <i class="fas fa-archive"></i>
           <span>Archive</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('user_id') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/profile/view/').$this->session->userdata('admin_id') ?>">
           <i class="fas fa-user-alt"></i>
           <span>Profile</span></a>
       </li>
@@ -270,8 +271,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo ucwords($dp[0]['admin_fname']) ?></span>
+                <img class="img-profile rounded-circle" src="<?php echo base_url().$dp[0]['admin_pic'] ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
