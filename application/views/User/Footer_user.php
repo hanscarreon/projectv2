@@ -80,6 +80,15 @@
             'copy', 'csv', 'excel', 'pdf', 'print',
         ]
     } );
+    $('#dashboardTable').DataTable( {
+    	pagingType: "full_numbers",
+        dom: 'Bfrtip',
+    	processing: true,
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print',
+        ],
+      order: [[ 3, "desc" ]]
+    } );
 } );
 </script>
 <!-- /. tables -->
