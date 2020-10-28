@@ -127,7 +127,7 @@
                 <label for="admin_expertise" class="col-sm-2 col-form-label">Expertise</label>
                 <div class="err col-sm-10">
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" id="admin_expertise" name="admin_expertise" placeholder="Expertise" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" id="admin_expertise" name="admin_expertise" placeholder="Expertise" aria-describedby="basic-addon2">
                 </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
     
         <!-- /. address -->
         <br>
-        <button type="submit" type="button" value="update_account" name="update_account" class="btn btn-primary ">save</button>
+        <button type="submit" type="button" value="create_account" name="create_account" class="btn btn-primary ">save</button>
 
         
        

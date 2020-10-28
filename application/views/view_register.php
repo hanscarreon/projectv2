@@ -266,7 +266,7 @@ $.ajax(settings).done(function (response) {
 
 
 $(document).ready(function () {
-  $('#user_name').mask('00-0000000');
+  $('#user_name').mask('00-000000');
 
 
 // jQuery.validator.addMethod("tindahans.com", function(value, element) {
@@ -310,7 +310,7 @@ jQuery.validator.addMethod("passwordCheck",
     rules: {
       user_name: {
         required: true,
-        minlength: 6,
+        minlength: 7,
       },
       user_email:{
         required:true,

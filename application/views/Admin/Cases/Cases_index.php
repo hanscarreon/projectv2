@@ -122,7 +122,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body ">
-                <table class="table table-striped table-responsive " id="dataTable">
+                <table class="table table-striped table-responsive " id="dashboardTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->
@@ -143,13 +143,11 @@
                         
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
-                        <th ></th>
                         
 	                    </tr>
 	                  </thead>
                     <tbody>
                     <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
-                      <?php echo  print_r($sentiments) ?>
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
@@ -170,8 +168,8 @@
                           <td>Meeting Date</td>
                           <td><?php echo $sentiment['case_reason'] ?></td>
                           <td><?php echo $sentiment['case_con'] ?></td>
-                          <td class="text-right"><a href="<?php echo base_url('user/sentiment/view').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
-                          <td><a href="<?php echo base_url('user/archive/retrieve/').$sentiment['case_id'] ?>"> <i class="fa fa-recycle"></i> </a></td>
+                          <td class="text-right"><a href="<?php echo base_url('admin/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          
                         </tr>
                       <?php endforeach; ?>
 
@@ -179,10 +177,9 @@
                       <tr>
                         <!-- <th scope="row"></th> -->
                         <td colspan="18" class="text-center">No data</td>
-                        </tr>
+                      </tr>
 	                  <?php endif;?>
 
-                       
                     </tbody>
                 </table>
             </div>

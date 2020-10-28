@@ -49,9 +49,9 @@ class Account extends CI_Controller {
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 		// header info update
 		$footer = [];
@@ -59,10 +59,10 @@ class Account extends CI_Controller {
 
 
 		// form validation create account
-		$this->form_validation->set_rules('admin_uname', 'Username', 'required|trim|min_length[6]|is_unique[user.user_name]');
-		$this->form_validation->set_rules('admin_email', 'Email', 'required|trim|is_unique[user.user_email]');
+		$this->form_validation->set_rules('admin_uname', 'Username', 'required|trim|min_length[6]|is_unique[admin.admin_uname]');
+		$this->form_validation->set_rules('admin_email', 'Email', 'required|trim|is_unique[admin.admin_email]');
 		$this->form_validation->set_rules('admin_pass', 'Password', 'trim|required|min_length[6]|md5'); 
-		$this->form_validation->set_rules('admin_pass2', 'Password not Match', 'trim|required|matches[user_pass]|min_length[5]|md5'); 
+		$this->form_validation->set_rules('admin_pass2', 'Password not Match', 'trim|required|matches[admin_pass]|min_length[5]|md5'); 
 		$this->form_validation->set_rules('admin_fname', 'Full Name', 'required|trim');
 		$this->form_validation->set_rules('admin_role', 'Role', 'required|trim|min_length[2]');
 		$this->form_validation->set_rules('admin_expertise', 'expertise', 'required|trim|min_length[2]');
@@ -75,13 +75,11 @@ class Account extends CI_Controller {
         		$data = $this->input->post();
 				unset($data['create_account']);
 				unset($data['admin_pass2']);
-
 				$data['admin_created'] = $this->getDatetimeNow();
 				$last_id = $this->model_base->insert_data($data, 'admin');
 				$this->session->set_flashdata('msg_success', 'Successfully created!');
 				$this->db->flush_cache();
 				redirect('admin/account/view/'.$last_id ,'refresh');
-          		
        		 }
 
 		}
@@ -90,21 +88,93 @@ class Account extends CI_Controller {
 		$this->load->view("Admin/Footer_admin",$footer);
 
 	}
-	public function view($id){
+	public function view_admin($id){
 		$header = []; // header
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 		// header info update
 		$footer = [];
 
-		$col = "user_id";
-		$table_name = 'user';
-		$body['student'] = $this->model_base->get_one($id,$col,$table_name);
+		$col = "admin_id";
+		$table_name = 'admin';
+		$body['info'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+		
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_admin_view',$body);
+		$this->load->view("Admin/Footer_admin",$footer);
+
+	}
+	public function edit_admin($id){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$admin_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$footer = [];
+
+		$col = "admin_id";
+		$table_name = 'admin';
+		$body['info'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+
+		// form validation create account
+		$this->form_validation->set_rules('admin_fname', 'Full Name', 'required|trim');
+		$this->form_validation->set_rules('admin_role', 'Role', 'required|trim|min_length[2]');
+		$this->form_validation->set_rules('admin_address', 'Address', 'required|trim|min_length[2]');
+		$this->form_validation->set_rules('admin_expertise', 'expertise', 'required|trim|min_length[2]');
+		$this->form_validation->set_rules('admin_status', 'status', 'required|trim|min_length[2]');
+		$this->form_validation->set_rules('admin_gender', 'Gender', 'required|trim|min_length[2]');
+
+		if($this->input->post("update_admin")){
+			 if ($this->form_validation->run() == FALSE){
+			 	$body['msg_error'] = validation_errors();
+        	}
+        	else{
+        		$data = $this->input->post();
+				unset($data['update_admin']);
+				$col = 'admin_id';
+				$tbname = 'admin';
+				$this->model_base->update_data($id,$col,$data,$tbname);
+				
+
+
+				$this->session->set_flashdata('msg_success', 'Successfully created!');
+				$this->db->flush_cache();
+				redirect('admin/account/view-admin/'.$id ,'refresh');
+       		 }
+
+		}
+		
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_admin_edit',$body);
+		$this->load->view("Admin/Footer_admin",$footer);
+
+	}
+	public function view_student($id){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$admin_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$footer = [];
+
+		$col = "admin_id";
+		$table_name = 'admin';
+		$body['ad'] = $this->model_base->get_one($id,$col,$table_name);
 		$this->db->flush_cache();
 		
 		$this->load->view("template/site_admin_header",$header);

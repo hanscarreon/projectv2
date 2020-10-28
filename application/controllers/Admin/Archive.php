@@ -3,12 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Archive extends CI_Controller {
 
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->database();
 		$this->load->helper(array('url','date', 'form'));
-		$this->load->library(array('form_validation', 'session', 'pagination'));
+		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
 		if ( $this->have_sess_admin() != true ){
 			$this->logout_admin();	
@@ -20,59 +21,91 @@ class Archive extends CI_Controller {
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$status = 'deleted';
+	
+		$this->_filter_sentiment($status);
+		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+		$this->db->flush_cache();
+        $this->load->view('Admin/Header_admin',$header);
+		$this->load->view('Admin/Archive/Archive_index',$body);
+		$this->load->view('Admin/Footer_admin');
+    }
+    
+    public function view(){
+		$header = []; // header
+		$body = [];
+
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
 		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
 		$this->db->flush_cache();
 		// header info update
-		$footer = [];
+		
+        $this->load->view('Admin/Header_admin',$header);
+		$this->load->view('Admin/Archive/Archive_view');
+		$this->load->view('Admin/Footer_admin');
+    }
+    public function edit(){
+		$header = []; // header
+		$body = [];
 
-		$pos =  $this->session->userdata('user_pos');
+		$col = "user_id";
+		$user_id = $this->session->userdata('user_id');
+		$table_name = 'users';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
 		$this->db->flush_cache();
-		$this->db->join("user", "sentiment_case.user_id = user.user_id");
-		$this->_sorting($pos);
-		$this->db->where('sentiment_case.case_status','deleted');
-		$body['sentiments'] = $this->model_base->get_all('sentiment_case');
-		$this->db->flush_cache();
-
-
-		$this->_count_sort($pos);
-		$overall = $this->model_base->count_data('sentiment_case');
-		// $body["total"]= $config["total_rows"];
-		$body["total"]= $overall;
-		$this->load->view("template/site_admin_header",$header);
-		$this->load->view('admin/archive/index',$body);
-		$this->load->view("template/site_admin_footer",$footer);
-
-	}
-	public function _count_sort($pos){
-		$this->db->join("user", "sentiment_case.user_id = user.user_id");
-		$this->db->where('case_status','published');
-		$this->db->where('case_con','ongoing');
-    	$this->db->where('user.user_pos',$pos);
-
-
+		// header info update
+        $this->load->view('Guidance/Header',$header);
+        $this->load->view('Guidance/Sidenav');
+		$this->load->view('Guidance/Dashboard/Dashboard_edit');
+		$this->load->view('Guidance/Footer');
 	}
 	
-    public function _sorting($pos){
-		$this->db->where('case_status','deleted');
-    	$this->db->where('user.user_pos',$pos);
-    }
+	public function _filter_sentiment($status){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
 
-	public function restore($id){
-
-
-		$data = array('case_status' => 'published' );
-		$col = 'case_id';
-		$tbname = 'sentiment_case';
-		$this->model_base->update_data($id,$col,$data,$tbname);
-		$this->session->set_flashdata('msg_success', 'Restore success!');
-		$this->db->flush_cache();	
-		redirect('admin/archive/index/' ,'refresh');	
-		
-
+		if($status){
+			$this->db->where('sc.case_status',$status);
+		}
 	}
-	  
-     
 
+	public function retrieve($id){
+
+		$data = $this->input->post();
+		unset($data["create_case"]);
+		$tbname = 'sentiment_case';
+		$col = 'case_id';
+		$data_update = array('case_status' =>'published',
+							'case_updates' => $this->getDatetimeNow()
+							);
+		$this->model_base->update_data($id,$col,$data_update,$tbname);
+
+		
+		$this->session->set_flashdata('msg_success', 'retrieve success!');
+		redirect('admin/dashboard' ,'refresh');
+
+		
+		
+	}
+
+
+
+
+
+
+
+	
 }
+
+
+
+
+
+

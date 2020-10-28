@@ -149,7 +149,6 @@
 	                  </thead>
                     <tbody>
                     <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
-                      <?php echo  print_r($sentiments) ?>
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
@@ -170,8 +169,8 @@
                           <td>Meeting Date</td>
                           <td><?php echo $sentiment['case_reason'] ?></td>
                           <td><?php echo $sentiment['case_con'] ?></td>
-                          <td class="text-right"><a href="<?php echo base_url('user/sentiment/view').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
-                          <td><a href="<?php echo base_url('user/archive/retrieve/').$sentiment['case_id'] ?>"> <i class="fa fa-recycle"></i> </a></td>
+                          <td class="text-right"><a href="<?php echo base_url('admin/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          <td><a href="<?php echo base_url('admin/archive/retrieve/').$sentiment['case_id'] ?>"> <i class="fa fa-recycle"></i> </a></td>
                         </tr>
                       <?php endforeach; ?>
 

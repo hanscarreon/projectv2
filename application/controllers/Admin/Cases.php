@@ -14,6 +14,30 @@ class Cases extends CI_Controller {
 			$this->logout_admin();	
 		}
 	}
+	public function index($con)
+	{
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+
+		$user_id = $this->session->userdata('admin_id');
+		$status = 'published';
+		
+		$this->_filter_sentiment($user_id,$status,$con);
+		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+		$this->db->flush_cache();
+
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Cases/Cases_index',$body);
+		$this->load->view("Admin/Footer_admin");
+
+	}
 	public function view($id){
 		$header = []; // header
 		$body = [];
@@ -48,6 +72,19 @@ class Cases extends CI_Controller {
 		$this->load->view('admin/case/view',$body);
 		$this->load->view("template/site_admin_footer",$footer);
 	}
+
+	public function _filter_sentiment($user_id,$status,$con){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+
+		if(!empty($status)){
+			$this->db->where('sc.case_status',$status);
+		}
+		if(!empty($con)){
+			$this->db->where('sc.case_con',$con);
+		}
+	}
+
 
 	
 }
