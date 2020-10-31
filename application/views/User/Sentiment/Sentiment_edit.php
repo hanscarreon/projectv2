@@ -97,7 +97,7 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Create Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit Sentiment</h6>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,23 +123,23 @@
                       <?php $reasons = explode(',', $case[0]["case_reason"]);  ?>
                     
                         <div class="form-check form-check-inline">
-                            <input   <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
+                            <input  disabled <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
                             <label class="form-check-label" for="academic">academic</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input   <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
+                            <input disabled  <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
                             <label class="form-check-label" for="family">family</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input   <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
+                            <input  disabled <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
                             <label class="form-check-label" for="peers">peers</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input   <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
+                            <input disabled  <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
                             <label class="form-check-label" for="relationship">relationship</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input   <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
+                            <input disabled  <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
                             <label class="form-check-label" for="emotion">emotion</label>
                         </div>
                         
@@ -149,7 +149,7 @@
                 <div class="form-group row">
                     <label for="case_text" class="col-sm-2 col-form-label">Write your Concern</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" id="case_text" name="case_text" ><?php echo $case[0]["case_text"] ?></textarea>
+                    <textarea class="form-control" disabled id="case_text" name="case_text" ><?php echo $case[0]["case_text"] ?></textarea>
                     </div>
                 </div>
                 <!-- /. text -->
@@ -158,19 +158,19 @@
                     <legend class="col-form-label col-sm-2 pt-0">Which do you prefer to receive a response?</legend>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" <?php echo $case[0]["case_res"] == 'email'?'checked' :'' ?> type="radio" name="case_res" id="email" value="email" >
+                            <input class="form-check-input" disabled <?php echo $case[0]["case_res"] == 'email'?'checked' :'' ?> type="radio" name="case_res" id="email" value="email" >
                             <label class="form-check-label" for="Email">
                                 Email
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php echo $case[0]["case_res"] == 'SMS'?'checked' :'' ?>  >
+                            <input class="form-check-input" disabled type="radio" name="case_res" id="SMS" value="SMS" <?php echo $case[0]["case_res"] == 'SMS'?'checked' :'' ?>  >
                             <label class="form-check-label" for="SMS">
                                 SMS
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="zoom" value="zoom" id="zoom" <?php echo $case[0]["case_res"] == 'zoom'?'checked' :'' ?> >
+                            <input class="form-check-input" disabled type="radio" name="case_res" id="zoom" value="zoom" id="zoom" <?php echo $case[0]["case_res"] == 'zoom'?'checked' :'' ?> >
                             <label class="form-check-label" for="Zoom">
                                 Zoom
                             </label>
@@ -217,22 +217,22 @@
                 <?php endif; ?>
                 <br>
                 <div hidden>
-                    <input type="number" name="case_neg" id="case_neg"  >
-                    <input type="text" name="case_neg_percent" id="case_neg_percent"  >
+                    <input disabled  type="number" name="case_neg" id="case_neg"  >
+                    <input disabled type="text" name="case_neg_percent" id="case_neg_percent"  >
                     <!-- /. neg -->
-                    <input type="number" name="case_mid" id="case_mid" >
-                    <input  type="text" name="case_mid_percent" id="case_mid_percent" >
+                    <input disabled type="number" name="case_mid" id="case_mid" >
+                    <input disabled type="text" name="case_mid_percent" id="case_mid_percent" >
                     <!-- /. neutral -->
-                    <input type="number" name="case_pos" id="case_pos"  >
-                    <input  type="text" name="case_pos_percent" id="case_pos_percent"  >
+                    <input disabled type="number" name="case_pos" id="case_pos"  >
+                    <input disabled type="text" name="case_pos_percent" id="case_pos_percent"  >
                     <!-- /. positive -->
-                    <input  type="text" name="case_result" id="case_result"  >
-                    <input  type="number" name="case_line" id="case_line" >
+                    <input disabled type="text" name="case_result" id="case_result"  >
+                    <input disabled type="number" name="case_line" id="case_line" >
                     <input  type="number" name="case_id" id="case_id" value="<?php echo $case[0]['case_id'] ?>" >
                 </div>
 
-                  <button type="button" class="btn btn-primary " id="senti-btn"> save</button>
-                  <button hidden type="submit" class="btn btn-primary " id="send-btn">Create</button>
+                  <!-- <button type="button" class="btn btn-primary " id="senti-btn"> save</button> -->
+                  <button  type="submit" class="btn btn-primary " id="send-btn">Save</button>
                 </form>
 
                 

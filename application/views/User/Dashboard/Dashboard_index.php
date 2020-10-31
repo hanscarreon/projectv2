@@ -99,7 +99,15 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo  $this->uri->segment("4")=='meeting' ? 'Accepted' : 'Pending' ?>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/ongoing') ?>">Pending</a>
+                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/meeting') ?>">Accepted</a>
+                  </div>
+                </div>
                 <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="far fa-plus-square"></i>
@@ -121,26 +129,19 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body ">
-                <table class="table table-striped table-responsive " id="dashboardTable">
+            <div class="card-body  ">
+               <div class="table-responsive">
+               <table style="width: 100%;" class="table table-striped  text-center " id="dashboardTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->
-                        <th>Name</th>
+                        <th>student-ID</th>
                         <th>Date created</th>
-                        <th>Negative percentage</th>
-                        <th>Negative Score</th>
-                        <th>Positive percentage</th>
-                        <th>Positive Score</th>
-                        <th>Neutral percentage</th>
-                        <th>Neutral Score</th>
-                        <th>Result</th>
                         <th>Sentiment</th>
                         <th>Name of Counselor</th>
-                        <th>Meeting Date</th>
+                        <!-- <th>Meeting Date</th> -->
                         <th>Reasons</th>
                         <th>status</th>
-                        
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
                         <th ></th>
@@ -148,44 +149,35 @@
                         
 	                    </tr>
 	                  </thead>
-                    <tbody>
+                    <tbody cl>
                     <?php  if ( isset( $sentiments ) && count($sentiments) >= 1 ):?>
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
                           <!-- <th scope="row"></th> -->
-                          <td><?php echo $sentiment['user_fname'] ?></td>
+                          <td><?php echo $sentiment['user_name'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
-                          <td><?php echo $sentiment['case_neg_percent'] ?></td>
-                          <td><?php echo $sentiment['case_neg'] ?></td>
-                          <td><?php echo $sentiment['case_pos_percent'] ?></td>
-                          <td><?php echo $sentiment['case_pos'] ?></td>
-                          <td><?php echo $sentiment['case_mid_percent'] ?></td>
-                          <td><?php echo $sentiment['case_mid'] ?></td>
-                          <td><?php echo $sentiment['case_result'] ?></td>
                           <td>
                             <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
                           </td>
                           <td><?php echo $sentiment['admin_fname'] ?></td>
-                          <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['meet_date'])) ?></td>
+                          <!-- <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['meet_date'])) ?></td> -->
                           <td><?php echo $sentiment['case_reason'] ?></td>
                           <td><?php echo $sentiment['case_con'] ?></td>
                           <td class="text-right"><a href="<?php echo base_url('user/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
-                          <td><a href="<?php echo base_url('user/sentiment/edit/').$sentiment['case_id'] ?>"> <i class="fa fa-edit"></i> </a></td>
-                          <td><a href="<?php echo base_url('user/sentiment/delete/').$sentiment['case_id'] ?>"> <i class="fa fa-trash"></i> </a></td>
+                          <td> <?php echo $sentiment['case_con'] == 'ongoing' ?'<a  href="'. base_url('user/sentiment/edit/').$sentiment['case_id'].'"><i class="fa fa-edit"></i> </a>':'' ?> </td>
+                          <td><?php echo $sentiment['case_con'] == 'closed' || $sentiment['case_con'] == 'recommended' ? '<a href="'.base_url('user/sentiment/delete/').$sentiment['case_id'].' <i class="fa fa-trash"></i> </a>' :'' ?> </td>
                         </tr>
                       <?php endforeach; ?>
 
                     <?php else: ?>
-                      <tr>
-                        <!-- <th scope="row"></th> -->
-                        <td colspan="18" class="text-center">No data</td>
+                        <tr>
+                          <td colspan="18" class="text-center">No data</td>
                         </tr>
 	                  <?php endif;?>
-
-                       
                     </tbody>
                 </table>
+               </div>
             </div>
         </div>
     </div>

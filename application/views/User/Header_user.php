@@ -24,6 +24,7 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="<?php echo base_url() ?>plugins/toastr/toastr.min.css">
 
+  
 
 
 
@@ -50,7 +51,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>user/dashboard/">
+        <a class="nav-link" href="<?php echo base_url(); ?>user/dashboard/index/ongoing">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>

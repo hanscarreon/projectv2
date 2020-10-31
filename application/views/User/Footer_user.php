@@ -84,6 +84,7 @@
     	pagingType: "full_numbers",
         dom: 'Bfrtip',
     	processing: true,
+      responsive: true,
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',
         ],
