@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller {
 
 		$header = []; // header
 		$body = [];
+		$footer = [];
 
 		$col = "admin_id";
 		$user_id = $this->session->userdata('admin_id');
@@ -37,9 +38,56 @@ class Dashboard extends CI_Controller {
 		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
 		$this->db->flush_cache();
 
+		$this->db->where("case_result",'negative');
+		$footer['neg'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_result",'positive');
+		$footer['pos'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_result",'neutral');
+		$footer['mid'] = $this->model_base->count_data('sentiment_case');
+		// chart
+		$this->db->where("case_created >=", '2020-01-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-01-31-00-00-00');
+		$footer['jan'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-02-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-02-31-00-00-00');
+		$footer['feb'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-03-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-03-31-00-00-00');
+		$footer['march'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-04-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-04-31-00-00-00');
+		$footer['apr'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-05-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-05-31-00-00-00');
+		$footer['may'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-06-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-06-31-00-00-00');
+		$footer['june'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-07-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-07-31-00-00-00');
+		$footer['july'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-08-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-08-31-00-00-00');
+		$footer['aug'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-09-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-09-31-00-00-00');
+		$footer['sept'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=", '2020-10-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-10-31-00-00-00');
+		$footer['oct'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=",  '2020-11-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-11-31-00-00-00');
+		$footer['nov'] = $this->model_base->count_data('sentiment_case');
+		$this->db->where("case_created >=",  '2020-12-01-00-00-00');
+		$this->db->where("case_created <=",  '2020-12-31-00-00-00');
+		$footer['dec'] = $this->model_base->count_data('sentiment_case');
+
+
+
 		$this->load->view('Admin/Header_admin',$header);
 		$this->load->view('Admin/Dashboard/Dashboard_index',$body);
 		$this->load->view('Admin/Footer_admin');
+		$this->load->view('Admin/Dashboard/chart',$footer);
 
 	}
 	public function _count_sort($pos){

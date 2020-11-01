@@ -200,9 +200,9 @@ class Login extends CI_Controller {
 	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
 						$this->session->set_userdata($account[0]);
 						if($account[0]['admin_role'] == 'admin'){
-							redirect('admin/dashboard','refresh');
+							redirect('admin/dashboard/index/ongoing','refresh');
 						}else{
-							redirect('guidance/dashboard/index/pending','refresh');
+							redirect('guidance/dashboard/index/ongoin','refresh');
 						}	
 					}else{
 	    				$body['msg_error'] = 'Invalid Account';

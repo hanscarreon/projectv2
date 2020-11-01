@@ -180,7 +180,6 @@ class Sentiment extends CI_Controller {
 		$this->session->set_flashdata('msg_success', 'retrieve success!');
 		redirect('user/archive' ,'refresh');
 	}
-
 	public function _filter_guidance ($role,$status){
 		if(!empty($role)){
 			$this->db->where('a.admin_role', $role);

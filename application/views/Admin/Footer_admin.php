@@ -75,6 +75,14 @@
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
 
+  <!-- chart js -->
+<!-- Page level plugins -->
+<script src="<?php echo base_url() ?>vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<!-- <script src="<?php echo base_url() ?>js/demo/chart-area-demo.js"></script> -->
+<script src="<?php echo base_url() ?>js/demo/chart-pie-demo.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
     $('#dataTable').DataTable( {

@@ -178,7 +178,7 @@
                 <div class="form-group row">
                       <label for="case_text" class="col-sm-2 col-form-label">Meeting Date</label>
                       <div class="col-sm-10">
-                      <input type="text" class="form-control" id="meet_date" name="meet_date" value="<?php echo  date("F j, Y, g:i a",strtotime($meet[0]['meet_date'])) ?>" >
+                      <input type="" disabled class="form-control" id="meet_date" name="meet_date" value="<?php echo  date("F j, Y, g:i a",strtotime($meet[0]['meet_date'])) ?>" >
                       </div>
                   </div>
                   <div  hidden>

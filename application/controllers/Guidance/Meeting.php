@@ -185,24 +185,40 @@ class Meeting extends CI_Controller {
 				$body["test"]= "err";
 			}else{
 
-				$tbname = 'sentiment_case';
-				$col = 'case_id';
-				$data_update = array('case_con' =>$this->input->post('case_con'),
-									'case_updates' => $this->getDatetimeNow()
-									);
-				$this->model_base->update_data($case_id,$col,$data_update,$tbname);
-				// case
+				if($this->input->post('case_con') == 'plan'){
 
-				$tbname = 'sentiment_meeting';
-				$col = 'meet_id';
-				$data_update = array('meet_con' =>'done',
-									'meet_note'=> $dataPost['meet_note']
-									);
-				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
-				// meeting
+					
 
-				$this->session->set_flashdata('msg_success', 'Meeting Done');
-				redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+					// $tbname = 'sentiment_case';
+					// $col = 'case_id';
+					// $data_update = array('case_con' =>$this->input->post('case_con'),
+					// 					'case_updates' => $this->getDatetimeNow()
+					// 					);
+					// $this->model_base->update_data($case_id,$col,$data_update,$tbname);
+					// case
+
+				}else{
+					$tbname = 'sentiment_case';
+					$col = 'case_id';
+					$data_update = array('case_con' =>$this->input->post('case_con'),
+										'case_updates' => $this->getDatetimeNow()
+										);
+					$this->model_base->update_data($case_id,$col,$data_update,$tbname);
+					// case
+					$tbname = 'sentiment_meeting';
+					$col = 'meet_id';
+					$data_update = array('meet_con' =>'done',
+										'meet_note'=> $dataPost['meet_note']
+										);
+					$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
+					// meeting
+
+					$this->session->set_flashdata('msg_success', 'Meeting Done');
+					redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+
+				}
+
+				
 				
 			}
 		}

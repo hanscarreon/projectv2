@@ -17,7 +17,7 @@ class Dashboard extends CI_Controller {
 
 	}
 	
-	public function index(){
+	public function index($con){
 		$header = []; // header
 		$body = [];
 
@@ -28,7 +28,6 @@ class Dashboard extends CI_Controller {
 		$this->db->flush_cache();
 		$user_id = $this->session->userdata('admin_id');
 		$status = 'published';
-		$con = 'ongoing';
 
 		$this->_filter_sentiment($user_id,$status,$con);
 		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');

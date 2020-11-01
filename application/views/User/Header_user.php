@@ -88,6 +88,7 @@
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">options</h6>
             <a class="collapse-item" href="<?php echo base_url('user/sentiment/create') ?>">Create Sentiment</a>
+            
             <!-- <a class="collapse-item" href="buttons.html">Closed Case</a>
             <a class="collapse-item" href="buttons.html">Recommended to</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Intervention</a> -->

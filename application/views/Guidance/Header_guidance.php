@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-color-dark-blue side-guidance sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('guidance/dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('guidance/dashboard/index/ongoing') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -49,7 +49,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>guidance/dashboard/">
+        <a class="nav-link" href="<?php echo base_url(); ?>guidance/dashboard/index/ongoing">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -88,7 +88,7 @@
             <h6 class="collapse-header">status</h6>
             <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/closed/">Closed Case</a>
             <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/recommended/">Recommended to</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>guidance/intervention/index/name/ongoing">Intervention</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/plan">Intervention</a>
           </div>
         </div>
       </li>
