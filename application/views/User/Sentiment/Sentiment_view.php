@@ -230,7 +230,8 @@
                     <input  type="number" name="case_line" id="case_line" >
 
                 </div>
-                <a href="<?php echo base_url('user/sentiment/edit/').$case[0]['case_id'] ?>" type="button" class="btn btn-primary "> edit</a>
+                <a class="btn btn-primary    <?php echo $case[0]['case_con'] != 'ongoing'? 'disabled':''  ?> "
+                disabled href="<?php echo base_url('user/sentiment/edit/').$case[0]['case_id'] ?>" role="button" > edit</a>
                 </form>
 
                 

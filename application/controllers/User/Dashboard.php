@@ -51,7 +51,7 @@ class Dashboard extends CI_Controller {
 		if($status){
 			$this->db->where('sc.case_status','published');
 		}
-		if($con == 'ongoing' || !empty($con) ){
+		if($con == 'ongoing'  ){
 			$this->db->where('sc.case_con',$con);
 		}else{
 			$this->db->join("sentiment_meeting as sm", "sc.meet_id = sm.meet_id");

@@ -39,7 +39,7 @@
     <ul class="navbar-nav bg-color-dark-blue side-student sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/dashboard/index/ongoing') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -88,7 +88,6 @@
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">options</h6>
             <a class="collapse-item" href="<?php echo base_url('user/sentiment/create') ?>">Create Sentiment</a>
-            <a class="collapse-item" href="<?php echo base_url('user/sentiment/index') ?>">Results Sentiment</a>
             <!-- <a class="collapse-item" href="buttons.html">Closed Case</a>
             <a class="collapse-item" href="buttons.html">Recommended to</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Intervention</a> -->
@@ -255,23 +254,23 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo ucwords($dp[0]['user_fname']) ?></span>
                 <img class="img-profile rounded-circle" src="<?php echo base_url().$dp[0]['user_pic'] ?>" alt="no image available">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo base_url('user/profile/index/').$this->session->userdata('user_id') ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

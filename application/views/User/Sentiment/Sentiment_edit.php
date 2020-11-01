@@ -232,7 +232,7 @@
                 </div>
 
                   <!-- <button type="button" class="btn btn-primary " id="senti-btn"> save</button> -->
-                  <button  type="submit" class="btn btn-primary " id="send-btn">Save</button>
+                  <button  <?php echo  $case[0]['case_con'] != 'ongoing'? 'disabled':''  ?> type="submit" class="btn btn-primary " id="send-btn">Save</button>
                 </form>
 
                 

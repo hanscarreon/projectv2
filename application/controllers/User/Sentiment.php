@@ -97,11 +97,12 @@ class Sentiment extends CI_Controller {
 			}else{
 				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
 				$data["user_id"] =  $this->session->userdata('user_id');
+				$data['case_created'] = $this->getDatetimeNow();
 				$table = "sentiment_case";
 				$this->model_base->insert_data($data,$table);
 				$this->session->set_flashdata('msg_success', 'Successfully registered!');
 				
-				redirect('user/dashboard','refresh'); 
+				redirect('user/dashboard/index/ongoing','refresh'); 
 			}
 		}
 
@@ -143,19 +144,15 @@ class Sentiment extends CI_Controller {
 		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
 		$this->db->flush_cache();
 		//  info user
-
-
 		$this->form_validation->set_rules('admin_id', 'Select Counselor', 'required|trim');
 		$this->form_validation->set_rules('case_id', 'error slow internet connection', 'required');
-
 		if($this->input->post()){
 			$data = $this->input->post();
-
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
-				$body["test"] = $this->Convert_string_array($data["case_reason"]);
+				// $body["test"] = $this->Convert_string_array($data["case_reason"]);
 			}else{
-				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
+				// $data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
 				unset($data['case_id']);
 				$table = "sentiment_case";
 				$data['case_updates'] = $this->getDatetimeNow();

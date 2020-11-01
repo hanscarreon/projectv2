@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 		$body = [];
 		$footer = [];
 		if($this->have_sess_user() == true){
-			redirect('users/dashboard','refresh');
+			redirect('user/dashboard/index/ongoing','refresh');
 		}
 		if ( $this->have_sess_admin() == true ){
 			redirect('admin/dashboard/index/name/study/con/col/','refresh');
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 						if($account[0]['user_role'] == 'admin'){
 							redirect('admin/dashboard/index/name/study/con/col/','refresh');
 						}else{
-							redirect('user/dashboard','refresh');
+							redirect('user/dashboard/index/ongoing','refresh');
 						}	
 					}else{
 	    				$body['msg_error'] = 'Invalid Account';
