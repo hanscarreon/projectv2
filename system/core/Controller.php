@@ -101,7 +101,7 @@ class CI_Controller {
 	}
 
 	public function have_sess_user(){
-		if ($this->session->userdata('user_role') == 'student' || $this->session->userdata('user_status') == 'deleted') {
+		if ($this->session->userdata('user_role') == 'student' && $this->session->userdata('user_status') != 'deleted') {
 			return true;
 		} else {
 			return false;

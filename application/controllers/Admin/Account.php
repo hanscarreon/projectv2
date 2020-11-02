@@ -15,33 +15,48 @@ class Account extends CI_Controller {
 		}
 
 	}
-	public function index(){
+	public function index($role,$pub){
 		$header = []; // header
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 		// header info update
 
-		$pos = $this->session->userdata("user_pos");
-		$role = "student";
+		// $pos = $this->session->userdata("user_pos");
+		if($role == 'student'){
+			$body['test'] ='studentsss';
+			$this->_sort_acct($role,$pub);
+			$body['users'] = $this->model_base->get_all('users');
+			$this->db->flush_cache();
+		}
 
-		$this->_sort_acct($role,$pos);
-		$body['students'] = $this->model_base->get_all('user');
-		$this->db->flush_cache();
+		if($role == 'guidance'){
+			$body['test'] ='guidancessss';
+			$this->_sort_acct($role,$pub);
+			$body['users'] = $this->model_base->get_all('admin');
+			$this->db->flush_cache();
+		}
 
+		
 
-		$this->load->view("template/header",$header);
-		$this->load->view('admin/account/index',$body);
-		$this->load->view("template/site_admin_footer",);
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_index',$body);
+		$this->load->view("Admin/Footer_admin",);
 
 	}
-	public function _sort_acct($role,$pos){
-		$this->db->where("user_role", $role);
-		$this->db->where("user_pos", $pos);
+	public function _sort_acct($role,$pub){
+		if($role == 'student'){
+			$this->db->where('user_role',$role);
+			$this->db->where('user_status',$pub);
+		}
+		if($role == 'guidance'){
+			$this->db->where('admin_role',$role);
+			$this->db->where('admin_status',$pub);
+		}
 	}
 
 	public function create(){
@@ -56,8 +71,6 @@ class Account extends CI_Controller {
 		// header info update
 		$footer = [];
 		$body["data"] = "test";
-
-
 		// form validation create account
 		$this->form_validation->set_rules('admin_uname', 'Username', 'required|trim|min_length[6]|is_unique[admin.admin_uname]');
 		$this->form_validation->set_rules('admin_email', 'Email', 'required|trim|is_unique[admin.admin_email]');

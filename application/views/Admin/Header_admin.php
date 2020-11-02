@@ -78,8 +78,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
             <h6 class="collapse-header">Options</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/student">View Students</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/guidance">View Admin/Guidance</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/student/published">View Students</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>admin/account/index/guidance/published">View Guidance</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/account/create">Create Account</a>
           </div>
         </div>
