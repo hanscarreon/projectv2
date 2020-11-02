@@ -100,13 +100,6 @@
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
-                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="far fa-plus-square"></i>
-                    </span>
-                    <span class="text">Sentiment</span>
-                </a>
-              
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -140,10 +133,7 @@
                         <th>Meeting Date</th>
                         <th>Reasons</th>
                         <th>status</th>
-                        
-                        <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
-                        
 	                    </tr>
 	                  </thead>
                     <tbody>

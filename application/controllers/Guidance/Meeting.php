@@ -62,15 +62,16 @@ class Meeting extends CI_Controller {
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 		$body['case_id']= $case_id;
 		$body['user_id']= $user_id;
 
 		$col = "case_id";
 		$table_name = 'sentiment_case';
+		$this->db->join("users as u", "sentiment_case.user_id = u.user_id");
 		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
 		$this->db->flush_cache();
 
@@ -104,16 +105,8 @@ class Meeting extends CI_Controller {
 				 $this->model_base->update_data($id,$col,$data_update,$tbname);
 				// update case con
 
-
-				
-
-
-
-
 				$this->session->set_flashdata('msg_success', 'Meeting set!');
 
-				
-				
 				redirect('guidance/meeting','refresh'); 
 			}
 		}
@@ -128,9 +121,9 @@ class Meeting extends CI_Controller {
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 
 		
@@ -141,6 +134,7 @@ class Meeting extends CI_Controller {
 
 		$col = "case_id";
 		$table_name = 'sentiment_case';
+		$this->db->join("users as u", "sentiment_case.user_id = u.user_id");
 		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
 		$this->db->flush_cache();
 		//  case
@@ -160,16 +154,13 @@ class Meeting extends CI_Controller {
 				$body['msg_error'] = validation_errors();
 				$body["test"]= "err";
 			}else{
-
 				$tbname = 'sentiment_meeting';
 				$col = 'meet_id';
 				$data_update = array('meet_link' =>$this->input->post('meet_link')
 									);
 				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
-
 				$this->session->set_flashdata('msg_success', 'Link sent!');
 				redirect('guidance/meeting/ongoing/'.$case_id.'/'.$user_id.'/'.$meet_id,'refresh');
-				
 			}
 		}
 
@@ -187,8 +178,29 @@ class Meeting extends CI_Controller {
 
 				if($this->input->post('case_con') == 'plan'){
 
-					
+					if(empty($dataPost['meet_file'])){
+						$this->session->set_flashdata('msg_error', 'File needed for intervention plan');
+					}else{
+						$tbname = 'sentiment_case';
+						$col = 'case_id';
+						$data_update = array('case_con' =>$this->input->post('case_con'),
+											'case_updates' => $this->getDatetimeNow()
+											);
+						$this->model_base->update_data($case_id,$col,$data_update,$tbname);
+						// case
 
+						// case
+						$tbname = 'sentiment_meeting';
+						$col = 'meet_id';
+						$data_update = array('meet_con' =>'done',
+											'meet_note'=> $dataPost['meet_note']
+											);
+						$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
+						// meeting
+
+						redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+						$this->session->set_flashdata('msg_success', 'Meeting Done');
+					}
 					// $tbname = 'sentiment_case';
 					// $col = 'case_id';
 					// $data_update = array('case_con' =>$this->input->post('case_con'),
@@ -270,9 +282,9 @@ class Meeting extends CI_Controller {
 		$body = [];
 
 		$col = "admin_id";
-		$user_id = $this->session->userdata('admin_id');
+		$admin_id = $this->session->userdata('admin_id');
 		$table_name = 'admin';
-		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
 		$this->db->flush_cache();
 
         $this->load->view('Guidance/Header_guidance',$header);

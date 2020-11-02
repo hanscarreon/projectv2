@@ -111,8 +111,15 @@
             </div>
             <!-- Card Body -->
             <div class="card-body ">
+              <div class="form-group row">
+                <label for="case_text" class="col-sm-2 col-form-label">Student fullname</label>
+                <div class="col-sm-10">
+                <input type="" disabled class="form-control" id="user_fname" name="user_fname" value="<?php echo  $case[0]['user_fname']; ?>" >
+                </div>
+              </div>
 
             <div class="form-group row">
+      
                     <div class="col-sm-2">Reason</div>
                     <div class="col-sm-10">
                    
@@ -236,8 +243,6 @@
                         <?php endif; ?>
                       </div>
                   </div>
-
-               
                   <form method="post" >
 
                   <div class="form-group row">
@@ -246,10 +251,9 @@
                       <textarea rows="6"  class="form-control" id="meet_note" name="meet_note"  ><?php echo $meet[0]['meet_note'] ?></textarea>
                       </div>
                   </div>
-
-
                   <input hidden  type="number" class="form-control" id="case_id" name="case_id" value="<?php echo $case_id ?>">
                   <input hidden  type="number" class="form-control" id="meet_id" name="meet_id" value="<?php echo $meet_id ?>">
+                  <input hidden value="<?php echo $meet[0]['meet_file'] ?>" type="text"  name="meet_file" id="meet_file" >
                     <fieldset class="form-group">
                         <div class="row">
                         <legend class="col-form-label col-sm-2 pt-0">Case status?</legend>

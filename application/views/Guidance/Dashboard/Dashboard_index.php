@@ -99,14 +99,20 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
-                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="far fa-plus-square"></i>
-                    </span>
-                    <span class="text">Sentiment</span>
-                </a>
-              
+                <h6 class="m-0 font-weight-bold text-primary">Pending Consultation</h6>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
+                     : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
+                     : ( $this->uri->segment("4")=='recommended'  ? 'Recomeended to' 
+                     : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/ongoing') ?>">Pending</a>
+                    <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/plan') ?>">Intervention plan</a>
+                  </div>
+                </div>
+                
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -140,7 +146,6 @@
                         <th>Meeting Date</th>
                         <th>Reasons</th>
                         <th>status</th>
-                        
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
                         

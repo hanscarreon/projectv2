@@ -111,6 +111,12 @@
             </div>
             <!-- Card Body -->
             <div class="card-body ">
+                <div class="form-group row">
+                  <label for="case_text" class="col-sm-2 col-form-label">Student fullname</label>
+                  <div class="col-sm-10">
+                  <input type="" disabled class="form-control" id="user_fname" name="user_fname" value="<?php echo  $case[0]['user_fname']; ?>" >
+                  </div>
+                </div>
 
                 <div class="form-group row">
                     <div class="col-sm-2">Reason</div>

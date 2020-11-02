@@ -56,6 +56,7 @@ class Cases extends CI_Controller {
 
 		$col = "case_id";
 		$table_name = 'sentiment_case';
+		$this->db->join("users as u", "sentiment_case.user_id = u.user_id");
 		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
 		$this->db->flush_cache();
 		//  case

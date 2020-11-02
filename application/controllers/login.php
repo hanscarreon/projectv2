@@ -202,7 +202,7 @@ class Login extends CI_Controller {
 						if($account[0]['admin_role'] == 'admin'){
 							redirect('admin/dashboard/index/ongoing','refresh');
 						}else{
-							redirect('guidance/dashboard/index/ongoin','refresh');
+							redirect('guidance/dashboard/index/ongoing','refresh');
 						}	
 					}else{
 	    				$body['msg_error'] = 'Invalid Account';
@@ -211,8 +211,6 @@ class Login extends CI_Controller {
 			}
 		$this->load->view('admin',$body);
 	}
-
-
 }
 
 

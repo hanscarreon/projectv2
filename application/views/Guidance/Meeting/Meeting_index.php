@@ -100,7 +100,8 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pending Meeting</h6>
+                
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,9 +133,7 @@
                         <th>Result</th>
                         <th>Sentiment</th>
                         <th>Reasons</th>
-                        
                         <th  colspan="" >Action</th>
-                        
 	                    </tr>
 	                  </thead>
                     <tbody>
