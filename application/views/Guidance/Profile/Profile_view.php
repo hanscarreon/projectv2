@@ -14,7 +14,7 @@
                             <label class="custom-file-label" for="">Choose file</label>
                         </div>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                            <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">Upload</button>
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@
                 <div class="input-group mb-3">
                     <select class="form-control select2 select2-hidden-accessible" id="admin_gender" name="admin_gender"  style="width: 100%;" disabled data-select2-id="1" tabindex="-1" aria-hidden="true">
                     <option value="">Select gender</option>
-                    <option value="male" <?php echo $profile[0]['admin_gender'] == 'male' ? 'selected':'' ?>>male</option>
-                    <option value="female" <?php echo $profile[0]['admin_gender'] == 'female' ? 'selected':'' ?>>female</option>
-                    <option value="lgbtq"  <?php echo $profile[0]['admin_gender'] == 'lgbtq' ? 'selected':'' ?> >lgbtq</option>
+                    <option value="male" <?php echo $profile[0]['admin_gender'] == 'male' ? 'selected':'' ?>>Male</option>
+                    <option value="female" <?php echo $profile[0]['admin_gender'] == 'female' ? 'selected':'' ?>>Female</option>
+                    <option value="lgbtq"  <?php echo $profile[0]['admin_gender'] == 'lgbtq' ? 'selected':'' ?> >LGBTQ</option>
                     </select>
                 </div>
             </div>
@@ -94,7 +94,7 @@
         </div>
         <!-- /. address -->
         <br>
-        <a href="<?php echo base_url('guidance/profile/edit/'). $profile[0]['admin_id'] ?>" type="button" class="btn btn-primary ">edit</a>
+        <a href="<?php echo base_url('guidance/profile/edit/'). $profile[0]['admin_id'] ?>" type="button" class="btn btn-primary ">EDIT</a>
 
         
        

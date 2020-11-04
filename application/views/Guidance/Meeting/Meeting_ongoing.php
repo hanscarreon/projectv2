@@ -112,7 +112,7 @@
             <!-- Card Body -->
             <div class="card-body ">
               <div class="form-group row">
-                <label for="case_text" class="col-sm-2 col-form-label">Student fullname</label>
+                <label for="case_text" class="col-sm-2 col-form-label">Student Fullname</label>
                 <div class="col-sm-10">
                 <input type="" disabled class="form-control" id="user_fname" name="user_fname" value="<?php echo  $case[0]['user_fname']; ?>" >
                 </div>
@@ -127,23 +127,23 @@
                     
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
-                            <label class="form-check-label" for="academic">academic</label>
+                            <label class="form-check-label" for="academic">Academic</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
-                            <label class="form-check-label" for="family">family</label>
+                            <label class="form-check-label" for="family">Family</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
-                            <label class="form-check-label" for="peers">peers</label>
+                            <label class="form-check-label" for="peers">Peers</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
-                            <label class="form-check-label" for="relationship">relationship</label>
+                            <label class="form-check-label" for="relationship">Relationship</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
-                            <label class="form-check-label" for="emotion">emotion</label>
+                            <label class="form-check-label" for="emotion">Emotion</label>
                         </div>
                         
                     </div>
@@ -206,7 +206,7 @@
                             <input type="text" class="form-control" id="meet_link" name="meet_link" value="<?php echo !empty($meet[0]['meet_link'])? $meet[0]['meet_link'] : '' ?>"  aria-label="Text input with dropdown button">
                             <input type="text" hidden class="form-control" id="meet_id" name="meet_id"  value="<?php echo $meet_id ?>">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">send link</button>
+                                <button class="btn btn-outline-primary " type="submit" value="send_link" name="send_link" aria-expanded="false">Send Link</button>
                             </div>
                         </div>
                         </form>
@@ -228,7 +228,7 @@
                                       <label class="custom-file-label" for="">Choose file</label>
                                   </div>
                                   <div class="input-group-append">
-                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
+                                      <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">Upload</button>
                                   </div>
 
                             </div>
@@ -261,25 +261,25 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="case_con" id="closed" value="closed">
                                 <label class="form-check-label" for="closed">
-                                closed
+                                Closed
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio"    name="case_con" id="recommended" value="recommended">
                                 <label class="form-check-label" for="recommended">
-                                    recommeded to...
+                                    Recommeded to...
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan" >
                                 <label class="form-check-label" for="plan">
-                                    intervention plan
+                                    Intervention plan
                                 </label>
                             </div>
                         </div>
                         </div>
                     </fieldset>
-                        <button type="submit" value="done" name="done" class="btn btn-primary">done</button>
+                        <button type="submit" value="done" name="done" class="btn btn-primary">DONE</button>
                   </form>
 
                     

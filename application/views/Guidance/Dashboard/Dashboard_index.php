@@ -131,9 +131,13 @@
                 <table class="table table-striped table-responsive " id="dashboardTable">
                     <thead>
 	                    <tr>
+                        <!--EDIT ARRANGE THE TABLE-->
                         <!-- <th>Case-ID No.</th> -->
                         <th>Name</th>
                         <th>Date created</th>
+                        <th>Sentiment</th>
+                        <th>Reasons</th>
+                        <th>Name of Counselor</th>
                         <th>Negative percentage</th>
                         <th>Negative Score</th>
                         <th>Positive percentage</th>
@@ -141,11 +145,11 @@
                         <th>Neutral percentage</th>
                         <th>Neutral Score</th>
                         <th>Result</th>
-                        <th>Sentiment</th>
-                        <th>Name of Counselor</th>
+                        
+                        <!--EDIT-->
                         <th>Meeting Date</th>
-                        <th>Reasons</th>
-                        <th>status</th>
+                        
+                        <th>Status</th>
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
                         
@@ -156,9 +160,15 @@
                      
                       <?php $x=1; foreach($sentiments as $sentiment): ?>
                         <tr>
+                          <!-- EDIT ARRANGE THE TABLE DATA-->
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $sentiment['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
+                          <td>
+                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
+                          </td>
+                          <td><?php echo $sentiment['case_reason'] ?></td>
+                          <td><?php echo $sentiment['admin_fname'] ?></td>
                           <td><?php echo $sentiment['case_neg_percent'] ?></td>
                           <td><?php echo $sentiment['case_neg'] ?></td>
                           <td><?php echo $sentiment['case_pos_percent'] ?></td>
@@ -166,14 +176,12 @@
                           <td><?php echo $sentiment['case_mid_percent'] ?></td>
                           <td><?php echo $sentiment['case_mid'] ?></td>
                           <td><?php echo $sentiment['case_result'] ?></td>
-                          <td>
-                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
-                          </td>
-                          <td><?php echo $sentiment['admin_fname'] ?></td>
+                          
+                          <!--EDIT-->
                           <td>Meeting Date</td>
-                          <td><?php echo $sentiment['case_reason'] ?></td>
+                          
                           <td><?php echo $sentiment['case_con'] ?></td>
-                          <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/create/').$sentiment['case_id'].'/'.$sentiment['user_id'] ?>"> accept </a></td>
+                          <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/create/').$sentiment['case_id'].'/'.$sentiment['user_id'] ?>"> Accept </a></td>
                         </tr>
                       <?php endforeach; ?>
 

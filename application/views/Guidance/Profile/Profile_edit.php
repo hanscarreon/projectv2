@@ -74,9 +74,9 @@
                 <div class="input-group mb-3">
                     <select class="form-control select2 select2-hidden-accessible" id="admin_gender" name="admin_gender"  style="width: 100%;"  data-select2-id="1" tabindex="-1" aria-hidden="true">
                     <option value="">Select gender</option>
-                    <option value="male" <?php echo $profile[0]['admin_gender'] == 'male' ? 'selected':'' ?>>male</option>
-                    <option value="female" <?php echo $profile[0]['admin_gender'] == 'female' ? 'selected':'' ?>>female</option>
-                    <option value="lgbtq"  <?php echo $profile[0]['admin_gender'] == 'lgbtq' ? 'selected':'' ?> >lgbtq</option>
+                    <option value="male" <?php echo $profile[0]['admin_gender'] == 'male' ? 'selected':'' ?>>Male</option>
+                    <option value="female" <?php echo $profile[0]['admin_gender'] == 'female' ? 'selected':'' ?>>Female</option>
+                    <option value="lgbtq"  <?php echo $profile[0]['admin_gender'] == 'lgbtq' ? 'selected':'' ?> >LGBTQ</option>
                     </select>
                 </div>
             </div>
@@ -94,7 +94,7 @@
         </div>
         <!-- /. address -->
         <br>
-        <button type="submit" type="button" value="update_account" name="update_account" class="btn btn-primary ">save</button>
+        <button type="submit" type="button" value="update_account" name="update_account" class="btn btn-primary ">SAVE</button>
 
         
        

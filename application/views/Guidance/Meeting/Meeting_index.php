@@ -121,9 +121,12 @@
                 <table class="table table-striped table-responsive " id="dataTable">
                     <thead>
 	                    <tr>
+                        <!-- EDIT ARRANGE THE TABLE-->
                         <!-- <th>Case-ID No.</th> -->
                         <th>Name</th>
                         <th>Meet date</th>
+                        <th>Sentiment</th>
+                        <th>Reasons</th>
                         <th>Negative percentage</th>
                         <th>Negative Score</th>
                         <th>Positive percentage</th>
@@ -131,8 +134,7 @@
                         <th>Neutral percentage</th>
                         <th>Neutral Score</th>
                         <th>Result</th>
-                        <th>Sentiment</th>
-                        <th>Reasons</th>
+                        <!--EDITED-->
                         <th  colspan="" >Action</th>
 	                    </tr>
 	                  </thead>
@@ -144,6 +146,11 @@
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $meeting['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($meeting['meet_date'])) ?></td>
+                          <!--EDITED-->
+                          <td>
+                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting["case_text"]; ?></p>
+                          </td>
+                          <td style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting['case_reason'] ?></td>
                           <td><?php echo $meeting['case_neg_percent'] ?></td>
                           <td><?php echo $meeting['case_neg'] ?></td>
                           <td><?php echo $meeting['case_pos_percent'] ?></td>
@@ -151,11 +158,8 @@
                           <td><?php echo $meeting['case_mid_percent'] ?></td>
                           <td><?php echo $meeting['case_mid'] ?></td>
                           <td><?php echo $meeting['case_result'] ?></td>
-                          <td>
-                            <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting["case_text"]; ?></p>
-                          </td>
-                          <td style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $meeting['case_reason'] ?></td>
-                          <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/ongoing/').$meeting['case_id'].'/'.$meeting['user_id'].'/'.$meeting['meet_id'] ?>"> proceed </a></td>
+                          <!--EDITED-->
+                          <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/ongoing/').$meeting['case_id'].'/'.$meeting['user_id'].'/'.$meeting['meet_id'] ?>"> Proceed </a></td>
                         </tr>
                       <?php endforeach; ?>
 

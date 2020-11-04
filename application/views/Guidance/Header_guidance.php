@@ -85,7 +85,7 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="collapseThree" data-parent="#accordionSidebar">
           <div class="bg-color-dark-blue py-2 collapse-inner rounded">
-            <h6 class="collapse-header">status</h6>
+            <h6 class="collapse-header">Status</h6>
             <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/closed/">Closed Case</a>
             <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/recommended/">Recommended to</a>
             <a class="collapse-item" href="<?php echo base_url() ?>guidance/cases/index/plan">Intervention</a>

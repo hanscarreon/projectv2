@@ -22,18 +22,18 @@
             <label for="inputState">Case:</label>
             <select id="inputState" class="form-control">
               <option selected>Select Case</option>
-              <option value="intervention plan">intervention plan</option>
-              <option value="close case">close case</option>
-              <option value="refer to SDO">refer to SDO</option>
-              <option value="refer to mental health professionals">refer to mental health professionals</option>
-              <option value="refer to clinic">refer to clinic</option>
-              <option value="refer to other">refer to other</option>
+              <option value="intervention plan">Intervention plan</option>
+              <option value="close case">Closed case</option>
+              <option value="refer to SDO">Refer to SDO</option>
+              <option value="refer to mental health professionals">Refer to Mental HealthProfessionals</option>
+              <option value="refer to clinic">Refer to Clinic</option>
+              <option value="refer to other">Refer to Other</option>
             </select>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary">SUBMIT</button>
       </div>
     </div>
     <br>
