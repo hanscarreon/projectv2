@@ -124,23 +124,23 @@
                     
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo  in_array('academic',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
-                            <label class="form-check-label" for="academic">academic</label>
+                            <label class="form-check-label" for="academic">Academic</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo   in_array('family',$reasons) ? 'checked':'' ?> class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
-                            <label class="form-check-label" for="family">family</label>
+                            <label class="form-check-label" for="family">Family</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo   in_array('peers',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
-                            <label class="form-check-label" for="peers">peers</label>
+                            <label class="form-check-label" for="peers">Peers</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo in_array('relationship',$reasons)  ? 'checked':'' ?> class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
-                            <label class="form-check-label" for="relationship">relationship</label>
+                            <label class="form-check-label" for="relationship">Relationship</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input disabled  <?php echo in_array('emotion',$reasons)  ?  'checked':'' ?>  class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
-                            <label class="form-check-label" for="emotion">emotion</label>
+                            <label class="form-check-label" for="emotion">Emotion</label>
                         </div>
                         
                     </div>
@@ -194,7 +194,7 @@
                     <label for="case_text" class="col-sm-2 col-form-label">Meeting info:</label>
                         <div class="col-sm-10">
                             <input class="form-control mb-3" id="case_text" name="case_text" disabled value="<?php echo date("F j, Y, g:i a",strtotime($meeting['meet_date'])) ?>">
-                            <a href="<?php echo base_url().$meeting['meet_file'] ?>" download="">click to download file</a>
+                            <a href="<?php echo base_url().$meeting['meet_file'] ?>" download="">Click to download file</a>
                             <textarea rows="5"    class="form-control mb-3" id="meet_note" name="meet_note" disabled><?php echo $meeting["meet_note"] ?></textarea>
 
                         </div>
