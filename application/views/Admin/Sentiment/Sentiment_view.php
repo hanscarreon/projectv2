@@ -97,7 +97,7 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Create Sentiment</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Sentiment</h6>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,7 +113,15 @@
                 </div> -->
             </div>
             <!-- Card Body -->
+            
             <div class="card-body ">
+              <div class="form-group row">
+                <label for="case_text" class="col-sm-2 col-form-label">Student fullname</label>
+                <div class="col-sm-10">
+                <input type="" disabled class="form-control" id="user_fname" name="user_fname" value="<?php echo  $case[0]['user_fname']; ?>" >
+                </div>
+              </div>
+
 
             <form method="post">
                 <div class="form-group row">
