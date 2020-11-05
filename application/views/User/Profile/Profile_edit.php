@@ -1,13 +1,13 @@
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
     <div class="text-center">
-        <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url().$profile[0]['user_pic'] ?>" alt="no profile picture available">
+        <img class="profile-user-img img-fluid img-circle " height="auto" width="20%" src="<?php echo !empty($profile[0]['user_pic']) ? base_url().$profile[0]['user_pic']: base_url('resources/img/stud.png') ?>" alt="no profile picture available">
+        <!-- <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url().$profile[0]['user_pic'] ?>" alt="no profile picture available"> -->
         <form>
             
         </form>
     </div>
     <form class="form-horizontal" id="account-form" method="post">
-        
         <div class="form-group row">
             <label for="user_name" class="col-sm-2 col-form-label">Username *</label>
             <div class="err col-sm-10">
@@ -85,11 +85,7 @@
             <label for="user_degree" class="col-sm-2 col-form-label">Degree *</label>
             <div class="err col-sm-10">
                 <div class="input-group mb-3">
-                    <select class="form-control select2 select2-hidden-accessible" id="user_degree" name="user_degree"  style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option value="">Strand/Degree Program</option>
-                    <option value="SHS" <?php echo $profile[0]['user_degree'] == 'SHS' ? 'selected':'' ?>>SHS</option>
-                    <option value="Higher Education"  <?php echo $profile[0]['user_degree'] == 'higher education' ? 'selected':'' ?> >Higher Education</option>
-                    </select>
+                     <input type="text" class="form-control" id="user_degree" name="user_degree"  value="<?php echo $profile[0]['user_degree'] ?>" >
                 </div>
             </div>
         </div>

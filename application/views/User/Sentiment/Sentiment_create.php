@@ -121,23 +121,23 @@
                     <div class="col-sm-10">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="academic" value="academic" name="case_reason[]">
-                            <label class="form-check-label" for="academic">academic</label>
+                            <label class="form-check-label" for="academic">Academic</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="family" value="family" name="case_reason[]">
-                            <label class="form-check-label" for="family">family</label>
+                            <label class="form-check-label" for="family">Family</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="peers" value="peers" name="case_reason[]">
-                            <label class="form-check-label" for="peers">peers</label>
+                            <label class="form-check-label" for="peers">Peers</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="relationship" value="relationship" name="case_reason[]">
-                            <label class="form-check-label" for="relationship">relationship</label>
+                            <label class="form-check-label" for="relationship">Relationship</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="emotion" value="emotion" name="case_reason[]">
-                            <label class="form-check-label" for="emotion">emotion</label>
+                            <label class="form-check-label" for="emotion">Emotion</label>
                         </div>
                         
                     </div>
@@ -161,15 +161,15 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS">
-                            <label class="form-check-label" for="SMS">
-                                SMS
+                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet">
+                            <label class="form-check-label" for="gmeet">
+                                Google Meet Link
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="gridRadios3" value="Zoom" id="Zoom">
+                            <input class="form-check-input" type="radio" name="case_res" id="Zoom" value="Zoom" id="Zoom">
                             <label class="form-check-label" for="Zoom">
-                                Zoom
+                                Zoom Link
                             </label>
                         </div>
                     </div>
