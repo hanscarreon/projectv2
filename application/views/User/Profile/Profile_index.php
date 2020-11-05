@@ -97,10 +97,10 @@
         </div>
         <!-- /. Division  -->
         <div class="form-group row">
-            <label for="user_degree" class="col-sm-2 col-form-label">Degree *</label>
+            <label for="user_degree" class="col-sm-2 col-form-label">Strands/Degree Program  *</label>
             <div class="err col-sm-10">
                 <div class="input-group mb-3">
-                 <input type="text" disabled class="form-control" id="user_degree" name="user_degree"  value="<?php echo $profile[0]['user_degree'] ?>" >
+                 <input type="text" disabled class="form-control" id="user_degree" name="user_degree" placeholder="For SHS and Higher Education"  value="<?php echo $profile[0]['user_degree'] ?>" >
                 </div>
             </div>
         </div>

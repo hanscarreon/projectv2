@@ -139,6 +139,18 @@
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
+                     : ( $this->uri->segment("4")=='plan' ? 'follow-up' 
+                     : ( $this->uri->segment("4")=='Pending'  ? 'pending' 
+                     : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?php echo base_url('admin/dashboard/index/closed/published') ?>">Pending</a>
+                    <a class="dropdown-item" href="<?php echo base_url('admin/dashboard/index/plan/published') ?>">follow-up</a>
+                  </div>
+                </div>
                 <!-- <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="far fa-plus-square"></i>
@@ -193,13 +205,13 @@
                           <!-- <th scope="row"></th> -->
                           <td><?php echo $sentiment['user_fname'] ?></td>
                           <td><?php echo date("F j, Y, g:i a",strtotime($sentiment['case_created'])) ?></td>
-                          <td>Negative percentage</td>
-                          <td>Negative Score</td>
-                          <td>Positive percentage</td>
-                          <td>Positive Score</td>
-                          <td>Neutral percentage</td>
-                          <td>Neutral Score</td>
-                          <td>Result</td>
+                          <td><?php echo $sentiment['case_neg_percent'] ?></td>
+                          <td><?php echo $sentiment['case_neg'] ?></td>
+                          <td><?php echo $sentiment['case_pos_percent'] ?></td>
+                          <td><?php echo $sentiment['case_pos'] ?></td>
+                          <td><?php echo $sentiment['case_mid_percent'] ?></td>
+                          <td><?php echo $sentiment['case_mid'] ?></td>
+                          <td><?php echo $sentiment['case_result'] ?></td>
                           <td>
                             <p style="overflow: hidden;text-overflow: ellipsis; white-space: nowrap; width:150px; "><?php echo $sentiment["case_text"]; ?></p>
                           </td>

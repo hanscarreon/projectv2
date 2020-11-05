@@ -5,7 +5,7 @@
     
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <h1 class="h3 mb-0 text-gray-800">Case Analysis</h1>
     </div>
 
     <!-- Content Row -->
@@ -99,13 +99,19 @@
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Pending Analysis</h6>
-                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="far fa-plus-square"></i>
-                    </span>
-                    <span class="text">Sentiment</span>
-                </a>
+                <h6 class="m-0 font-weight-bold text-primary">Case Analysis</h6>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
+                     : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
+                     : ( $this->uri->segment("4")=='recommended'  ? 'recommended to' 
+                     : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?php echo base_url('admin/cases/index/closed/') ?>">closed case</a>
+                    <a class="dropdown-item" href="<?php echo base_url('admin/cases/index/recommended/') ?>">recomend to</a>
+                  </div>
+                </div>
               
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -41,7 +41,7 @@
     <ul class="navbar-nav bg-color-dark-blue side-admin sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard/index/ongoing/published') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -53,7 +53,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard/">
+        <a class="nav-link" href="<?php echo base_url(); ?>admin/dashboard/index/ongoing/published">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -108,7 +108,7 @@
             <h6 class="collapse-header">status</h6>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/cases/index/closed/">Closed Case</a>
             <a class="collapse-item" href="<?php echo base_url() ?>admin/cases/index/recommended/">Recommended to</a>
-            <a class="collapse-item" href="<?php echo base_url() ?>admin/intervention/index/name/ongoing">Intervention</a>
+            <!-- <a class="collapse-item" href="<?php echo base_url() ?>admin/intervention/index/name/ongoing">Intervention</a> -->
           </div>
         </div>
       </li>
@@ -276,7 +276,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo ucwords($dp[0]['admin_fname']) ?></span>
-                <img class="img-profile rounded-circle" src="<?php echo base_url().$dp[0]['admin_pic'] ?>">
+                <img class="img-profile rounded-circle" src="<?php  echo !empty($dp[0]['user_pic']) ? base_url().$dp[0]['admin_pic']: base_url('resources/img/stud.png') ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 			redirect('user/dashboard/index/ongoing','refresh');
 		}
 		if ( $this->have_sess_admin() == true ){
-			redirect('admin/dashboard/index/ongoing','refresh');
+			redirect('admin/dashboard/index/ongoing/published','refresh');
 		}
 		$this->load->model('model_login');
 			$this->form_validation->set_rules('user_name', 'Username', 'required|trim');
@@ -200,7 +200,7 @@ class Login extends CI_Controller {
 	    				$this->session->set_flashdata('msg_success', 'Successfully log in!');
 						$this->session->set_userdata($account[0]);
 						if($account[0]['admin_role'] == 'admin'){
-							redirect('admin/dashboard/index/ongoing','refresh');
+							redirect('admin/dashboard/index/ongoing/published','refresh');
 						}else{
 							redirect('guidance/dashboard/index/ongoing','refresh');
 						}	
