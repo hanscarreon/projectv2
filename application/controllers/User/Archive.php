@@ -92,7 +92,7 @@ class Archive extends CI_Controller {
 
 		
 		$this->session->set_flashdata('msg_success', 'retrieve success!');
-		redirect('user/dashboard' ,'refresh');
+		redirect('user/dashboard/index/ongoing' ,'refresh');
 
 		
 		
