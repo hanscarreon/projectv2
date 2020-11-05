@@ -155,9 +155,9 @@
                     <div class="input-group mb-3">
                         <select class="form-control select2 select2-hidden-accessible" name="user_gender" style="width: 100%;"  tabindex="-1" aria-hidden="true">
                         <option value="">Select ...</option>
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="lgbtq">lgbtq</option>
+                        <option value="male">Male</option>
+                        <option value="female">Femal</option>
+                        <option value="lgbtq">LGBTQ</option>
                         </select>
                         <div class="input-group-append">
                         </div>
@@ -171,11 +171,12 @@
                     <div class="input-group mb-3">
                         <select class="form-control select2 select2-hidden-accessible" id="user_division" name="user_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         <option value="">Select Curriculum Level</option>
-                        <option value="junior highschool">junior highschool</option>
-                        <option value="senior highschool">senior highschool</option>
-                        <option value="college">college</option>
-                        <option value="law school">law school</option>
-                        <option value="graduate">graduate</option>
+                        <option value="elementary school">Elementary Highschool</option>
+                        <option value="junior highschool">Junior Highschool</option>
+                        <option value="senior highschool">Senior Highschool</option>
+                        <option value="college">College</option>
+                        <option value="law school">Law School</option>
+                        <option value="graduate">Graduate</option>
                         </select>
                         </div>
                     </div>

@@ -111,7 +111,7 @@
                     <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/meeting') ?>">Accepted</a>
                     <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/closed') ?>">closed</a>
                     <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/recommended') ?>">recommended</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/plan') ?>">Follow up </a>
+                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/plan') ?>">Follow up</a>
                   </div>
                 </div>
                 <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
@@ -249,7 +249,6 @@
                             <th >Action</th>
                             <th ></th>
                             <th ></th>
-              
                           </tr>
                         </thead>
                         <tbody >

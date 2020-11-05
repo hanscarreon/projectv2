@@ -171,6 +171,7 @@ class Meeting extends CI_Controller {
 			$this->form_validation->set_rules('case_con', 'select a status', 'required|trim');
 			$this->form_validation->set_rules('meet_id', 'no meeting found', 'required|trim');
 			$this->form_validation->set_rules('meet_note', 'no note found', 'required|trim');
+			$this->form_validation->set_rules('case_recom', '', 'trim');
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
 				$body["test"]= "err";
@@ -201,32 +202,55 @@ class Meeting extends CI_Controller {
 						redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
 						$this->session->set_flashdata('msg_success', 'Meeting Done');
 					}
-					// $tbname = 'sentiment_case';
-					// $col = 'case_id';
-					// $data_update = array('case_con' =>$this->input->post('case_con'),
-					// 					'case_updates' => $this->getDatetimeNow()
-					// 					);
-					// $this->model_base->update_data($case_id,$col,$data_update,$tbname);
-					// case
 
 				}else{
-					$tbname = 'sentiment_case';
-					$col = 'case_id';
-					$data_update = array('case_con' =>$this->input->post('case_con'),
-										'case_updates' => $this->getDatetimeNow()
-										);
-					$this->model_base->update_data($case_id,$col,$data_update,$tbname);
-					// case
-					$tbname = 'sentiment_meeting';
-					$col = 'meet_id';
-					$data_update = array('meet_con' =>'done',
-										'meet_note'=> $dataPost['meet_note']
-										);
-					$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
-					// meeting
+					if($this->input->post('case_con') == 'recommended'){
 
-					$this->session->set_flashdata('msg_success', 'Meeting Done');
-					redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+							if(!empty($dataPost['case_recom'])){
+								$tbname = 'sentiment_case';
+								$col = 'case_id';
+								$data_update = array('case_con' =>$this->input->post('case_con'),
+													'case_updates' => $this->getDatetimeNow(),
+													'case_recom' => $dataPost['case_recom']
+													);
+								$this->model_base->update_data($case_id,$col,$data_update,$tbname);
+								// case
+								$tbname = 'sentiment_meeting';
+								$col = 'meet_id';
+								$data_update = array('meet_con' =>'done',
+													'meet_note'=> $dataPost['meet_note']
+													);
+								$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
+								// meeting
+								$this->session->set_flashdata('msg_success', 'Meeting Done');
+								redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+								$this->session->set_flashdata('msg_success', 'Meeting Done');
+							}else{
+								$this->session->set_flashdata('msg_error', 'Choose where to recommend');
+							}
+
+					}else{
+						$tbname = 'sentiment_case';
+						$col = 'case_id';
+						$data_update = array('case_con' =>$this->input->post('case_con'),
+											'case_updates' => $this->getDatetimeNow()
+											);
+						$this->model_base->update_data($case_id,$col,$data_update,$tbname);
+						// case
+						$tbname = 'sentiment_meeting';
+						$col = 'meet_id';
+						$data_update = array('meet_con' =>'done',
+											'meet_note'=> $dataPost['meet_note']
+											);
+						$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
+						// meeting
+
+						$this->session->set_flashdata('msg_success', 'Meeting Done');
+						redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
+
+					}
+
+					
 
 				}
 

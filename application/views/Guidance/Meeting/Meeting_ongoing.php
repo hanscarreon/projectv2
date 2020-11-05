@@ -259,37 +259,57 @@
                         <legend class="col-form-label col-sm-2 pt-0">Case status?</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="case_con" id="closed" value="closed">
-                                <label class="form-check-label" for="closed">
+                                <input class="form-check-input" type="radio"  onclick="selectedRecomendation()" name="case_con" id="closed" value="closed">
+                                <label class="form-check-label" for="closed"  >
                                 Closed
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio"    name="case_con" id="recommended" value="recommended">
+                                <input class="form-check-input" type="radio" onclick="selectedRecomendation()"   name="case_con" id="recommended" value="recommended">
                                 <label class="form-check-label" for="recommended">
                                     Recommeded to...
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan" >
-                                <label class="form-check-label" for="plan">
+                                <input class="form-check-input" type="radio" name="case_con" id="plan" value="plan"  onclick="selectedRecomendation()">
+                                <label class="form-check-label" for="plan" >
                                     Intervention plan
                                 </label>
                             </div>
                         </div>
                         </div>
                     </fieldset>
+                    <div class="form-group row d-none" id="recom_to" >
+                        <label for="case_recom" class="col-sm-2 col-form-label">Recommend To </label>
+                        <div class="err col-sm-10">
+                        <div class="input-group mb-3">
+                            <select class="form-control select2 select2-hidden-accessible" name="case_recom" id="case_recom" style="width: 100%;"  tabindex="-1" aria-hidden="true">
+                            <option >Select ...</option>
+                            <option value="SDO">SDO</option>
+                            <option value="mental health professionals">Mental Health Professionals</option>
+                            <option value="clinic">Clinic</option>
+                            <option value="other offices">Other Offices</option>
+                            </select>
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                         <button type="submit" value="done" name="done" class="btn btn-primary">DONE</button>
-                  </form>
-
-                    
-
-                
-           
+                  </form>                          
             </div>
         </div>
     </div>
 
     
     </div>
- 
+ <script>
+   function selectedRecomendation(){
+      res  = $('input[name="case_con"]:checked').val();
+      if(res == 'recommended'){
+          $('#recom_to').removeClass('d-none');
+      }else{
+        $('#recom_to').addClass('d-none');
+      }
+   }
+ </script>

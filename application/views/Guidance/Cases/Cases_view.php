@@ -283,6 +283,22 @@
                         </div>
                         </div>
                     </fieldset>
+                    <div class="form-group row" id="recom_to" >
+                        <label for="case_recom" class="col-sm-2 col-form-label">Recommend To </label>
+                        <div class="err col-sm-10">
+                        <div class="input-group mb-3">
+                            <select  disabled class="form-control select2 select2-hidden-accessible" name="case_recom" id="case_recom" style="width: 100%;"  tabindex="-1" aria-hidden="true">
+                            <option value="none" <?php  echo $case[0]['case_recom'] == 'none' ? 'selected':'' ?> >none</option>
+                            <option value="SDO"  <?php  echo $case[0]['case_recom'] == 'SDO' ? 'selected':'' ?> >SDO</option>
+                            <option value="mental health professionals"  <?php  echo $case[0]['case_recom'] == 'mental health professionals' ? 'selected':'' ?>>Mental Health Professionals</option>
+                            <option value="clinic  <?php  echo $case[0]['case_recom'] == 'clinic' ? 'selected':'' ?>">Clinic</option>
+                            <option value="other offices"  <?php  echo $case[0]['case_recom'] == 'other offices' ? 'selected':'' ?>>Other Offices</option>
+                            </select>
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                         <!-- <button type="submit" value="done" name="done" class="btn btn-primary">done</button> -->
                   </form>
 
