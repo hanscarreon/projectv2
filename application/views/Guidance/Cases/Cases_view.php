@@ -283,7 +283,8 @@
                         </div>
                         </div>
                     </fieldset>
-                    <div class="form-group row" id="recom_to" >
+           
+                    <div class="form-group row <?php echo $this->uri->segment(2)== 'recommended' ? '' : 'd-none' ?>" id="recom_to" >
                         <label for="case_recom" class="col-sm-2 col-form-label">Recommend To </label>
                         <div class="err col-sm-10">
                         <div class="input-group mb-3">
