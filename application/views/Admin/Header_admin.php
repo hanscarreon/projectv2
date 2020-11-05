@@ -112,8 +112,6 @@
           </div>
         </div>
       </li>
-    
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Heading -->
@@ -127,9 +125,9 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/profile/view/').$this->session->userdata('admin_id') ?>">
-          <i class="fas fa-user-alt"></i>
-          <span>Profile</span></a>
+        <a class="nav-link" href="<?php echo base_url('admin/analytic/index/date1/date2') ?>">
+          <i class="fas fa-chart-bar"></i>
+          <span>Analytics</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -280,18 +278,18 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="#">
+                </a> -->
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
