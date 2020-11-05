@@ -35,7 +35,7 @@ class Dashboard extends CI_Controller {
 		// $con = 'ongoing';
 
 		$this->_filter_sentiment($user_id,$status,$con);
-		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+		$body['analytics'] = $this->model_base->get_all('sentiment_case as sc');
 		$this->db->flush_cache();
 
 		$this->db->where("case_result",'negative');
