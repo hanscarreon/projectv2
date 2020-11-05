@@ -30,7 +30,7 @@
 
 </head>
 <style>
-  h1,h2,h3,h4,h5,button,a{
+  h1,h2,h3,h4,h5,button,a,option{
     text-transform: capitalize;
   }
 </style>
