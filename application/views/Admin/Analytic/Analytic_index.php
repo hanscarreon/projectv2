@@ -130,7 +130,7 @@
 
 
 
-<div class="col-xl-4 col-lg-4 col-12">
+<div class="col-xl-12 col-lg-12 col-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
           
@@ -140,16 +140,26 @@
             <!-- Card Body -->
             <div class="card-body ">
             <form class="form-horizontal" method="post" >
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="filter_from">From</label>
+                  <input type="date" class="form-control" id="filter_from" name="filter_from" placeholder="" value="">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="filter_to">To</label>
+                  <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
+                </div>
+              </div>
               <div class="form-group row">
                 <label for="filter_from" class="col-sm-2 col-form-label">From</label>
                 <div class="col-sm-10">
-                  <input type="file" class="form-control" id="filter_from" name="filter_from" placeholder="" value="">
+                  <input type="date" class="form-control" id="filter_from" name="filter_from" placeholder="" value="">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="filter_to" class="col-sm-2 col-form-label">To</label>
                 <div class="col-sm-10">
-                  <input type="file" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
+                  <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
                 </div>
               </div>
 
@@ -260,6 +270,9 @@
                         <th>Total Positive Percentage</th>
                         <th>Total Neutral</th>
                         <th>Total Neutral Percentage</th>
+                        <th>Case</th>
+                        <th>Division</th>
+                        <th>Gender</th>
                         <th>From</th>
                         <th>To</th>
 	                    </tr>
