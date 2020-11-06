@@ -93,9 +93,6 @@
 
     <!-- Content Row -->
     <div class="row">
-
-
-
     <!-- Area Chart -->
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
@@ -155,7 +152,7 @@
                                 <th>Gender</th>
                                 <th >Action</th>
                                 <th></th>
-                                <th></th>
+                                <!-- <th></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -175,9 +172,9 @@
                                     <td><?php echo $user['user_shs'] ?></td>
                                     <td><?php echo $user['user_strand'] ?></td>
                                     <td><?php echo $user['user_gender'] ?></td>
-                                    <td class="text-right"> <a  href="<?php echo base_url('admin/account/view-user/').$user['user_id'] ?>"><i class="fa fa-eye"></i></a> </td>
-                                    <td> <a href="<?php echo base_url('admin/account/edit-user/').$user['user_id'] ?>"><i class="fa fa-edit"></i></a> </td>
-                                    <td> <a href="<?php echo base_url('admin/account/delete-user/').$user['user_id'] ?>"><i class="fa fa-trash"></i></a> </td>
+                                    <td class="text-right"> <a  href="<?php echo base_url('admin/account/view-student/').$user['user_id'] ?>"><i class="fa fa-eye"></i></a> </td>
+                                    <td> <a href="<?php echo base_url('admin/account/edit-student/').$user['user_id'] ?>"><i class="fa fa-edit"></i></a> </td>
+                                    <!-- <td> <a href="<?php echo base_url('admin/account/delete-student/').$user['user_id'] ?>"><i class="fa fa-trash"></i></a> </td> -->
 
                                 <?php endforeach; ?>
                                 <?php else: ?>
@@ -201,7 +198,7 @@
                                 <th>Address</th>
                                 <th >Action</th>
                                 <th></th>
-                                <th></th>
+                                <!-- <th></th> -->
                             </tr>
                             </thead>
                             <tbody>
@@ -219,7 +216,7 @@
                                     <td><?php echo $user['admin_address'] ?></td>
                                     <td class="text-right"> <a  href="<?php echo base_url('admin/account/view-admin/').$user['admin_id'] ?>"><i class="fa fa-eye"></i></a> </td>
                                     <td> <a href="<?php echo base_url('admin/account/edit-admin/').$user['admin_id'] ?>"><i class="fa fa-edit"></i></a> </td>
-                                    <td> <a href="<?php echo base_url('admin/account/delete-admin/').$user['admin_id'] ?>"><i class="fa fa-trash"></i></a> </td>
+                                    <!-- <td> <a href="<?php echo base_url('admin/account/delete-admin/').$user['admin_id'] ?>"><i class="fa fa-trash"></i></a> </td> -->
 
                                     </tr>
                                 <?php endforeach; ?>

@@ -114,7 +114,7 @@
                     <select class="form-control select2 select2-hidden-accessible" id="admin_role" name="admin_role" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                     <option value="">Select Role</option>
                     <option value="guidance">Guidance counselor</option>
-                    <option value="admin">Admin</option>
+                    <!-- <option value="admin">Admin</option> -->
                     </select>
                     <div class="input-group-append">
                     

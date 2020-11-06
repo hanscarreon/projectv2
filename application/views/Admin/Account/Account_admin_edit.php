@@ -5,7 +5,7 @@
 	            <div class="p-3 py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Profile Info</h6>
                 <div class="text-center">
-                  <img class="profile-admin-img img-fluid img-circle" src="<?php echo base_url().$info[0]['admin_pic'] ?>" alt="no profile picture available">
+                  <img class="profile-admin-img img-fluid img-circle" height="auto" width="30%" src="<?php echo !empty($info[0]['admin_pic']) ? base_url().$info[0]['admin_pic'] :  base_url('resources/img/stud.png') ?>" alt="no profile picture available">
                 </div>
 		             
 	            </div>
@@ -74,7 +74,7 @@
                             <select class="form-control select2 select2-hidden-accessible" id="admin_role" name="admin_role" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                             <option value="">Select Role</option>
                             <option value="guidance" <?php echo $info[0]['admin_role'] == 'guidance' ? 'selected': ''  ?>>Guidance counselor</option>
-                            <option value="admin" <?php echo $info[0]['admin_role'] == 'admin' ? 'selected': ''  ?> >Admin</option>
+                            <!-- <option value="admin" <?php echo $info[0]['admin_role'] == 'admin' ? 'selected': ''  ?> >Admin</option> -->
                             </select>
                             <div class="input-group-append">
                             
@@ -105,13 +105,12 @@
                         <div class="err col-sm-10">
                         <div class="input-group mb-3">
                             <select class="form-control select2 select2-hidden-accessible"  id="admin_status" name="admin_status" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                            <option value="">Select Role</option>
+                            <option value="">Select </option>
                             <option value="published" <?php echo $info[0]['admin_status'] == 'published' ? 'selected': ''  ?>>Active</option>
                             <option value="draft" <?php echo $info[0]['admin_status'] == 'draft' ? 'selected': ''  ?> >Draft</option>
                             <option value="deleted" <?php echo $info[0]['admin_status'] == 'deleted' ? 'selected': ''  ?> >Deactivate</option>
                             </select>
                             <div class="input-group-append">
-                            
                             </div>
                         </div>
                         </div>

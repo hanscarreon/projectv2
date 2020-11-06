@@ -155,13 +155,12 @@ class Account extends CI_Controller {
         	else{
         		$data = $this->input->post();
 				unset($data['update_admin']);
+				$data['admin_update'] = $this->getDatetimeNow();
 				$col = 'admin_id';
 				$tbname = 'admin';
 				$this->model_base->update_data($id,$col,$data,$tbname);
 				
-
-
-				$this->session->set_flashdata('msg_success', 'Successfully created!');
+				$this->session->set_flashdata('msg_success', 'Successfully Edited!');
 				$this->db->flush_cache();
 				redirect('admin/account/view-admin/'.$id ,'refresh');
        		 }
@@ -189,10 +188,72 @@ class Account extends CI_Controller {
 		$table_name = 'admin';
 		$body['ad'] = $this->model_base->get_one($id,$col,$table_name);
 		$this->db->flush_cache();
+
+
+		$col = "user_id";
+		$table_name = 'users';
+		$body['info'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
 		
-		$this->load->view("template/site_admin_header",$header);
-		$this->load->view('admin/account/view',$body);
-		$this->load->view("template/site_admin_footer",$footer);
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_student_view',$body);
+		$this->load->view("Admin/Footer_admin",$footer);
+
+	}
+
+	public function edit_student($id){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$admin_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$footer = [];
+
+		$col = "admin_id";
+		$table_name = 'admin';
+		$body['ad'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+
+
+		$col = "user_id";
+		$table_name = 'users';
+		$body['info'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+
+		$this->form_validation->set_rules('user_fname', 'Full Name', 'required|trim');
+		$this->form_validation->set_rules('user_address', 'Address', 'required|trim');
+		$this->form_validation->set_rules('user_division', 'Division', 'required|trim');
+		$this->form_validation->set_rules('user_degree', 'Degree / strand', 'required|trim');
+		$this->form_validation->set_rules('user_gender', 'Gender', 'required|trim');
+		$this->form_validation->set_rules('user_contact', 'Contact', 'required|trim');
+		$this->form_validation->set_rules('user_status', 'Status', 'required|trim');
+
+		if($this->input->post()){
+			$data = $this->input->post();
+			if ($this->form_validation->run() == FALSE){
+				$body['msg_error'] = validation_errors();
+		   }
+		   else{
+			   unset($data['save_student']);
+			   $data['user_update'] = $this->getDatetimeNow();
+			   $col = 'user_id';
+			   $tbname = 'users';
+			   $this->model_base->update_data($id,$col,$data,$tbname);
+			   
+			   $this->session->set_flashdata('msg_success', 'Successfully Edited!');
+
+			   $this->db->flush_cache();
+			   redirect('admin/account/view-student/'.$id ,'refresh');
+			   }
+		}
+		
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_student_edit',$body);
+		$this->load->view("Admin/Footer_admin",$footer);
 
 	}
 

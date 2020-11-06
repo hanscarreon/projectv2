@@ -85,12 +85,12 @@
         <div class="input-group mb-3">
             <select class="form-control select2 select2-hidden-accessible" name="user_pos" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" disabled>
             <option value="">Select Curriculum Level</option>
-            <option value="GRADUATE"<?php echo $profile[0]['user_division'] == 'graduate' ? 'selected':'' ?> >GRADUATE</option>
-            <option value="LAW"<?php echo $profile[0]['user_division'] == 'law school' ? 'selected':'' ?>>LAW  SCHOOL</option>
-            <option value="COLLEGE" <?php echo $profile[0]['user_division'] == 'college' ? 'selected':'' ?>>COLLEGE</option>
-            <option value="SENIOR HIGHSCHOOL" <?php echo $profile[0]['user_division'] == 'senior highschool' ? 'selected':'' ?>>SENIOR  HIGHSCHOOL</option>
-            <option value="JUNIOR HIGHSCHOOL" <?php echo $profile[0]['user_division'] == 'junior highschool' ? 'selected':'' ?> >JUNIOR  HIGHSCHOOL</option>
-            <option value="ELEMENTARY SCHOOL">ELEMENTARY SCHOOL</option>
+            <option value="graduate"<?php echo $profile[0]['user_division'] == 'graduate' ? 'selected':'' ?> >GRADUATE</option>
+            <option value="law school"<?php echo $profile[0]['user_division'] == 'law school' ? 'selected':'' ?>>LAW  SCHOOL</option>
+            <option value="collage" <?php echo $profile[0]['user_division'] == 'college' ? 'selected':'' ?>>COLLEGE</option>
+            <option value="senior highschool" <?php echo $profile[0]['user_division'] == 'senior highschool' ? 'selected':'' ?>>SENIOR  HIGHSCHOOL</option>
+            <option value="junior highschool" <?php echo $profile[0]['user_division'] == 'junior highschool' ? 'selected':'' ?> >JUNIOR  HIGHSCHOOL</option>
+            <option value="elementary school" <?php echo $profile[0]['user_division'] == 'elementary school' ? 'selected':'' ?> >ELEMENTARY SCHOOL</option>
             </select>
             </div>
         </div>
