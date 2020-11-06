@@ -1,6 +1,6 @@
 
-<!-- <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet"> -->
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
     
     <!-- Page Heading -->
@@ -9,85 +9,6 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-primary shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-calendar fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-success shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-info shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-          <div class="row no-gutters align-items-center">
-            <div class="col-auto">
-              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-            </div>
-            <div class="col">
-              <div class="progress progress-sm mr-2">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pending Requests Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-warning shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-comments fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <!-- /. card header -->
 
@@ -143,43 +64,64 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="filter_from">From</label>
-                  <input type="date" class="form-control" id="filter_from" name="filter_from" placeholder="" value="">
+                  <input type="date" class="form-control" id="filter_from" name="filter_from" placeholder="" value="<?php echo $this->uri->segment(4) ?>">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="filter_to">To</label>
-                  <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
+                  <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="<?php echo $this->uri->segment(5) ?>">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-4 col-12">
                   <label for="filter_case">Case </label>
-                  <select class="form-control select2 select2-hidden-accessible" id="filter_case" name="user_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                  <select class="form-control select2 select2-hidden-accessible" id="filter_case" name="filter_case" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                     <option value="">all</option>
-                    <option value="closed">Closed</option>
-                    <option value="recommended">Recommended</option>
-                    <option value="plan">Follow-up</option>
+                    <option value="closed" <?php echo $this->uri->segment(6) == 'closed'? 'selected': '' ?>  >Closed</option>
+                    <option value="recommended"  <?php echo $this->uri->segment(6) == 'recommended'? 'selected': '' ?>  >Recommended</option>
+                    <option value="plan"  <?php echo $this->uri->segment(6) == 'plan'? 'selected': '' ?> >Follow-up</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label for="filter_gender">Gender </label>
                     <select class="form-control select2 select2-hidden-accessible" id="filter_gender" name="filter_gender" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                       <option value="">all</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="lgbtq">LGBTQ</option>
+                      <option value="male" <?php echo $this->uri->segment(7) =='male' ? 'selected':'' ?> >Male</option>
+                      <option value="female" <?php echo $this->uri->segment(7) =='female' ? 'selected':'' ?> >Female</option>
+                      <option value="lgbtq" <?php echo $this->uri->segment(7) =='lgbtq' ? 'selected':'' ?> >LGBTQ</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label for="filter_division">Division </label>
                   <select class="form-control select2 select2-hidden-accessible" id="filter_division" name="filter_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         <option value="">Select Curriculum Level</option>
-                        <option value="elementary school">Elementary Highschool</option>
-                        <option value="junior highschool">Junior Highschool</option>
-                        <option value="senior highschool">Senior Highschool</option>
-                        <option value="college">College</option>
-                        <option value="law school">Law School</option>
-                        <option value="graduate">Graduate</option>
+                        <option value="elementary school" <?php echo str_replace("-", " ", $this->uri->segment(8)) == 'elementary school' ? 'selected' :'' ?> >Elementary Highschool</option>
+                        <option value="junior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8)) =='junior school' ? 'selected' :'' ?> >Junior Highschool</option>
+                        <option value="senior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8))=='senior school' ? 'selected' :'' ?> >Senior Highschool</option>
+                        <option value="college" <?php echo str_replace("-", " ", $this->uri->segment(8))=='college' ? 'selected' :'' ?> >College</option>
+                        <option value="law school" <?php echo str_replace("-", " ", $this->uri->segment(8))=='law school' ? 'selected' :'' ?>>Law School</option>
+                        <option value="graduate" <?php echo str_replace("-", " ", $this->uri->segment(8))=='graduate' ? 'selected' :'' ?> >Graduate</option>
                   </select>
+                </div>
+                <br>
+                <br>
+                <div class="form-group col-md-6">
+                  <label for="filter_student">Students</label>
+                  <select class="form-control select2 select2-hidden-accessible" id="filter_student" name="filter_student" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                        <option value="">all</option>
+                        <?php $x=1; foreach($students as $student): ?>
+                        <option value="<?php echo $student['user_id'] ?>"><?php echo $student['user_fname'] ?></option>
+                        <?php endforeach; ?>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="filter_admin">Admin</label>
+                  <select class="form-control select2 select2-hidden-accessible" id="filter_admin" name="filter_admin" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                         <option value="">all</option>
+                        <?php $x=1; foreach($guidances as $guidance): ?>
+                        <option value="<?php echo $guidance['admin_id'] ?>"><?php echo $guidance['admin_fname'] ?></option>
+                        <?php endforeach; ?>
+                  </select>
+
                 </div>
               </div>
               <div class="card-footer text-right">
@@ -235,41 +177,44 @@
             <!-- Card Body -->
             <div class="card-body ">
               <div class="table-responsive">
-              <table class="table table-striped" id="dataTable">
-                    <thead>
-	                    <tr>
-                        <th>Total Sentiment</th>
-                        <th>Total Negative</th>
-                        <th>Total Negative Percentage</th>
-                        <th>Total Positive</th>
-                        <th>Total Positive Percentage</th>
-                        <th>Total Neutral</th>
-                        <th>Total Neutral Percentage</th>
-                        <th>Case</th>
-                        <th>Division</th>
-                        <th>Gender</th>
-                        <th>From</th>
-                        <th>To</th>
-	                    </tr>
-	                  </thead>
-                    <tbody>
-                      <tr>
-                          <td><?php echo $total ?></td>
-                          <td><?php echo $totalneg ?></td>
-                          <td><?php echo $negpercentage.'%' ?></td>
-                          <td><?php echo $totalPos ?></td>
-                          <td><?php echo $pospercentage.'%' ?></td>
-                          <td><?php echo $totalMid ?></td>
-                          <td><?php echo $midpercentage.'%' ?></td>
-                          <td><?php echo $this->uri->segment(6) ?></td>
-                          <td><?php echo $this->uri->segment(7) ?></td>
-                          <td><?php echo $this->uri->segment(8) ?></td>
-                          <td><?php echo $this->uri->segment(4) ?></td>
-                          <td><?php echo $this->uri->segment(5) ?></td>
-                      <tr>
-                    </tbody>
-                </table>
-
+                    <table class="table table-striped " id="dataTable">
+                          <thead>
+                            <tr>
+                                <th>Total Sentiment</th>
+                                <th>Total Negative</th>
+                                <th>Total Negative Percentage</th>
+                                <th>Total Positive</th>
+                                <th>Total Positive Percentage</th>
+                                <th>Total Neutral</th>
+                                <th>Total Neutral Percentage</th>
+                                <th>Case</th>
+                                <th>Division</th>
+                                <th>Gender</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Student</th>
+                                <th>Guidance</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <td><?php echo $total ?></td>
+                                <td><?php echo $totalneg ?></td>
+                                <td><?php echo round($negpercentage).'%' ?></td>
+                                <td><?php echo $totalPos ?></td>
+                                <td><?php echo round($pospercentage).'%' ?></td>
+                                <td><?php echo $totalMid ?></td>
+                                <td><?php echo round($midpercentage).'%' ?></td>
+                                <td><?php echo $this->uri->segment(6) ?></td>
+                                <td><?php echo str_replace("-", " ", $this->uri->segment(8)) ?></td>
+                                <td><?php echo str_replace("-", " ", $this->uri->segment(7)) ?></td>
+                                <td><?php echo $this->uri->segment(4) ?></td>
+                                <td><?php echo $this->uri->segment(5) ?></td>
+                                <td><?php echo $studs == 'All' ? 'All' : $studs[0]['user_fname'] ?></td>
+                                <td><?php echo $adss == 'All' ? 'All'  :$adss[0]['admin_fname'] ?></td>
+                              </tr>
+                          </tbody>
+                      </table>
               </div>
                 
             </div>

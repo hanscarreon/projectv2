@@ -85,6 +85,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+    // $('#dataTable').DataTable( {
+    // 	pagingType: "full_numbers",
+    //     dom: 'Bfrtip',
+    // 	processing: true,
+    //     buttons: [
+    //         'copy', 'csv', 'excel', 'pdf', 'print',
+    //     ]
+    // } );
     $('#dataTable').DataTable( {
     	pagingType: "full_numbers",
         dom: 'Bfrtip',

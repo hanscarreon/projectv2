@@ -92,10 +92,7 @@
 <!-- /. card header -->
 
     <!-- Content Row -->
-
-
-
-
+    <div class="row">
 
     <!-- Area Chart -->
     <div class="col-xl-12 col-lg-12">

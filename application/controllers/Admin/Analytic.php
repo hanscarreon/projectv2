@@ -17,7 +17,7 @@ class Analytic extends CI_Controller {
 	}
 
 	
-	public function index($from='date1',$to='date2',$case='xall',$gender='xall',$division='xall'){
+	public function index($from='date1',$to='date2',$case='xall',$gender='xall',$division='xall',$stud='xall',$guidance='xall'){
 
 		$header = []; // header
 		$body = [];
@@ -71,7 +71,15 @@ class Analytic extends CI_Controller {
 		$this->db->where("case_created >=",  '2020-12-01-00-00-00');
 		$this->db->where("case_created <=",  '2020-12-31-00-00-00');
 		$footer['dec'] = $this->model_base->count_data('sentiment_case');
-        
+		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+
+
+		$body['students'] = $this->model_base->get_all('users');
+		
+		$this->db->where('admin_role', 'guidance');
+		$this->db->where('admin_status', 'published');
+        $body['guidances'] = $this->model_base->get_all('admin');
+
         
 		if($this->input->post()){
 			$data = $this->input->post();
@@ -91,6 +99,7 @@ class Analytic extends CI_Controller {
 
 			if(!empty($data['filter_case'])){
 				$data['filter_case'] = $this->security->xss_clean($data['filter_case']);
+				$case = $data['filter_case'];
 			}else{
 				$data['filter_case'] = 'xall';
 			}
@@ -105,41 +114,57 @@ class Analytic extends CI_Controller {
 
 			if(!empty($data['filter_division'])){
 				$data['filter_division'] = $this->security->xss_clean($data['filter_division']);
+				$data['filter_division'] = $this->_removeSpace($data['filter_division']);
 			}else{
 				$data['filter_division'] = 'xall';
 			}
 			// division
 
-				redirect('admin/analytic/index/'.$data['filter_from'].'/'.$data['filter_to'].'/'.$data['filter_case'].'/'.$data['filter_gender'].'/'.$data['filter_division'] ,'refresh');
+			if(!empty($data['filter_student'])){
+				$data['filter_student'] = $this->security->xss_clean($data['filter_student']);
+			}else{
+				$data['filter_student'] = 'xall';
+			}
+			// student
+
+			if(!empty($data['filter_admin'])){
+				$data['filter_admin'] = $this->security->xss_clean($data['filter_admin']);
+			}else{
+				$data['filter_admin'] = 'xall';
+			}
+			// student
+
+				redirect('admin/analytic/index/'.$data['filter_from'].'/'.$data['filter_to'].'/'.$data['filter_case'].'/'.$data['filter_gender'].'/'.$data['filter_division'].'/'.$data['filter_student'].'/'.$data['filter_admin'] ,'refresh');
 				$this->session->set_flashdata('msg_success', 'Filter success!');
 		}
 
-		$this->_filter_total($from,$to);
+		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$total = $this->model_base->count_data('sentiment_case as sc');
 		// total
 
-		$this->_filter_analytics($from,$to,$case,$gender,$division);
+		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'negative');
 		$totalNeg = $this->model_base->count_data('sentiment_case as sc');
-		$negpercentage = $totalNeg / $total * 100;
+		$negpercentage =  $total >= 1 ?  $totalNeg / $total * 100:0;
 		$footer['neg'] = intval($negpercentage);
 		// negative
 
-		$this->_filter_analytics($from,$to,$case,$gender,$division);
+		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'positive');
 		$totalPos = $this->model_base->count_data('sentiment_case as sc');
-		$pospercentage = $totalPos / $total * 100;
+		$pospercentage =  $total >= 1 ?  $totalPos / $total * 100 : 0 ;
 		$footer['pos'] = intval($pospercentage);
 		// pos
 
-		$this->_filter_analytics($from,$to,$case,$gender,$division);
+		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'neutral');
 		$totalMid = $this->model_base->count_data('sentiment_case as sc');
-		$midpercentage = $totalMid / $total * 100;
+		$midpercentage =  $total >= 1 ?  $totalMid / $total * 100 :0;
 		$footer['mid'] = intval($midpercentage);
 		// chart
 
 		$body['total'] = $total;
+		$body['case'] = $gender;
 		// total
 		$body['totalneg'] = $totalNeg;
 		$body['negpercentage'] = $negpercentage;
@@ -151,13 +176,50 @@ class Analytic extends CI_Controller {
 		$body['midpercentage'] = $midpercentage;
 		// mid
 
+		$col = "user_id";
+		$user_id = $stud;
+		$table_name = 'users';
+		
+		$body['studs'] = $stud !='xall' ? $this->model_base->get_one($user_id,$col,$table_name) : 'All' ;
+
+		$col = "admin_id";
+		$admin_id = $guidance;
+		$table_name = 'admin';
+		$body['adss'] = $guidance != 'xall' ? $this->model_base->get_one($admin_id,$col,$table_name) : 'All';
+
 		$this->load->view('Admin/Header_admin',$header);
 		$this->load->view('Admin/Analytic/Analytic_index',$body);
 		$this->load->view('Admin/Footer_admin');
 		$this->load->view('Admin/Analytic/chart',$footer);
 
 	}
-	public function _filter_analytics($from,$to,$case,$gender,$division){
+	public function _filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+
+		if( $from != 'date1'){
+		 	$this->db->where("sc.case_created >=",  $from);
+		}
+		if($to != 'date2'){
+			$this->db->where("sc.case_created <=",  $to);
+		}
+		if($case != 'xall'){
+			$this->db->where("sc.case_con",  $case);
+		}
+		if($gender != 'xall'){
+			$this->db->where('u.user_gender',$gender);
+		}
+		if($division != 'xall'){
+			$this->db->where("u.user_gender",  $division);
+		}
+		if($stud != 'xall'){
+			$this->db->where("u.user_id",  $stud);
+		}
+		if($guidance != 'xall'){
+			$this->db->where("a.admin_id",  $guidance);
+	   	}
+	}
+	public function _filter_total($from,$to,$case,$gender,$division){
 		$this->db->join("users as u", "sc.user_id = u.user_id");
 
 		if( $from != 'date1'){
@@ -168,25 +230,16 @@ class Analytic extends CI_Controller {
 		}
 		if($case != 'xall'){
 			$this->db->where("sc.case_con",  $case);
-		   }
+		}
 		if($gender != 'xall'){
-			$this->db->where("u.user_gender",  $gender);
-		   }
+			$this->db->where('u.user_gender',$gender);
+		}
 		if($division != 'xall'){
-			$this->db->where("u.user_gender",  $division);
+			$this->db->where("u.user_gender", $this->addDashes($division));
 	   	}
-	}
-	public function _filter_total($from,$to){
-		$this->db->join("users as u", "sc.user_id = u.user_id");
-
-		if( $from != 'date1'){
-		 	$this->db->where("sc.case_created >=",  $from);
-		}
-		if($to != 'date2'){
-			$this->db->where("sc.case_created <=",  $to);
-		}
 
 	}
+
 	public function _count_sort($pos){
 		$this->db->join("user", "sentiment_case.user_id = user.user_id");
 		$this->db->where('case_status','published');
@@ -195,7 +248,15 @@ class Analytic extends CI_Controller {
 
 
 	}
-	
+	public function _removeSpace($data){
+		$data =	str_replace(' ', '-', strtolower($data));
+		return $data;
+
+	}
+	public function addDashes($data){
+		$data = str_replace("-", " ", $data);
+		return $data;
+	}
     public function _sorting($name,$cases,$con,$pos){
 		$this->db->where('case_status','published');
 
@@ -243,9 +304,6 @@ class Analytic extends CI_Controller {
 	public function _filter_sentiment($user_id,$status,$con){
 		$this->db->join("users as u", "sc.user_id = u.user_id");
 		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
-
-		// $this->db->where('sc.admin_id',$user_id); admin wla dapat to
-		
 		if(!empty($status)){
 			$this->db->where('sc.case_status',$status);
 		}
