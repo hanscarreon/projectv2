@@ -45,7 +45,7 @@ class Account extends CI_Controller {
 
 		$this->load->view("Admin/Header_admin",$header);
 		$this->load->view('Admin/Account/Account_index',$body);
-		$this->load->view("Admin/Footer_admin",);
+		$this->load->view("Admin/Footer_admin");
 
 	}
 	public function _sort_acct($role,$pub){
