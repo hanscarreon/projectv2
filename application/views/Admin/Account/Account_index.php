@@ -162,11 +162,11 @@
                             <?php  if ( isset( $users ) && count($users) >= 1 ):?>
                                 <?php $x=1; foreach($users as $user): ?>
                                 <tr>
-                                    <td><img alt="no img available" class="img-profile rounded-circle" height="auto" width="80%" src="<?php echo base_url(). $user['user_pic'] ?>" > </td>
+                                    <td><img alt="not found or deleted" class="img-profile rounded-circle" height="auto" width="80%" src="<?php echo !empty($user['user_pic']) ? base_url(). $user['user_pic']: base_url('resources/img/stud.png') ?>" > </td>
                                     <td><?php echo $user['user_name'] ?></td>
                                     <td><?php echo $user['user_fname'] ?></td>
-                                    <td><a class="" href="tel:<?php echo $user['user_contact'] ?>">Contact:<?php echo $user['user_contact'] ?></a></td>
-                                    <td><a class="" href="mailto:<?php echo $user['user_email'] ?>"> Email:<?php echo $user['user_email'] ?> </a></td>
+                                    <td><a class="" href="tel:<?php echo $user['user_contact'] ?>"><?php echo $user['user_contact'] ?></a></td>
+                                    <td><a class="" href="mailto:<?php echo $user['user_email'] ?>"> <?php echo $user['user_email'] ?> </a></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['user_bod'])) ?></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['user_created'])) ?></td>
                                     <td><?php echo $user['user_division'] ?></td>
@@ -208,11 +208,11 @@
                             <?php  if ( isset( $users ) && count($users) >= 1 ):?>
                                 <?php $x=1; foreach($users as $user): ?>
                                     <tr>
-                                    <td><img alt="no img available" class="img-profile rounded-circle" height="auto" width="60%" src="<?php echo base_url(). $user['admin_pic'] ?>" > </td>
+                                    <td><img alt="not found or deleted" class="img-profile rounded-circle" height="auto" width="60%" src="<?php echo  !empty($user['admin_pic']) ? base_url(). $user['admin_pic'] : base_url('resources/img/stud.png') ?>" > </td>
                                     <td><?php echo $user['admin_uname'] ?></td>
                                     <td><?php echo $user['admin_fname'] ?></td>
-                                    <td><a class="" href="tel:<?php echo $user['admin_contact'] ?>">Contact:<?php echo $user['admin_contact'] ?></a></td>
-                                    <td><a class="" href="mailto:<?php echo $user['admin_email'] ?>"> Email:<?php echo $user['admin_email'] ?> </a></td>
+                                    <td><a class="" href="tel:<?php echo $user['admin_contact'] ?>"><?php echo $user['admin_contact'] ?></a></td>
+                                    <td><a class="" href="mailto:<?php echo $user['admin_email'] ?>"> <?php echo $user['admin_email'] ?> </a></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['admin_bod'])) ?></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['admin_created'])) ?></td>
                                     <td><?php echo $user['admin_expertise'] ?></td>
