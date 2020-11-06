@@ -1,6 +1,6 @@
 
-<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet"> -->
 
     
     <!-- Page Heading -->
@@ -150,66 +150,41 @@
                   <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="filter_from" class="col-sm-2 col-form-label">From</label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filter_from" name="filter_from" placeholder="" value="">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="filter_to" class="col-sm-2 col-form-label">To</label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filter_to" name="filter_to" placeholder="" value="">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="user_division" class="col-sm-2 col-form-label">Case *</label>
-                <div class="err col-sm-10">
-                <div class="input-group mb-3">
-                    <select class="form-control select2 select2-hidden-accessible" id="filter_case" name="user_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option value="all">all</option>
+              <div class="form-row">
+                <div class="form-group col-md-4 col-12">
+                  <label for="filter_case">Case </label>
+                  <select class="form-control select2 select2-hidden-accessible" id="filter_case" name="user_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                    <option value="">all</option>
                     <option value="closed">Closed</option>
                     <option value="recommended">Recommended</option>
                     <option value="plan">Follow-up</option>
-                    </select>
-                    </div>
+                  </select>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="filter_gender" class="col-sm-2 col-form-label">Gender *</label>
-                <div class="err col-sm-10">
-                <div class="input-group mb-3">
+                <div class="form-group col-md-4 col-12">
+                  <label for="filter_gender">Gender </label>
                     <select class="form-control select2 select2-hidden-accessible" id="filter_gender" name="filter_gender" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option value="all">all</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="lgbtq">LGBTQ</option>
+                      <option value="">all</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="lgbtq">LGBTQ</option>
                     </select>
-                    </div>
+                </div>
+                <div class="form-group col-md-4 col-12">
+                  <label for="filter_division">Division </label>
+                  <select class="form-control select2 select2-hidden-accessible" id="filter_division" name="filter_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                        <option value="">Select Curriculum Level</option>
+                        <option value="elementary school">Elementary Highschool</option>
+                        <option value="junior highschool">Junior Highschool</option>
+                        <option value="senior highschool">Senior Highschool</option>
+                        <option value="college">College</option>
+                        <option value="law school">Law School</option>
+                        <option value="graduate">Graduate</option>
+                  </select>
                 </div>
               </div>
-
-              <div class="form-group row">
-                  <label for="filter_division" class="col-sm-2 col-form-label">Division *</label>
-                  <div class="err col-sm-10">
-                  <div class="input-group mb-3">
-                      <select class="form-control select2 select2-hidden-accessible" id="filter_division" name="filter_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                      <option value="">Select Curriculum Level</option>
-                      <option value="elementary school">Elementary Highschool</option>
-                      <option value="junior highschool">Junior Highschool</option>
-                      <option value="senior highschool">Senior Highschool</option>
-                      <option value="college">College</option>
-                      <option value="law school">Law School</option>
-                      <option value="graduate">Graduate</option>
-                      </select>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="card-footer text-right">
-                  <button type="submit"  class="btn btn-info ">Submit</button>
-                </div>
+              <div class="card-footer text-right">
+                <button type="submit" class="btn btn-primary ">Submit</button>
+              </div>
                 <!-- /.card-footer -->
             </form>
               
@@ -260,7 +235,7 @@
             <!-- Card Body -->
             <div class="card-body ">
               <div class="table-responsive">
-              <table class="table table-striped  " id="dataTable">
+              <table class="table table-striped" id="dataTable">
                     <thead>
 	                    <tr>
                         <th>Total Sentiment</th>
@@ -278,28 +253,20 @@
 	                    </tr>
 	                  </thead>
                     <tbody>
-                    <?php  if ( isset( $analytics ) && count($analytics) >= 1 ):?>
-                     
-                      <?php $x=1; foreach($analytics as $analytic): ?>
-                        <tr>
-                          <!-- <th scope="row"></th> -->
-                          <td><?php echo $analytics['user_fname'] ?></td>
-                          <td><?php echo date("F j, Y, g:i a",strtotime($analytics['case_created'])) ?></td>
-                          <td><?php echo $analytics['case_neg_percent'] ?></td>
-                          <td><?php echo $analytics['case_neg'] ?></td>
-                          <td><?php echo $analytics['case_pos_percent'] ?></td>
-                          <td><?php echo $analytics['case_pos'] ?></td>
-                          <td><?php echo $analytics['case_mid_percent'] ?></td>
-                          <td><?php echo $analytics['case_mid'] ?></td>
-                          <td><?php echo $analytics['case_result'] ?></td>
-                        <?php endforeach; ?>
-                        <?php else: ?>
                       <tr>
-                        <!-- <th scope="row"></th> -->
-                        <td colspan="9" class="text-center">No data</td>
-                      </tr>
-	                  <?php endif;?>
-
+                          <td><?php echo $total ?></td>
+                          <td><?php echo $totalneg ?></td>
+                          <td><?php echo $negpercentage.'%' ?></td>
+                          <td><?php echo $totalPos ?></td>
+                          <td><?php echo $pospercentage.'%' ?></td>
+                          <td><?php echo $totalMid ?></td>
+                          <td><?php echo $midpercentage.'%' ?></td>
+                          <td><?php echo $this->uri->segment(6) ?></td>
+                          <td><?php echo $this->uri->segment(7) ?></td>
+                          <td><?php echo $this->uri->segment(8) ?></td>
+                          <td><?php echo $this->uri->segment(4) ?></td>
+                          <td><?php echo $this->uri->segment(5) ?></td>
+                      <tr>
                     </tbody>
                 </table>
 

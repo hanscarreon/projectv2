@@ -8,7 +8,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Negative", "Positive", "Neutral"],
+    labels: ["Negative %", "Positive %", "Neutral %"],
     datasets: [{
       data: [<?php echo $neg ?>, <?php echo $pos ?>, <?php echo $mid ?>],
       backgroundColor: ['#ff0000', '#26ff00', '#4e73df'],

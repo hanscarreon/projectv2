@@ -125,7 +125,7 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/analytic/index/date1/date2') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/analytic/index/date1/date2/xall/xall/xall') ?>">
           <i class="fas fa-chart-bar"></i>
           <span>Analytics</span></a>
       </li>

@@ -182,14 +182,12 @@
                     </div>
                   </div>
                 <!-- /. curiculum  -->
-
                 <div class="card-footer text-right">
                 <button type="submit"  class="btn btn-info ">Submit</button>
                 </div>
                 <!-- /.card-footer -->
             </form>
             <!-- /. form -->
-
         </div>
         <!-- /.card-body -->
 

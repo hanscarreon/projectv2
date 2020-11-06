@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('Admin/Header_admin',$header);
 		$this->load->view('Admin/Dashboard/Dashboard_index',$body);
 		$this->load->view('Admin/Footer_admin');
-		$this->load->view('Admin/Dashboard/chart',$footer);
+		// $this->load->view('Admin/Dashboard/chart',$footer);
 
 	}
 	public function _count_sort($pos){
