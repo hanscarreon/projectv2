@@ -109,7 +109,7 @@
                   <select class="form-control select2 select2-hidden-accessible" id="filter_student" name="filter_student" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         <option value="">all</option>
                         <?php $x=1; foreach($students as $student): ?>
-                        <option value="<?php echo $student['user_id'] ?>"><?php echo $student['user_fname'] ?></option>
+                        <option value="<?php echo $student['user_id'] ?>" <?php echo intval($this->uri->segment(9)) == $student['user_id'] ? 'selected' : '' ?> ><?php echo $student['user_fname'] ?></option>
                         <?php endforeach; ?>
                   </select>
                 </div>
@@ -118,9 +118,10 @@
                   <select class="form-control select2 select2-hidden-accessible" id="filter_admin" name="filter_admin" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                          <option value="">all</option>
                         <?php $x=1; foreach($guidances as $guidance): ?>
-                        <option value="<?php echo $guidance['admin_id'] ?>"><?php echo $guidance['admin_fname'] ?></option>
+                        <option value="<?php echo $guidance['admin_id'] ?>" <?php echo intval($this->uri->segment(10)) == $guidance['admin_id'] ? 'selected' : '' ?> ><?php echo $guidance['admin_fname'] ?></option>
                         <?php endforeach; ?>
                   </select>
+                  
 
                 </div>
               </div>
@@ -177,6 +178,7 @@
             <!-- Card Body -->
             <div class="card-body ">
               <div class="table-responsive">
+              <?php echo $this->uri->segment(9) ?>
                     <table class="table table-striped " id="dataTable">
                           <thead>
                             <tr>
