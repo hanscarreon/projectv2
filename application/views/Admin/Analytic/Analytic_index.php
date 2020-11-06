@@ -93,7 +93,7 @@
                 <div class="form-group col-md-4 col-12">
                   <label for="filter_division">Division </label>
                   <select class="form-control select2 select2-hidden-accessible" id="filter_division" name="filter_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                        <option value="">Select Curriculum Level</option>
+                        <option value="">All</option>
                         <option value="elementary school" <?php echo str_replace("-", " ", $this->uri->segment(8)) == 'elementary school' ? 'selected' :'' ?> >Elementary Highschool</option>
                         <option value="junior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8)) =='junior school' ? 'selected' :'' ?> >Junior Highschool</option>
                         <option value="senior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8))=='senior school' ? 'selected' :'' ?> >Senior Highschool</option>
