@@ -105,6 +105,16 @@ class Meeting extends CI_Controller {
 				 $this->model_base->update_data($id,$col,$data_update,$tbname);
 				// update case con
 
+				$col = "user_id";
+				$table_name = 'users';
+				$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+				$this->load->library('email');
+				$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+				$this->email->to($userInfo[0]['user_email']);
+				$this->email->subject('Consultation Date !' );
+				$this->email->message("This is your meeting date ".date("F j, Y, g:i a",strtotime($data['meet_date'])));	
+				$this->email->send();
+
 				$this->session->set_flashdata('msg_success', 'Meeting set!');
 
 				redirect('guidance/meeting','refresh'); 
@@ -160,7 +170,23 @@ class Meeting extends CI_Controller {
 									);
 				$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
 				$this->session->set_flashdata('msg_success', 'Link sent!');
+
+
+
+				// email function
+				$col = "user_id";
+				$table_name = 'users';
+				$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+				$this->load->library('email');
+				$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+				$this->email->to($userInfo[0]['user_email']);
+				$this->email->subject('Meeting Link!' );
+				$this->email->message("Here is your Link ".$this->input->post('meet_link'));	
+				$this->email->send();
+
+
 				redirect('guidance/meeting/ongoing/'.$case_id.'/'.$user_id.'/'.$meet_id,'refresh');
+
 			}
 		}
 
@@ -199,6 +225,16 @@ class Meeting extends CI_Controller {
 						$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
 						// meeting
 
+						$col = "user_id";
+						$table_name = 'users';
+						$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+						$this->load->library('email');
+						$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+						$this->email->to($userInfo[0]['user_email']);
+						$this->email->subject('Consultation Result !' );
+						$this->email->message($dataPost['meet_note']);	
+						$this->email->send();
+
 						redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
 						$this->session->set_flashdata('msg_success', 'Meeting Done');
 					}
@@ -221,10 +257,20 @@ class Meeting extends CI_Controller {
 													'meet_note'=> $dataPost['meet_note']
 													);
 								$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
+								// email function
+								$col = "user_id";
+								$table_name = 'users';
+								$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+								$this->load->library('email');
+								$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+								$this->email->to($userInfo[0]['user_email']);
+								$this->email->subject('Consultation Result !' );
+								$this->email->message($dataPost['meet_note']);	
+								$this->email->send();
 								// meeting
 								$this->session->set_flashdata('msg_success', 'Meeting Done');
 								redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
-								$this->session->set_flashdata('msg_success', 'Meeting Done');
+								
 							}else{
 								$this->session->set_flashdata('msg_error', 'Choose where to recommend');
 							}
@@ -244,6 +290,17 @@ class Meeting extends CI_Controller {
 											);
 						$this->model_base->update_data($meet_id,$col,$data_update,$tbname);
 						// meeting
+
+						// email function
+						$col = "user_id";
+						$table_name = 'users';
+						$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+						$this->load->library('email');
+						$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+						$this->email->to($userInfo[0]['user_email']);
+						$this->email->subject('Consultation Result !' );
+						$this->email->message($dataPost['meet_note']);	
+						$this->email->send();
 
 						$this->session->set_flashdata('msg_success', 'Meeting Done');
 						redirect('guidance/cases/view/'.$case_id.'/'.$meet_id,'refresh');
@@ -287,6 +344,19 @@ class Meeting extends CI_Controller {
 					$this->model_base->update_data($meet_id,$col,$upload_data,$table);
 					$this->db->flush_cache();
 					$this->session->set_flashdata('msg_success', 'File uploaded');
+					
+					// email function
+					$col = "user_id";
+					$table_name = 'users';
+					$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+					$this->load->library('email');
+					$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+					$this->email->to($userInfo[0]['user_email']);
+					$this->email->subject('Intervention plan file !' );
+					$this->email->message("Here is your File ".base_url().$upload_data['meet_file']);	
+					$this->email->send();
+
+
 					redirect('guidance/meeting/ongoing/'.$case_id.'/'.$user_id.'/'.$meet_id,'refresh');
 				}
 			

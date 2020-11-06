@@ -121,8 +121,6 @@
                         <option value="<?php echo $guidance['admin_id'] ?>" <?php echo intval($this->uri->segment(10)) == $guidance['admin_id'] ? 'selected' : '' ?> ><?php echo $guidance['admin_fname'] ?></option>
                         <?php endforeach; ?>
                   </select>
-                  
-
                 </div>
               </div>
               <div class="card-footer text-right">
@@ -178,7 +176,6 @@
             <!-- Card Body -->
             <div class="card-body ">
               <div class="table-responsive">
-              <?php echo $this->uri->segment(9) ?>
                     <table class="table table-striped " id="dataTable">
                           <thead>
                             <tr>
