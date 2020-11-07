@@ -58,8 +58,14 @@ class Login extends CI_Controller {
 
 	}
 	public function logout() {
-       $this->session->sess_destroy();
-       redirect('login', 'refresh'); 
+		if($this->session->userdata('admin_role') == 'admin' || $this->session->userdata('admin_role') == 'guidance'){
+			$this->session->sess_destroy();
+			redirect('admin', 'refresh'); 
+		}else{
+			$this->session->sess_destroy();
+    	   redirect('login', 'refresh'); 
+		}
+       
    }
    
    public function register(){

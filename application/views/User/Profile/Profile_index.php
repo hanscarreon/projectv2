@@ -7,15 +7,15 @@
                 <div class="col-sm-2 col-0">
                 </div>
                 <div class="col-sm-10 col-12">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button  type="submit" value="upload_file" name="upload_file" class="input-group-text">Upload</button>
-                    </div>
-                    <div class="custom-file">
-                        <input type="number" value="<?php echo $profile[0]['user_id'] ?>" hidden name="user_id" id="user_id">
-                        <input type="file" class="custom-file-input" id="user_pic" name="user_pic" >
-                        <label class="custom-file-label" style="text-align: initial;" for="user_pic">Choose file</label>
-                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button  type="submit" value="upload_file" name="upload_file" class="input-group-text">Upload</button>
+                        </div>
+                        <div class="custom-file">
+                            <input type="number" value="<?php echo $profile[0]['user_id'] ?>" hidden name="user_id" id="user_id">
+                            <input type="file" class="custom-file-input" id="user_pic" name="user_pic" >
+                            <label class="custom-file-label" style="text-align: initial;" for="user_pic">Choose file</label>
+                        </div>
                     </div>
                     <!-- <div class="input-group">
                         <div class="custom-file">
