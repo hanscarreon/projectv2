@@ -40,6 +40,13 @@ class Login extends CI_Controller {
 						if($account[0]['user_role'] == 'admin'){
 							redirect('admin/dashboard/index/name/study/con/col/','refresh');
 						}else{
+							// email function
+							$this->load->library('email');
+							$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+							$this->email->to($account[0]['user_email']);
+							$this->email->subject('Login Log!' );
+							$this->email->message("Hi Mr/Ms ".$account[0]['user_fname']. " you successfully login by:". $this->getDatetimeNow());	
+							$this->email->send();
 							redirect('user/dashboard/index/ongoing','refresh');
 						}	
 					}else{
@@ -86,6 +93,15 @@ class Login extends CI_Controller {
 					$this->model_base->insert_data($data,$table);
 					$this->session->set_flashdata('msg_success', 'Successfully registered!');
 					// unset($data);
+
+					// email function
+					
+					$this->load->library('email');
+					$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+					$this->email->to($data['user_email']);
+					$this->email->subject('Registration Complete!' );
+					$this->email->message("Hi Mr/Ms".$data['user_fname']. " Thank you for your registration in GMSUSA WEB APP \n if you have any concern messages us at gmsusa@tindahans.com");	
+					$this->email->send();
 					redirect('login', 'refresh'); 
 				}
 			}
@@ -203,7 +219,13 @@ class Login extends CI_Controller {
 							redirect('admin/dashboard/index/ongoing/published','refresh');
 						}else{
 							redirect('guidance/dashboard/index/ongoing','refresh');
-						}	
+						}
+						$this->load->library('email');
+						$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+						$this->email->to($account[0]['admin_email']);
+						$this->email->subject('Login Log!' );
+						$this->email->message("Hi Mr/Ms ".$account[0]['admin_fname']. " you successfully login by:". $this->getDatetimeNow());	
+						$this->email->send();	
 					}else{
 	    				$body['msg_error'] = 'Invalid Account';
 					}

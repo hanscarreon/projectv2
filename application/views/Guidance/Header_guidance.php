@@ -32,7 +32,7 @@
     text-transform: capitalize;
   }
   .anim{
-    transition-duration: 1s;
+    transition-duration: 0.5s;
     transition-delay: 0s;
   }
 </style>
