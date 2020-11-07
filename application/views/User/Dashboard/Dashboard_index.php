@@ -2,7 +2,17 @@
 <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
-    
+<style>
+.right-btn{
+  text-align: right;
+}
+
+@media only screen and (max-width:600px){
+  .right-btn{
+    text-align: left;
+  }
+}
+    </style>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -12,33 +22,39 @@
     <!-- Content Row -->
     <div class="row">
     <!-- Area Chart -->
+
+      <div class="col-md-6 col-sm-12 col-12">
+        <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split m-2">
+            <span class="icon text-white-50">
+                <i class="far fa-plus-square"></i>
+            </span>
+            <span class="text">Sentiment</span>
+        </a>
+      </div>
+      <div class="col-md-6 col-sm-12 col-12 right-btn">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
+              : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
+              : ( $this->uri->segment("4")=='recommended'  ? 'Recomeended to' 
+              : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/ongoing') ?>">Pending</a>
+            <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/meeting') ?>">Accepted</a>
+            <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/closed') ?>">closed</a>
+            <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/recommended') ?>">recommended</a>
+            <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/plan') ?>">Follow up</a>
+          </div>
+        </div>
+      </div>
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
           
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
-                     : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
-                     : ( $this->uri->segment("4")=='recommended'  ? 'Recomeended to' 
-                     : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/ongoing') ?>">Pending</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/meeting') ?>">Accepted</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/closed') ?>">closed</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/recommended') ?>">recommended</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/dashboard/index/plan') ?>">Follow up</a>
-                  </div>
-                </div>
-                <a href="<?php  echo base_url('user/sentiment/create') ?>" class="btn  btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="far fa-plus-square"></i>
-                    </span>
-                    <span class="text">Sentiment</span>
-                </a>
-              
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between m-2">
+                <h6>Sentiment Table</h6>
+             
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -54,6 +70,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body  ">
+             
                <div class="table-responsive">
                <table style="width: 100%;" class="table table-striped  text-center " id="dashboardTable">
                <!-- <?php echo print_r($sentiments) ?> -->

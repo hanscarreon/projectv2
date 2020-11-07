@@ -1,22 +1,31 @@
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
     <div class="text-center">
-        <img class="profile-user-img img-fluid img-circle " height="auto" width="20%" src="<?php echo !empty($profile[0]['user_pic']) ? base_url().$profile[0]['user_pic']: base_url('resources/img/stud.png') ?>" alt="no profile picture available">
+        <img class="profile-user-img img-fluid img-circle m-3" height="auto" width="20%" src="<?php echo !empty($profile[0]['user_pic']) ? base_url().$profile[0]['user_pic']: base_url('resources/img/stud.png') ?>" alt="no profile picture available">
         <form method="post" class="mb-5" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-sm-2 col-0">
                 </div>
                 <div class="col-sm-10 col-12">
-                    <div class="input-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button  type="submit" value="upload_file" name="upload_file" class="input-group-text">Upload</button>
+                    </div>
+                    <div class="custom-file">
+                        <input type="number" value="<?php echo $profile[0]['user_id'] ?>" hidden name="user_id" id="user_id">
+                        <input type="file" class="custom-file-input" id="user_pic" name="user_pic" >
+                        <label class="custom-file-label" style="text-align: initial;" for="user_pic">Choose file</label>
+                    </div>
+                    </div>
+                    <!-- <div class="input-group">
                         <div class="custom-file">
-                            <input type="number" value="<?php echo $profile[0]['user_id'] ?>" name="user_id" id="user_id">
                             <input type="file" class="custom-file-input" id="user_pic" name="user_pic" >
                             <label class="custom-file-label" for="">Choose file</label>
                         </div>
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="submit" value="upload_file" name="upload_file" id="">upload</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </form>
