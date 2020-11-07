@@ -33,12 +33,16 @@
   h1,h2,h3,h4,h5,button,a,option{
     text-transform: capitalize;
   }
+  .anim{
+    transition-duration: 1s;
+    transition-delay: 0s;
+  }
 </style>
   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-color-dark-blue side-admin sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    <ul class="navbar-nav bg-color-dark-blue side-admin sidebar sidebar-dark accordion toggled anim" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard/index/ongoing/published') ?>">
