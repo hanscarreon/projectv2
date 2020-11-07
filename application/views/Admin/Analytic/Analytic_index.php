@@ -94,9 +94,9 @@
                   <label for="filter_division">Division </label>
                   <select class="form-control select2 select2-hidden-accessible" id="filter_division" name="filter_division" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         <option value="">All</option>
-                        <option value="elementary school" <?php echo str_replace("-", " ", $this->uri->segment(8)) == 'elementary school' ? 'selected' :'' ?> >Elementary Highschool</option>
-                        <option value="junior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8)) =='junior school' ? 'selected' :'' ?> >Junior Highschool</option>
-                        <option value="senior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8))=='senior school' ? 'selected' :'' ?> >Senior Highschool</option>
+                        <option value="elementary school" <?php echo str_replace("-", " ", $this->uri->segment(8)) == 'elementary school' ? 'selected' :'' ?> >Elementary School</option>
+                        <option value="junior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8)) =='junior highschool' ? 'selected' :'' ?> >Junior Highschool</option>
+                        <option value="senior highschool" <?php echo str_replace("-", " ", $this->uri->segment(8))=='senior highschool' ? 'selected' :'' ?> >Senior Highschool</option>
                         <option value="college" <?php echo str_replace("-", " ", $this->uri->segment(8))=='college' ? 'selected' :'' ?> >College</option>
                         <option value="law school" <?php echo str_replace("-", " ", $this->uri->segment(8))=='law school' ? 'selected' :'' ?>>Law School</option>
                         <option value="graduate" <?php echo str_replace("-", " ", $this->uri->segment(8))=='graduate' ? 'selected' :'' ?> >Graduate</option>

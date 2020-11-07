@@ -36,8 +36,8 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body ">
-                <table class="table table-striped table-responsive " id="dataTable">
+            <div class="card-body table-responsive ">
+                <table class="table table-striped " id="dataTable">
                     <thead>
 	                    <tr>
                         <!-- <th>Case-ID No.</th> -->
