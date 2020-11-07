@@ -11,24 +11,27 @@
     <!-- Content Row -->
     <div class="row">
     <!-- Area Chart -->
+    <div class="col-md-6 col-sm-12 col-12">
+      <div class="dropdown mb-2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
+            : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
+            : ( $this->uri->segment("4")=='recommended'  ? 'Recomeended to' 
+            : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/ongoing') ?>">Pending</a>
+          <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/plan') ?>">Intervention plan</a>
+        </div>
+      </div>
+    </div>
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
           
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Pending Consultation</h6>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo   $this->uri->segment("4")=='meeting' ? 'Accepted'
-                     : ( $this->uri->segment("4")=='closed' ? 'Closed Case' 
-                     : ( $this->uri->segment("4")=='recommended'  ? 'Recomeended to' 
-                     : ( $this->uri->segment("4")=='plan'? 'Intervention Plan': 'Pending')))  ?>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/ongoing') ?>">Pending</a>
-                    <a class="dropdown-item" href="<?php echo base_url('guidance/dashboard/index/plan') ?>">Intervention plan</a>
-                  </div>
-                </div>
+                
                 
                 <!-- <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,8 +47,8 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body ">
-                <table class="table table-striped table-responsive " id="dashboardTable">
+            <div class="card-body table-responsive">
+                <table class="table table-striped  " id="dashboardTable">
                     <thead>
 	                    <tr>
                         <!--EDIT ARRANGE THE TABLE-->
