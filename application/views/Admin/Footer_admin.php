@@ -102,6 +102,18 @@
         ]
     } );
 
+    $('#analytics').DataTable( {
+    	pagingType: "full_numbers",
+        dom: 'Bfrtip',
+    	processing: true,
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print',
+        ],
+      order: [[ 3, "desc" ]],
+      pageLength: 50
+
+    } );
+
     $('#dashboardTable').DataTable( {
     	pagingType: "full_numbers",
         dom: 'Bfrtip',

@@ -145,21 +145,21 @@ class Analytic extends CI_Controller {
 		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'negative');
 		$totalNeg = $this->model_base->count_data('sentiment_case as sc');
-		$negpercentage =  $total >= 1 ?  $totalNeg / $total * 100:0;
+		$negpercentage =  $total >= 1 && $totalNeg >= 1  ?  $totalNeg / $total * 100:0;
 		$footer['neg'] = intval($negpercentage);
 		// negative
 
 		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'positive');
 		$totalPos = $this->model_base->count_data('sentiment_case as sc');
-		$pospercentage =  $total >= 1 ?  $totalPos / $total * 100 : 0 ;
+		$pospercentage =  $total >= 1 && $totalPos >= 1 ?  $totalPos / $total * 100 : 0 ;
 		$footer['pos'] = intval($pospercentage);
 		// pos
 
 		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'neutral');
 		$totalMid = $this->model_base->count_data('sentiment_case as sc');
-		$midpercentage =  $total >= 1 ?  $totalMid / $total * 100 :0;
+		$midpercentage =  $total >= 1 && $totalMid >= 1 ?  $totalMid / $total * 100 :0;
 		$footer['mid'] = intval($midpercentage);
 		// chart
 
@@ -176,6 +176,132 @@ class Analytic extends CI_Controller {
 		$body['midpercentage'] = $midpercentage;
 		// mid
 
+
+		$this->_filter_gender($from,$to,$guidance,'male');
+		$totalMale = $this->model_base->count_data('sentiment_case as sc');
+		$MalePercentage =  $total >= 1 && $totalMale >= 1 ?  $totalMale / $total * 100 : 0 ;
+		$body['totalMale'] = $totalMale;
+		$body['MalePercentage'] = $MalePercentage;
+		// male
+
+		$this->_filter_gender($from,$to,$guidance,'female');
+		$totalFemale = $this->model_base->count_data('sentiment_case as sc');
+		$FemalePercentage =  $total >= 1 && $totalFemale >= 1 ?  $totalFemale / $total * 100 : 0 ;
+		$body['totalFemale'] = $totalFemale;
+		$body['FemalePercentage'] = $FemalePercentage;
+		// female
+
+		$this->_filter_gender($from,$to,$guidance,'lgbtq');
+		$totallgbtq = $this->model_base->count_data('sentiment_case as sc');
+		$lgbtqPercentage =  $total >= 1 && $totallgbtq >= 1 ?  $totallgbtq / $total * 100 : 0 ;
+		$body['totallgbtq'] = $totallgbtq;
+		$body['lgbtqPercentage'] = $lgbtqPercentage;
+		// lgbtq
+
+
+		$this->_filter_case($from,$to,$guidance,'closed');
+		$totalClosed = $this->model_base->count_data('sentiment_case as sc');
+		$Closedercentage =  $total >= 1 && $totalClosed >= 1 ?  $totalClosed / $total * 100 : 0 ;
+		$body['totalClosed'] = $totalClosed;
+		$body['Closedercentage'] = $Closedercentage;
+		// closed
+
+		$this->_filter_case($from,$to,$guidance,'recommended');
+		$totalRecommended = $this->model_base->count_data('sentiment_case as sc');
+		$RecommendedPercentage =  $total >= 1 && $totalRecommended >= 1 ?  $totalRecommended / $total * 100 : 0 ;
+		$body['totalRecommended'] = $totalRecommended;
+		$body['RecommendedPercentage'] = $RecommendedPercentage;
+		// recommended
+
+		$this->_filter_case($from,$to,$guidance,'plan');
+		$totalPlan = $this->model_base->count_data('sentiment_case as sc');
+		$PlanPercentage =  $total >= 1 && $totalPlan >= 1 ?  $totalPlan / $total * 100 : 0 ;
+		$body['totalPlan'] = $totalPlan;
+		$body['PlanPercentage'] = $PlanPercentage;
+		// plan
+
+
+		$this->_filter_reasons($from,$to,$guidance,'academic');
+		$totalAcademic = $this->model_base->count_data('sentiment_case as sc');
+		$academicPercentage =  $total >= 1 && $totalAcademic >= 1 ?  $totalAcademic / $total * 100 : 0 ;
+		$body['totalAcademic'] = $totalAcademic;
+		$body['academicPercentage'] = $academicPercentage;
+		// academic
+
+		$this->_filter_reasons($from,$to,$guidance,'family');
+		$totalFamily = $this->model_base->count_data('sentiment_case as sc');
+		$familyPercentage =  $total >= 1 && $totalFamily >= 1 ?  $totalFamily / $total * 100 : 0 ;
+		$body['totalFamily'] = $totalFamily;
+		$body['familyPercentage'] = $familyPercentage;
+		// family
+
+		$this->_filter_reasons($from,$to,$guidance,'peers');
+		$totalPeers = $this->model_base->count_data('sentiment_case as sc');
+		$peerPercentage =  $total >= 1 && $totalPeers >= 1 ?  $totalPeers / $total * 100 : 0 ;
+		$body['totalPeers'] = $totalPeers;
+		$body['peerPercentage'] = $peerPercentage;
+		// peers
+
+		$this->_filter_reasons($from,$to,$guidance,'emotion');
+		$totalEmotion = $this->model_base->count_data('sentiment_case as sc');
+		$emotionPercentage =  $total >= 1 && $totalEmotion >= 1 ?  $totalEmotion / $total * 100 : 0 ;
+		$body['totalEmotion'] = $totalEmotion;
+		$body['emotionPercentage'] = $emotionPercentage;
+		// emotion
+
+		$this->_filter_reasons($from,$to,$guidance,'relationship');
+		$totalRelationship = $this->model_base->count_data('sentiment_case as sc');
+		$relationshipPercentage =  $total >= 1 && $totalRelationship >= 1 ?  $totalRelationship / $total * 100 : 0 ;
+		$body['totalRelationship'] = $totalRelationship;
+		$body['relationshipPercentage'] = $relationshipPercentage;
+		// emotion
+
+
+		$this->_filter_division($from,$to,$guidance,'elementary school');
+		$totalElem = $this->model_base->count_data('sentiment_case as sc');
+		$elemPercentage =  $total >= 1 && $totalElem >= 1 ?  $totalElem / $total * 100 : 0 ;
+		$body['totalElem'] = $totalElem;
+		$body['elemPercentage'] = $elemPercentage;
+		// elementary school
+
+		$this->_filter_division($from,$to,$guidance,'junior highschool');
+		$totalJunior = $this->model_base->count_data('sentiment_case as sc');
+		$juniorPercentage =  $total >= 1 && $totalJunior >= 1 ?  $totalJunior / $total * 100 : 0 ;
+		$body['totalJunior'] = $totalJunior;
+		$body['juniorPercentage'] = $juniorPercentage;
+		// junior highschool
+
+		$this->_filter_division($from,$to,$guidance,'senior highschool');
+		$totalSenior = $this->model_base->count_data('sentiment_case as sc');
+		$seniorPercentage =  $total >= 1 && $totalSenior >= 1 ?  $totalSenior / $total * 100 : 0 ;
+		$body['totalSenior'] = $totalSenior;
+		$body['seniorPercentage'] = $seniorPercentage;
+		// senior highschool
+		
+		$this->_filter_division($from,$to,$guidance,'college');
+		$totalCollege = $this->model_base->count_data('sentiment_case as sc');
+		$collegePercentage =  $total >= 1 && $totalCollege >= 1 ?  $totalCollege / $total * 100 : 0 ;
+		$body['totalCollege'] = $totalCollege;
+		$body['collegePercentage'] = $collegePercentage;
+		// college
+
+		$this->_filter_division($from,$to,$guidance,'law school');
+		$totalLaw = $this->model_base->count_data('sentiment_case as sc');
+		$lawPercentage =  $total >= 1 && $totalLaw >= 1 ?  $totalLaw / $total * 100 : 0 ;
+		$body['totalLaw'] = $totalLaw;
+		$body['lawPercentage'] = $lawPercentage;
+		// college
+
+		$this->_filter_division($from,$to,$guidance,'graduate');
+		$totalGraduate = $this->model_base->count_data('sentiment_case as sc');
+		$graduatePercentage =  $total >= 1 && $totalLaw >= 1 ?  $totalGraduate / $total * 100 : 0 ;
+		$body['totalGraduate'] = $totalGraduate;
+		$body['graduatePercentage'] = $graduatePercentage;
+		// college
+
+		
+
+		
 		$col = "user_id";
 		$user_id = $stud;
 		$table_name = 'users';
@@ -192,6 +318,72 @@ class Analytic extends CI_Controller {
 		$this->load->view('Admin/Footer_admin');
 		$this->load->view('Admin/Analytic/chart',$footer);
 
+	}
+	public	function _filter_division($from,$to,$guidance,$division){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+		if( $from != 'date1'){
+			$this->db->where("sc.case_created >=",  $from);
+		}
+		if($to != 'date2'){
+				$this->db->where("sc.case_created <=",  $to);
+		}
+		if($guidance != 'xall'){
+				$this->db->where("a.admin_id",  $guidance);
+		}
+		if($division != 'xall'){
+			$this->db->where("u.user_division",  $division);
+		}
+	}
+
+	public	function _filter_reasons($from,$to,$guidance,$reasons){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+		if( $from != 'date1'){
+			$this->db->where("sc.case_created >=",  $from);
+		}
+		if($to != 'date2'){
+				$this->db->where("sc.case_created <=",  $to);
+		}
+		if($guidance != 'xall'){
+				$this->db->where("a.admin_id",  $guidance);
+		}
+		if($reasons != 'xall'){
+			$this->db->like("sc.case_reason",  $reasons);
+		}
+	}
+	public function _filter_case($from,$to,$guidance,$case){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+		if( $from != 'date1'){
+			$this->db->where("sc.case_created >=",  $from);
+		}
+		if($to != 'date2'){
+				$this->db->where("sc.case_created <=",  $to);
+		}
+		if($guidance != 'xall'){
+				$this->db->where("a.admin_id",  $guidance);
+		}
+		if($case != 'xall'){
+			$this->db->where("sc.case_con",  $case);
+		}
+	  
+	}
+	public function _filter_gender($from,$to,$guidance,$gender){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+		if( $from != 'date1'){
+			$this->db->where("sc.case_created >=",  $from);
+		}
+		if($to != 'date2'){
+				$this->db->where("sc.case_created <=",  $to);
+		}
+		if($guidance != 'xall'){
+				$this->db->where("a.admin_id",  $guidance);
+		}
+	   if($gender != 'xall'){
+			$this->db->where('u.user_gender',$gender);
+		}
 	}
 	public function _filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance){
 		$this->db->join("users as u", "sc.user_id = u.user_id");

@@ -159,7 +159,7 @@ class CI_Controller {
     public function logout_admin() {
         $this->session->sess_destroy();
         // $this->nocache();    
-        redirect('login', 'refresh'); 
+        redirect('login/admin', 'refresh'); 
 	}
 	
 	public function logout_branch() {
