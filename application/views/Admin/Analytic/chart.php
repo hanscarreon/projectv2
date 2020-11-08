@@ -133,7 +133,7 @@ var myPieChart = new Chart(ctx, {
     datasets: [{
       data: [<?php echo round($academicPercentage) ?>, <?php echo round($familyPercentage) ?>, <?php echo round($peerPercentage) ?>,  <?php echo round($relationshipPercentage) ?>, <?php echo round($emotionPercentage) ?>],
       backgroundColor: ['#ff0000', '#26ff00', '#4e73df',"#c722f5","#ffee00"],
-      hoverBackgroundColor: ['#a60202', '#24b50b', '#2c9faf',"#c9bd0e"],
+      hoverBackgroundColor: ['#a60202', '#24b50b', '#8b10ad',"#c9bd0e"],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
