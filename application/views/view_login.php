@@ -269,7 +269,7 @@ $(document).ready(function () {
     },
     messages: {
       user_name: {
-        required: "Please enter a username/email ",
+        required: "Please enter a Username/Student ID ",
       },
       user_pass: {
         required: "Please provide a password",
