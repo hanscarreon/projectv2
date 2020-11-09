@@ -77,7 +77,7 @@
                             <?php  if ( isset( $users ) && count($users) >= 1 ):?>
                                 <?php $x=1; foreach($users as $user): ?>
                                 <tr>
-                                    <td><img alt="not found or deleted" class="img-profile rounded-circle" height="auto" width="80%" src="<?php echo !empty($user['user_pic']) ? base_url(). $user['user_pic']: base_url('resources/img/stud.png') ?>" > </td>
+                                    <td><img alt="not found or deleted" class="img-profile rounded-circle  col-lg-4 col-md-12 col-sm-12 col-12" height="auto" width="100%" src="<?php echo !empty($user['user_pic']) ? base_url(). $user['user_pic']: base_url('resources/img/stud.png') ?>" > </td>
                                     <td><?php echo $user['user_name'] ?></td>
                                     <td><?php echo $user['user_fname'] ?></td>
                                     <td><a class="" href="tel:<?php echo $user['user_contact'] ?>"><?php echo $user['user_contact'] ?></a></td>
@@ -123,7 +123,7 @@
                             <?php  if ( isset( $users ) && count($users) >= 1 ):?>
                                 <?php $x=1; foreach($users as $user): ?>
                                     <tr>
-                                    <td><img alt="not found or deleted" class="img-profile rounded-circle" height="auto" width="60%" src="<?php echo  !empty($user['admin_pic']) ? base_url(). $user['admin_pic'] : base_url('resources/img/stud.png') ?>" > </td>
+                                    <td><img alt="not found or deleted" class="img-profile rounded-circle col-lg-4 col-md-12 col-sm-12 col-12" height="auto" width="100%" src="<?php echo  !empty($user['admin_pic']) ? base_url(). $user['admin_pic'] : base_url('resources/img/stud.png') ?>" > </td>
                                     <td><?php echo $user['admin_uname'] ?></td>
                                     <td><?php echo $user['admin_fname'] ?></td>
                                     <td><a class="" href="tel:<?php echo $user['admin_contact'] ?>"><?php echo $user['admin_contact'] ?></a></td>
