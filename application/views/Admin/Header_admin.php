@@ -30,7 +30,7 @@
 
 <body id="page-top" class="">
 <style>
-  h1,h2,h3,h4,h5,button,a,option{
+  h1,h2,h3,h4,h5,button,a:not(.email-table),option {
     text-transform: capitalize;
   }
   .anim{

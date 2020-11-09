@@ -81,7 +81,7 @@
                                     <td><?php echo $user['user_name'] ?></td>
                                     <td><?php echo $user['user_fname'] ?></td>
                                     <td><a class="" href="tel:<?php echo $user['user_contact'] ?>"><?php echo $user['user_contact'] ?></a></td>
-                                    <td><a class="" href="mailto:<?php echo $user['user_email'] ?>"> <?php echo $user['user_email'] ?> </a></td>
+                                    <td><a class="email-table" href="mailto:<?php echo $user['user_email'] ?>"> <?php echo $user['user_email'] ?> </a></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['user_bod'])) ?></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['user_created'])) ?></td>
                                     <td><?php echo $user['user_division'] ?></td>
@@ -127,7 +127,7 @@
                                     <td><?php echo $user['admin_uname'] ?></td>
                                     <td><?php echo $user['admin_fname'] ?></td>
                                     <td><a class="" href="tel:<?php echo $user['admin_contact'] ?>"><?php echo $user['admin_contact'] ?></a></td>
-                                    <td><a class="" href="mailto:<?php echo $user['admin_email'] ?>"> <?php echo $user['admin_email'] ?> </a></td>
+                                    <td><a class="email-table" href="mailto:<?php echo $user['admin_email'] ?>"> <?php echo $user['admin_email'] ?> </a></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['admin_bod'])) ?></td>
                                     <td><?php echo date("F j, Y, g:i a",strtotime($user['admin_created'])) ?></td>
                                     <td><?php echo $user['admin_expertise'] ?></td>

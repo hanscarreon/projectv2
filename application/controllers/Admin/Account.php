@@ -92,7 +92,7 @@ class Account extends CI_Controller {
 				$last_id = $this->model_base->insert_data($data, 'admin');
 				$this->session->set_flashdata('msg_success', 'Successfully created!');
 				$this->db->flush_cache();
-				redirect('admin/account/view/'.$last_id ,'refresh');
+				redirect('admin/account/view-admin/'.$last_id ,'refresh');
        		 }
 
 		}

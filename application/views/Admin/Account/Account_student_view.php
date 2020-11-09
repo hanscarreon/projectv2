@@ -5,7 +5,7 @@
 	            <div class="p-3 py-3">
                 <h6 class="m-0 font-weight-bold text-primary">info Info</h6>
                 <div class="text-center">
-                  <img class="info-admin-img img-fluid img-circle" height="auto" width="30%" src="<?php echo !empty($info[0]['admin_pic']) ? base_url().$info[0]['admin_pic'] :  base_url('resources/img/stud.png') ?>" alt="no info picture available">
+                  <img class="info-admin-img img-fluid img-circle" height="auto" width="30%" src="<?php echo !empty($info[0]['user_pic']) ? base_url().$info[0]['user_pic'] :  base_url('resources/img/stud.png') ?>" alt="no info picture available">
                 </div>
 		             
 	            </div>
