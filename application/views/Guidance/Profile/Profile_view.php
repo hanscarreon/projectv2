@@ -1,7 +1,7 @@
 <div class="card card-primary card-outline mb-5">
     <div class="card-body box-profile">
     <div class="text-center">
-        <img class="profile-admin-img img-fluid img-circle" src="<?php echo base_url().$profile[0]['admin_pic'] ?>" alt="no profile picture available">
+        <img class="profile-admin-img img-fluid img-circle col-lg-1 col-md-4 col-sm-12 col-12" src="<?php echo !empty($profile[0]['admin_pic']) ?  base_url().$profile[0]['admin_pic'] : base_url('resources/img/stud.png') ?>" alt="no profile picture available">
         <form method="post" class="mb-5" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-2 col-sm-0 col-0">
