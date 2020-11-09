@@ -177,7 +177,7 @@
       <div class="modal-body">
       <form id="login-form" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="user_name" id="user_name"  placeholder="Username/Email">
+          <input type="text" class="form-control" name="user_name" id="user_name"  placeholder="Username/Student ID">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
