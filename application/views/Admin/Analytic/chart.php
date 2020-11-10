@@ -321,7 +321,7 @@ var ctx = document.getElementById("divisionChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Elementary <?php echo round($elemPercentage) ?>%","Junior High <?php echo round($juniorPercentage) ?>%","Senior High <?php echo round($seniorPercentage) ?>%","College <?php echo round($collegePercentage) ?>%","Law <?php echo round($lawPercentage) ?>%","Graduate <?php echo round($graduatePercentage) ?>%"],
+    labels: ["Elementary <?php echo round($totalElem) ?>","Junior High <?php echo round($totalJunior) ?>","Senior High <?php echo round($totalSenior) ?>","College <?php echo round($totalCollege) ?>","Law <?php echo round($totalLaw) ?>","Graduate <?php echo round($totalGraduate) ?>"],
     datasets: [{
       label: "total a month",
       lineTension: 0.3,
@@ -335,7 +335,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [<?php echo round($elemPercentage) ?>, <?php echo round($juniorPercentage) ?>, <?php echo round($seniorPercentage) ?>, <?php echo round($collegePercentage) ?>, <?php echo round($lawPercentage) ?>, <?php echo round($graduatePercentage) ?>],
+      data: [<?php echo round($totalElem) ?>, <?php echo round($totalJunior) ?>, <?php echo round($totalSenior) ?>, <?php echo round($totalCollege) ?>, <?php echo round($totalLaw) ?>, <?php echo round($totalGraduate) ?>],
     }],
   },
   options: {
