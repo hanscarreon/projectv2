@@ -79,6 +79,7 @@
                         
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
+                        <th ></th>
                         
 	                    </tr>
 	                  </thead>
@@ -106,7 +107,7 @@
                           <td><?php echo $sentiment['case_con'] ?></td>
                           <td class="text-right"><a href="<?php echo base_url('admin/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
 
-                          <!-- <td class="text-right"><a class="btn btn-primary" href="<?php echo base_url('guidance/meeting/create/').$sentiment['case_id'].'/'.$sentiment['user_id'] ?>"> accept </a></td> -->
+                          <td ><a class=" <?php $sentiment['case_con'] =='plan' || $sentiment['case_con'] == 'ongoing' ? '' :'d-none' ?>" href="<?php echo base_url('admin/sentiment/edit/').$sentiment['case_id']  ?>">  <i class="fa fa-edit"></i> </a></td>
                         </tr>
                         <?php endforeach; ?>
                         <?php else: ?>
