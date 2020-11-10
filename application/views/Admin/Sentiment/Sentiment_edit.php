@@ -132,7 +132,7 @@
                   <?php if (isset($guidances) && count($guidances) >= 1  ): ?>
                   <?php  foreach($guidances as $guidance): ?>
                     <div class="form-check form-check-inline mb-2 col-md-4 col-sm-6 col-12">
-                      <input <?php echo $case[0]["admin_id"] == $guidance['admin_id'] ?'checked' :'' ?> class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id" disabled>
+                      <input <?php echo $case[0]["admin_id"] == $guidance['admin_id'] ?'checked' :'' ?> class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id" >
                       <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>" width="100%">
                         <div class="card bg-light">
                               <div class="card-header text-muted border-bottom-0">
@@ -175,7 +175,7 @@
                 </div>
 
 
-                <a href="<?php echo base_url('admin/sentiment/edit/').$case[0]['case_id'] ?>" type="button" class="btn btn-primary "> edit</a>
+                <button  type="submit" class="btn btn-primary ">Save</button>
                 </form>
 
                 

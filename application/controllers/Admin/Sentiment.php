@@ -125,12 +125,17 @@ class Sentiment extends CI_Controller {
 	
 
     public function edit($case_id){
+	
+	
+
+		
+	
 		$header = []; // header
 		$body = [];
 
-		$col = "user_id";
-		$user_id = $this->session->userdata('user_id');
-		$table_name = 'users';
+		$col = "admin_id";
+		$user_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
 		$header['dp'] = $this->model_base->get_one($user_id,$col,$table_name);
 		$this->db->flush_cache();
 		//  info user
@@ -146,35 +151,26 @@ class Sentiment extends CI_Controller {
 		
 		$col = "case_id";
 		$table_name = 'sentiment_case';
+		$this->db->join("users as u", "sentiment_case.user_id = u.user_id");
 		$body['case'] = $this->model_base->get_one($case_id,$col,$table_name);
 		$this->db->flush_cache();
-		//  info user
+		//  case 
 
+		$this->db->where('case_id',$case_id);
+		$body['meetings'] = $this->model_base->get_all('sentiment_meeting');
+		$this->db->flush_cache();
+		//  meetiings 
+		
 
-		$this->form_validation->set_rules('case_text', 'sentiment text', 'required|trim');
 		$this->form_validation->set_rules('admin_id', 'Select Counselor', 'required|trim');
-		$this->form_validation->set_rules('case_reason[]', 'Pick atlest one reason', 'required|trim');
-		$this->form_validation->set_rules('case_res', 'choose you prefer contact', 'required');
-		$this->form_validation->set_rules('case_neg', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_neg_percent', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_mid', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_mid_percent', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_pos', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_pos_percent', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_result', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_line', 'error slow internet connection', 'required');
-		$this->form_validation->set_rules('case_id', 'error slow internet connection', 'required');
-
 
 		if($this->input->post()){
 			$data = $this->input->post();
 
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
-				$body["test"] = $this->Convert_string_array($data["case_reason"]);
 
 			}else{
-				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
 				
 				unset($data['case_id']);
 				$table = "sentiment_case";
@@ -184,13 +180,14 @@ class Sentiment extends CI_Controller {
 				$this->db->flush_cache();
 				$this->session->set_flashdata('msg_success', 'Successfully edit!');
 				
-				redirect('user/sentiment/view/'.$case_id,'refresh'); 
+				redirect('admin/sentiment/view/'.$case_id,'refresh'); 
 			}
 		}
 
-		$this->load->view('User/Header_user',$header);
-		$this->load->view('User/Sentiment/Sentiment_edit',$body);
-		$this->load->view('User/Footer_user');
+
+        $this->load->view('Admin/Header_admin',$header);
+		$this->load->view('Admin/Sentiment/Sentiment_edit',$body);
+		$this->load->view('Admin/Footer_admin');
 	}
 	
 	public function delete($id){
