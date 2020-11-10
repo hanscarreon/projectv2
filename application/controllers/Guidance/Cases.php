@@ -12,7 +12,7 @@ class Cases extends CI_Controller {
 		$this->load->library(array('form_validation', 'session', 'pagination', 'uuid'));
 		$this->load->model('model_base');
 		if ( $this->have_sess_guidance() != true ){
-			$this->logout_user();	
+			$this->logout_admin();	
 		}
 
 	}

@@ -31,9 +31,9 @@ class Archive extends CI_Controller {
 		$this->_filter_sentiment($status);
 		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
 		$this->db->flush_cache();
-        $this->load->view('Admin/Header_admin',$header);
-		$this->load->view('Admin/Archive/Archive_index',$body);
-		$this->load->view('Admin/Footer_admin');
+        $this->load->view('Guidance/Header_guidance',$header);
+		$this->load->view('Guidance/Archive/Archive_index',$body);
+		$this->load->view('Guidance/Footer_guidance');
     }
     
     public function view(){
@@ -47,9 +47,9 @@ class Archive extends CI_Controller {
 		$this->db->flush_cache();
 		// header info update
 		
-        $this->load->view('Admin/Header_admin',$header);
-		$this->load->view('Admin/Archive/Archive_view');
-		$this->load->view('Admin/Footer_admin');
+        $this->load->view('Guidance/Header_guidance',$header);
+		$this->load->view('Guidance/Archive/Archive_view');
+		$this->load->view('Guidance/Footer_guidance');
     }
     public function edit(){
 		$header = []; // header
@@ -89,7 +89,7 @@ class Archive extends CI_Controller {
 
 		
 		$this->session->set_flashdata('msg_success', 'retrieve success!');
-		redirect('admin/dashboard/index/ongoing/published' ,'refresh');
+		redirect('/guidance/dashboard/index/ongoing' ,'refresh');
 
 		
 		

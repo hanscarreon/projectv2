@@ -109,6 +109,12 @@
       <div class="sidebar-heading">
         Settings
       </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('guidance/archive/index/') ?>">
+          <i class="fas fa-archive"></i>
+          <span>Archive</span></a>
+      </li>
      
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('guidance/profile/view/').$this->session->userdata('admin_id') ?>">
@@ -150,6 +156,8 @@
           <ul class="navbar-nav ml-auto">
 
             <div class="topbar-divider d-none d-sm-block"></div>
+
+            
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
