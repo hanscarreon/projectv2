@@ -114,29 +114,29 @@
                   <div class="row">
                   <?php  foreach($guidances as $guidance): ?>
                     <div class="form-check form-check-inline mb-2 col-md-4 col-sm-6 col-12">
-                      <input class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id">
-                      <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>" width="100%">
-                        <div class="card bg-light">
-                              <div class="card-header text-muted border-bottom-0">
-                              <?php echo $guidance['admin_role'] ?>
-                              </div>
-                              <div class="card-body pt-0">
-                              <div class="row">
-                                  <div class="col-7">
-                                  <h2 class="lead"><b><?php echo $guidance['admin_fname'] ?></b></h2>
-                                  <p class="text-muted text-sm"><b>Expertise: </b> <?php echo $guidance['admin_expertise'] ?> </p>
-                                  <ul class="ml-4 mb-0 fa-ul text-muted">
-                                      <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contact #: <?php  echo $guidance['admin_contact'] ?></li>
-                                  </ul>
-                                  </div>
-                                  <div class=" col-5 text-center">
-                                  <img src="<?php echo !empty($guidance['admin_pic'])? base_url().$guidance['admin_pic'] : base_url('resources/img/stud.png') ?>" alt="no image available"class="img-circle img-fluid guidance-pic">
-                                  </div>
-                              </div >
-                              </div>
-                          </div>
-                      </label>
-                  </div>
+                        <input class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id">
+                        <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>" width="100%">
+                            <div class="card bg-light">
+                                <div class="card-header text-muted border-bottom-0">
+                                <?php echo $guidance['admin_role'] ?>
+                                </div>
+                                <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                    <h2 class="lead"><b><?php echo $guidance['admin_fname'] ?></b></h2>
+                                    <p class="text-muted text-sm"><b>Expertise: </b> <?php echo $guidance['admin_expertise'] ?> </p>
+                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Contact #: <?php  echo $guidance['admin_contact'] ?></li>
+                                    </ul>
+                                    </div>
+                                    <div class=" col-5 text-center">
+                                    <img src="<?php echo !empty($guidance['admin_pic'])? base_url().$guidance['admin_pic'] : base_url('resources/img/stud.png') ?>" alt="no image available"class="img-circle img-fluid guidance-pic">
+                                    </div>
+                                </div >
+                                </div>
+                            </div>
+                        </label>
+                    </div>
                   <?php endforeach; ?>
                   </div>
                 <?php endif; ?>
