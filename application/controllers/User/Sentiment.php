@@ -92,7 +92,6 @@ class Sentiment extends CI_Controller {
 
 			if ($this->form_validation->run() == FALSE) {
 				$body['msg_error'] = validation_errors();
-				$body["test"] = $this->Convert_string_array($data["case_reason"]);
 
 			}else{
 				$data["case_reason"] = $this->Convert_string_array($data["case_reason"]);
