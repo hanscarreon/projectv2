@@ -324,7 +324,7 @@ $(document).ready(function () {
 $.validator.addMethod("domain", function(value, element) {
     var re = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
     if (re.test(value)) {
-        if ((value.indexOf("@my.jru.edu", value.length - "@my.jru.edu".length) !== -1) ||( value.indexOf("@jru.edu", value.length - "@jru.edu".length) !== -1)) {
+        if ((value.indexOf("@my.jru.edu", value.length - "@my.jru.edu".length) !== -1) ) {
             return true;
         } else {
             return false;
@@ -405,7 +405,7 @@ jQuery.validator.addMethod("passwordCheck",
       user_email: {
         required: "Please enter a email ",
         email:'invalid email',
-        domain:'Please enter only my.jru.edu or jru.edu email',
+        domain:'Please enter only my.jru.edu email',
       },
       user_fname:{
         required : 'Please your first name here',
