@@ -23,6 +23,9 @@ class Login extends CI_Controller {
 		if ( $this->have_sess_admin() == true ){
 			redirect('admin/dashboard/index/ongoing/published','refresh');
 		}
+		if ( $this->have_sess_guidance() == true ){
+			redirect('admin/dashboard/index/ongoing/published','refresh');
+		}
 		$this->load->model('model_login');
 			$this->form_validation->set_rules('user_name', 'Username', 'required|trim');
 			$this->form_validation->set_rules('user_pass', 'Password', 'required|trim|min_length[6]');
