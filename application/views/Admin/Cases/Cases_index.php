@@ -68,6 +68,7 @@
                         
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
+                        <th ></th>
                         
 	                    </tr>
 	                  </thead>
@@ -94,6 +95,7 @@
                           <td><?php echo $sentiment['case_reason'] ?></td>
                           <td><?php echo $sentiment['case_con'] ?></td>
                           <td class="text-right"><a href="<?php echo base_url('admin/sentiment/view/').$sentiment['case_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          <td ><a href="<?php echo base_url('admin/cases/delete/').$sentiment['case_id'] ?>"> <i class="fa fa-trash"></i> </a></td>
                           
                         </tr>
                       <?php endforeach; ?>

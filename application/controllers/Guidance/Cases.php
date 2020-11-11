@@ -103,6 +103,19 @@ class Cases extends CI_Controller {
 		}
 	}
 
+	public function delete($id){
+		$data = $this->input->post();
+		unset($data["create_case"]);
+		$tbname = 'sentiment_case';
+		$col = 'case_id';
+		$data_update = array('case_status' =>'deleted',
+							'case_updates' => $this->getDatetimeNow()
+							);
+		$this->model_base->update_data($id,$col,$data_update,$tbname);
+		$this->session->set_flashdata('msg_success', 'retrieve success!');
+		redirect('guidance/archive/index/' ,'refresh');
+	}
+
 
 
 

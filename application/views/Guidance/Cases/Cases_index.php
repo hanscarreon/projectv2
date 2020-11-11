@@ -55,6 +55,7 @@
                         
                         <th>Status</th>
                         <th >Action</th>
+                        <th ></th>
 	                    </tr>
 	                  </thead>
                     <tbody>
@@ -83,6 +84,7 @@
                           
                           <td><?php echo $sentiment['case_con'] ?></td>
                           <td class="text-right"><a class="" href="<?php echo base_url('guidance/cases/view/').$sentiment['case_id'].'/'.$sentiment['meet_id'] ?>"> <i class="fa fa-eye"></i> </a></td>
+                          <td ><a class="<?php echo $sentiment['case_con'] == 'plan' ? 'd-none' :'' ?>" href="<?php echo base_url('guidance/cases/delete/').$sentiment['case_id'] ?>"> <i class="fa fa-trash"></i> </a></td>
                         </tr>
                       <?php endforeach; ?>
 

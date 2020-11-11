@@ -82,7 +82,6 @@ class Login extends CI_Controller {
 			$this->form_validation->set_rules('user_email', 'Email', 'required|trim|is_unique[users.user_email]');
 			$this->form_validation->set_rules('user_name', 'Username', 'required|trim|is_unique[users.user_name]');
 			$this->form_validation->set_rules('user_pass', 'Password', 'trim|required|min_length[6]|md5'); 
-			// $this->form_validation->set_rules('user_pass2', 'Password not Match', 'trim|required|matches[user_pass]|min_length[5]|md5'); 
 			$this->form_validation->set_rules('user_fname', 'Full Name', 'required|trim');
 			$this->form_validation->set_rules('user_address', 'Address', 'required|trim');
 			$this->form_validation->set_rules('user_gender', 'Gender', 'required|trim');
@@ -114,7 +113,54 @@ class Login extends CI_Controller {
 
 		$this->load->view('view_register',$body);
 	}
+	
+	public function regsajax()
+	{
 
+
+		if($this->input->post()){
+			$data = $this->input->post();
+				$this->form_validation->set_rules('user_email', 'Email', 'required|trim|is_unique[users.user_email]');
+				$this->form_validation->set_rules('user_name', 'Username', 'required|trim|is_unique[users.user_name]');
+				$this->form_validation->set_rules('user_pass', 'Password', 'trim|required|min_length[6]|md5'); 
+				$this->form_validation->set_rules('user_fname', 'Full Name', 'required|trim');
+				$this->form_validation->set_rules('user_address', 'Address', 'required|trim');
+				$this->form_validation->set_rules('user_gender', 'Gender', 'trim');
+				$this->form_validation->set_rules('user_division', 'Division', 'required|trim|min_length[2]');
+				$this->form_validation->set_rules('user_contact', 'Contact', 'required|trim|min_length[2]');
+			if($this->form_validation->run() == FALSE){
+				$err = array();
+				$err = validation_errors();
+				echo $err;
+				
+
+			}else{
+				echo 'success';
+				$data = $this->input->post();
+				unset($data['user_pass2']);
+				$data["user_role"] = "student";
+				$table = "users";
+				$this->model_base->insert_data($data,$table);
+				$this->load->library('email');
+				$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+				$this->email->to($data['user_email']);
+				$this->email->subject('Registration Complete!' );
+				$this->email->message("Hi Mr/Ms".$data['user_fname']. " Thank you for your registration in GMSUSA WEB APP \n if you have any concern messages us at gmsusa@tindahans.com");	
+				$this->email->send();
+
+
+
+
+
+				// $data = $this->input->post();
+				// $table = "users";
+				// $this->model_base->insert_data($data,$table);
+				// $this->session->set_flashdata('msg_success', 'Successfully registered!');
+			}
+
+
+		}
+	}
 	public function reg(){
 		$body = [];
 

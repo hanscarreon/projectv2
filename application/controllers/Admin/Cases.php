@@ -73,6 +73,21 @@ class Cases extends CI_Controller {
 		$this->load->view("template/site_admin_footer",$footer);
 	}
 
+	public function delete($id){
+		$data = $this->input->post();
+		unset($data["create_case"]);
+		$tbname = 'sentiment_case';
+		$col = 'case_id';
+		$data_update = array('case_status' =>'deleted',
+							'case_updates' => $this->getDatetimeNow()
+							);
+		$this->model_base->update_data($id,$col,$data_update,$tbname);
+		$this->session->set_flashdata('msg_success', 'retrieve success!');
+		redirect('admin/archive/index/' ,'refresh');
+	}
+
+	
+
 	public function _filter_sentiment($user_id,$status,$con){
 		$this->db->join("users as u", "sc.user_id = u.user_id");
 		$this->db->join("admin as a", "sc.admin_id = a.admin_id");

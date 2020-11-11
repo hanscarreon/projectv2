@@ -95,7 +95,7 @@
                     <label for="user_address" class="col-sm-2 col-form-label">Address <small>*</small></label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="user_lname" name="user_address" placeholder="Address" value="">
+                        <input type="text" class="form-control" id="user_address" name="user_address" placeholder="Address" value="">
                         <div class="input-group-append">
                         </div>
                     </div>
@@ -153,10 +153,10 @@
                     <label for="user_gender" class="col-sm-2 col-form-label">Gender <small>(optional)</small> </label>
                     <div class="err col-sm-10">
                     <div class="input-group mb-3">
-                        <select class="form-control select2 select2-hidden-accessible" name="user_gender" style="width: 100%;"  tabindex="-1" aria-hidden="true">
+                        <select class="form-control select2 select2-hidden-accessible" id="user_gender" name="user_gender" style="width: 100%;"  tabindex="-1" aria-hidden="true">
                         <option value="">Select ...</option>
                         <option value="male">Male</option>
-                        <option value="female">Femal</option>
+                        <option value="female">Female</option>
                         <option value="lgbtq">LGBTQ</option>
                         </select>
                         <div class="input-group-append">
@@ -183,7 +183,7 @@
                   </div>
                 <!-- /. curiculum  -->
                 <div class="card-footer text-right">
-                <button type="submit"  class="btn btn-info ">Submit</button>
+                <button type="submit"  class="btn btn-info btn-reg ">Submit</button>
                 </div>
                 <!-- /.card-footer -->
             </form>
@@ -263,8 +263,57 @@ $.ajax(settings).done(function (response) {
 <!-- validation -->
 <script>
 
+function send_data()
+    {
+      var user_email = $('#user_email').val();
+      var user_name = $('#user_name').val();
+      var user_fname = $('#user_fname').val();
+      var user_address = $('#user_address').val();
+      var user_contact = $('#user_contact').val();
+      var user_bod = $('#user_bod').val();
+      var user_pass = $('#user_pass').val();
+      var user_gender = $('#user_gender').val();
+      var user_division = $('#user_division').val();
+      // console.log(user_gender + ' ' + user_division);
+      $.ajax({
+        url:'<?php echo base_url('login/regsajax') ?>',
+        method:'post',
+        data:{
+          user_email:user_email,
+          user_name:user_name,
+          user_fname:user_fname,
+          user_address:user_address,
+          user_contact:user_contact,
+          user_bod:user_bod,
+          user_pass:user_pass,
+          user_gender:user_gender,
+          user_division:user_division
+        },
+        cache: false,
+        success:function(data)
+        {
+          if(data != 'success'){
+            toastr.error(data, 'Error!')
+            console.log(data);
+
+          }else{
+            toastr.success('Registration Complete', 'Success!')
+            setTimeout(()=>{ window.location = 'login' },2000)
+          }
+        },
+        error:function(){
+          toastr.error('Please Check your internet connection', 'Warning')
+        }
+
+      });
+    }
+
 
 $(document).ready(function () {
+  // $('.btn-reg').click(function(event){
+  //     event.preventDefault();
+
+  // });
   $('#user_name').mask('00-000000');
 
 
@@ -300,7 +349,8 @@ jQuery.validator.addMethod("passwordCheck",
   $.validator.setDefaults({
     submitHandler: function (form) {
         // loader();
-        $(form).submit();
+        // $(form).submit();
+        send_data();
         // setTimeout(function(){},3000)
         
     }
