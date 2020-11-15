@@ -100,11 +100,17 @@
                 </fieldset>
                 <!-- /. contact -->
                 <form method="post">
-                  <?php echo $test ?>
+                <?php 
+                    $dt = date('Y-m-d');
+                    echo $dt.'T00:00';
+                  ?>
                   <div class="form-group row">
                       <label for="case_text" class="col-sm-2 col-form-label">Set Meeting Date</label>
                       <div class="col-sm-10">
-                      <input type="datetime-local" class="form-control" id="meet_date" name="meet_date" >
+                      <input type="datetime-local" class="form-control" id="meet_date" name="meet_date" min="<?php 
+                    $dt = date('Y-m-d');
+                    echo $dt.'T00:00';
+                  ?>"  >
                       </div>
                   </div>
                   <div hidden >
