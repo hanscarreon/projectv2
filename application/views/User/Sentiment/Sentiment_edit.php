@@ -111,7 +111,7 @@
                   <?php if (isset($guidances) && count($guidances) >= 1  ) ?>
                   <?php  foreach($guidances as $guidance): ?>
                     <div class="form-check form-check-inline mb-2 col-md-4 col-sm-6 col-12">
-                        <input class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>" value="<?php echo $guidance['admin_id'] ?>" name="admin_id">
+                        <input class="form-check-input" type="radio" id="sir<?php echo $guidance['admin_id'] ?>"  <?php echo  $case[0]["admin_id"] == $guidance['admin_id'] ? 'checked': ''  ?>  value="<?php echo $guidance['admin_id'] ?>" name="admin_id">
                         <label class="form-check-label" for="sir<?php echo $guidance['admin_id'] ?>" width="100%">
                             <div class="card bg-light">
                                 <div class="card-header text-muted border-bottom-0">
