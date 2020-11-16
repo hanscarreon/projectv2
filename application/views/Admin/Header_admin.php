@@ -47,7 +47,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard/index/ongoing/published') ?>">
       <div class="sidebar-brand-icon ">
-        <i class="fas fa-user-lock"></i>
+        <i class="fas fa-user-shield"></i>
       </div>
       <div class="sidebar-brand-text mx-3">GMSUSA APP </div>
     </a>
