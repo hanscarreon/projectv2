@@ -84,13 +84,13 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php  echo $case[0]['case_res'] == 'SMS' ? 'checked' : '' ?> disabled>
-                            <label class="form-check-label" for="SMS">
+                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet" <?php  echo $case[0]['case_res'] == 'gmeet' ? 'checked' : '' ?> disabled>
+                            <label class="form-check-label" for="gmeet">
                                Google Meet Link
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet" <?php  echo $case[0]['case_res'] == 'gmeet' ? 'checked' : '' ?> disabled>
+                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet" <?php  echo $case[0]['case_res'] == 'zoom' ? 'checked' : '' ?> disabled>
                             <label class="form-check-label" for="gmeet">
                                 Zoom Link
                             </label>
