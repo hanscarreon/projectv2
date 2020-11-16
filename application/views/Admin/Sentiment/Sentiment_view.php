@@ -84,21 +84,21 @@
                     <legend class="col-form-label col-sm-2 pt-0">Which do you prefer to receive a response?</legend>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" <?php echo $case[0]["case_res"] == 'email'?'checked' :'' ?> type="radio" name="case_res" id="email" value="email" disabled>
+                            <input class="form-check-input" type="radio" <?php  echo $case[0]['case_res'] == 'email' ? 'checked' : '' ?> disabled name="case_res" id="Email" value="email">
                             <label class="form-check-label" for="Email">
                                 Email
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="SMS" value="SMS" <?php echo $case[0]["case_res"] == 'SMS'?'checked' :'' ?> disabled >
-                            <label class="form-check-label" for="SMS">
-                                SMS
+                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet" <?php  echo $case[0]['case_res'] == 'gmeet' ? 'checked' : '' ?> disabled>
+                            <label class="form-check-label" for="gmeet">
+                               Google Meet Link
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="case_res" id="zoom" value="zoom" id="zoom" <?php echo $case[0]["case_res"] == 'zoom'?'checked' :'' ?> disabled>
-                            <label class="form-check-label" for="Zoom">
-                                Zoom
+                            <input class="form-check-input" type="radio" name="case_res" id="gmeet" value="gmeet" <?php  echo $case[0]['case_res'] == 'zoom' ? 'checked' : '' ?> disabled>
+                            <label class="form-check-label" for="gmeet">
+                                Zoom Link
                             </label>
                         </div>
                     </div>

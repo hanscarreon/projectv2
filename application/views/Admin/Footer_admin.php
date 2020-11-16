@@ -66,7 +66,7 @@
   <script src="<?php echo base_url(); ?>plugins/jquery-validation/additional-methods.min.js"></script>
 
 
-  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -74,7 +74,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
-
   <!-- chart js -->
 <!-- Page level plugins -->
 <script src="<?php echo base_url() ?>vendor/chart.js/Chart.min.js"></script>
@@ -85,14 +84,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-    // $('#dataTable').DataTable( {
-    // 	pagingType: "full_numbers",
-    //     dom: 'Bfrtip',
-    // 	processing: true,
-    //     buttons: [
-    //         'copy', 'csv', 'excel', 'pdf', 'print',
-    //     ]
-    // } );
+    var titleReport;
     $('#dataTable').DataTable( {
     	pagingType: "full_numbers",
         dom: 'Bfrtip',
@@ -106,12 +98,81 @@
     	pagingType: "full_numbers",
         dom: 'Bfrtip',
     	processing: true,
+      initComplete: function () {
+            this.api().columns(3).every( function () {
+                var column = this;
+                var select = $('<select class="filterData"><option value="">All Types</option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                            getFilter();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print',
+            'copy',
+            {
+                extend: 'csv',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },
+            {
+                extend: 'excel',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            }, 
+            {
+                extend: 'pdf',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },  
+            {
+                extend: 'print',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return'<h1>'+datavalue.toUpperCase()+' REPORTS</h1>'
+                },
+                messageBottom: '<br>From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> <br>'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> <br>'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },
         ],
-      order: [[ 3, "desc" ]],
+      order: [[ 4, "desc" ]],
       pageLength: 50
+     
+    } );
 
+     $('#analytics2').DataTable( {
+      
+       
     } );
 
     $('#dashboardTable').DataTable( {
@@ -123,7 +184,17 @@
         ],
       order: [[ 3, "desc" ]]
     } );
+    
 } );
+
+function getFilter(){
+  $('.filterData').change(function(){
+    var value =  $(this).val();
+    console.log()
+     return value;
+  })
+
+}
 </script>
 
 <!-- validation -->

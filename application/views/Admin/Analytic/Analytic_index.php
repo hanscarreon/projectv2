@@ -1,5 +1,5 @@
 
-<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
     
@@ -16,7 +16,11 @@
 <div class="row">
 
 
-
+<style>
+  .filterData{
+    width: 100%;
+  }
+</style>
 
 <div class="col-xl-12 col-lg-12 col-12">
         <div class="card shadow mb-4">
@@ -252,7 +256,7 @@
                 </div> -->
             </div>
             <!-- Card Body -->
-            <div class="card-body ">
+            <div class="card-body  ">
               <div class="table-responsive">
                     <table class="table table-striped " id="analytics">
                           <thead>
@@ -260,212 +264,129 @@
                                 <th>Name </th>
                                 <th>Total </th>
                                 <th>Total Percentage</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Counselor</th>
+                                <th>Type</th>
+                                <th></th>
                             </tr>
-                            <!-- <tr>
-                                <th>Total Sentiment</th>
-                                <th>Total Negative</th>
-                                <th>Total Negative Percentage</th>
-                                <th>Total Positive</th>
-                                <th>Total Positive Percentage</th>
-                                <th>Total Neutral</th>
-                                <th>Total Neutral Percentage</th>
-                                <th>Total Closed Case</th>
-                                <th>Total Closed Case Percentage</th>
-                                <th>Total Recommended Case</th>
-                                <th>Total Recommended Case Percentage</th>
-                                <th>Total Intervention/Follow-up Case</th>
-                                <th>Total Intervention/Follow-up Case Percentage</th>
-                                <th>Total Male</th>
-                                <th>Total Male Percentage</th>
-                                <th>Total Female</th>
-                                <th>Total Female Percentage</th>
-                                <th>Total LGBTQ</th>
-                                <th>Total LGBTQ Percentage</th>
-                                <th>Total Acdemic</th>
-                                <th>Total Acdemic Percentage</th>
-                                <th>Total Family</th>
-                                <th>Total Family Percentage</th>
-                                <th>Total Peers</th>
-                                <th>Total Peers Percentage</th>
-                                <th>Total Relationship</th>
-                                <th>Total Relationship Percentage</th>
-                                <th>Total Emotion</th>
-                                <th>Total Emotion Percentage</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Guidance</th>
-                            </tr> -->
-                                <!-- <th>Case</th>
-                                <th>Division</th>
-                                <th>Gender</th> -->
-                                <!-- <th>Student</th> -->
                           </thead>
                           <tbody>
                             <tr>
                               <th scope="row">All Sentiment</th>
                               <td ><?php echo $total ?></td>
-                              <td > N/A </td>
-                              <td><?php echo $this->uri->segment(4) ?></td>
-                              <td><?php echo $this->uri->segment(5) ?></td>
-                              <td class="text-center"><?php echo $adss == 'All' ? 'All'  :$adss[0]['admin_fname'] ?></td>
+                              <td>N/A</td>
+                              <td >Case</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Positive Result</th>
                               <td ><?php echo $totalPos ?></td>
                               <td ><?php echo round($pospercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Result</td>
+                              <td ></td>
                             </tr>
                             <tr>
-                              <th scope="row">Negative Result</th>
+                              <th>Negative Result</th>
                               <td ><?php echo $totalneg ?></td>
                               <td ><?php echo round($negpercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Result</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Neutral Result</th>
                               <td ><?php echo $totalMid ?></td>
                               <td ><?php echo round($midpercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Result</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Closed Case</th>
                               <td ><?php echo $totalClosed ?></td>
                               <td ><?php echo round($Closedercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Case</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Recommended Case</th>
                               <td ><?php echo $totalRecommended ?></td>
                               <td ><?php echo round($RecommendedPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Case</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Intervention/Follow-up Case</th>
                               <td ><?php echo $totalPlan ?></td>
                               <td ><?php echo round($PlanPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Case</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Male</th>
                               <td ><?php echo $totalMale ?></td>
                               <td ><?php echo round($MalePercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Gender</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Female</th>
                               <td ><?php echo $totalFemale ?></td>
                               <td ><?php echo round($FemalePercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Gender</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">LGBTQ</th>
                               <td ><?php echo $totallgbtq ?></td>
                               <td ><?php echo round($lgbtqPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Gender</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Academic</th>
                               <td ><?php echo $totalAcademic ?></td>
                               <td ><?php echo round($academicPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Reason</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Family</th>
                               <td ><?php echo $totalFamily ?></td>
                               <td ><?php echo round($familyPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Reason</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Peers</th>
                               <td ><?php echo $totalPeers ?></td>
                               <td ><?php echo round($peerPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Reason</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Relationship</th>
                               <td ><?php echo $totalRelationship ?></td>
                               <td ><?php echo round($relationshipPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>Reason</td>
+                              <td ></td>
                             </tr>
                             <tr>
                               <th scope="row">Emotion</th>
                               <td ><?php echo $totalEmotion ?></td>
                               <td ><?php echo round($emotionPercentage).'%' ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td >Reason</td>
+                              <td ></td>
                             </tr>
-
-
-                              <!-- <tr>
-                                <td><?php echo $total ?></td>
-                                <td><?php echo $totalneg ?></td>
-                                <td><?php echo round($negpercentage).'%' ?></td>
-                                <td><?php echo $totalPos ?></td>
-                                <td><?php echo round($pospercentage).'%' ?></td>
-                                <td><?php echo $totalMid ?></td>
-                                <td><?php echo round($midpercentage).'%' ?></td>
-                                <td><?php echo $totalClosed ?></td>
-                                <td><?php echo round($Closedercentage).'%' ?></td>
-                                <td><?php echo $totalRecommended ?></td>
-                                <td><?php echo round($RecommendedPercentage).'%' ?></td>
-                                <td><?php echo $totalPlan ?></td>
-                                <td><?php echo round($PlanPercentage).'%' ?></td>
-                                <td><?php echo $totalMale ?></td>
-                                <td><?php echo round($MalePercentage).'%' ?></td>
-                                <td><?php echo $totalFemale ?></td>
-                                <td><?php echo round($FemalePercentage).'%' ?></td>
-                                <td><?php echo $totallgbtq ?></td>
-                                <td><?php echo round($lgbtqPercentage).'%' ?></td>
-                                <td><?php echo $totalAcademic ?></td>
-                                <td><?php echo round($academicPercentage).'%' ?></td>
-                                <td><?php echo $totalFamily ?></td>
-                                <td><?php echo round($familyPercentage).'%' ?></td>
-                                <td><?php echo $totalPeers ?></td>
-                                <td><?php echo round($peerPercentage).'%' ?></td>
-                                <td><?php echo $totalRelationship ?></td>
-                                <td><?php echo round($relationshipPercentage).'%' ?></td>
-                                <td><?php echo $totalEmotion ?></td>
-                                <td><?php echo round($emotionPercentage).'%' ?></td>
-                                <td><?php echo $adss == 'All' ? 'All'  :$adss[0]['admin_fname'] ?></td>
-                              </tr> -->
-                              <!-- <td><?php echo $this->uri->segment(6) ?></td>
-                                <td><?php echo str_replace("-", " ", $this->uri->segment(8)) ?></td>
-                                <td><?php echo str_replace("-", " ", $this->uri->segment(7)) ?></td> -->
-                                <!-- <td><?php echo $studs == 'All' ? 'All' : $studs[0]['user_fname'] ?></td> -->
+                            <tfoot>
+                                <tr>
+                                <th>Name </th>
+                                <th>Total </th>
+                                <th>Total Percentage</th>
+                                <th>Type</th>
+                                <th></th>
+                                </tr>
+                            </tfoot>
+                            
                           </tbody>
                       </table>
-              </div>
-                
+                  </div>
             </div>
         </div>
     </div>

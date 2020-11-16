@@ -312,6 +312,7 @@ class Analytic extends CI_Controller {
 		$admin_id = $guidance;
 		$table_name = 'admin';
 		$body['adss'] = $guidance != 'xall' ? $this->model_base->get_one($admin_id,$col,$table_name) : 'All';
+		$footer['adss'] = $guidance != 'xall' ? $this->model_base->get_one($admin_id,$col,$table_name) : 'All';
 
 		$this->load->view('Admin/Header_admin',$header);
 		$this->load->view('Admin/Analytic/Analytic_index',$body);
