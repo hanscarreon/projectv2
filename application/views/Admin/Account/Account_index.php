@@ -92,8 +92,9 @@
                                     <td><?php echo $user['user_gender'] ?></td>
                                     <td class="text-right"> <a  href="<?php echo base_url('admin/account/view-student/').$user['user_id'] ?>"><i class="fa fa-eye"></i></a> </td>
                                     <td> <a href="<?php echo base_url('admin/account/edit-student/').$user['user_id'] ?>"><i class="fa fa-edit"></i></a> </td>
+                                    <td> <a href="<?php echo base_url('admin/account/info-student/').$user['user_id'] ?>"><i class="fas fa-info-circle"></i></a> </td>
                                     <!-- <td> <a href="<?php echo base_url('admin/account/delete-student/').$user['user_id'] ?>"><i class="fa fa-trash"></i></a> </td> -->
-
+                                    
                                 <?php endforeach; ?>
                                 <?php else: ?>
                                 <tr>

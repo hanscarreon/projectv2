@@ -257,4 +257,51 @@ class Account extends CI_Controller {
 
 	}
 
+	public function info_student($id){
+		$header = []; // header
+		$body = [];
+
+		$col = "admin_id";
+		$admin_id = $this->session->userdata('admin_id');
+		$table_name = 'admin';
+		$header['dp'] = $this->model_base->get_one($admin_id,$col,$table_name);
+		$this->db->flush_cache();
+		// header info update
+		$footer = [];
+
+		$col = "admin_id";
+		$table_name = 'admin';
+		$body['ad'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+
+
+		$col = "user_id";
+		$table_name = 'users';
+		$body['info'] = $this->model_base->get_one($id,$col,$table_name);
+		$this->db->flush_cache();
+
+		$this->_filter_sentiment($id,'all','all');
+		$body['sentiments'] = $this->model_base->get_all('sentiment_case as sc');
+		$this->db->flush_cache();
+
+		$this->load->view("Admin/Header_admin",$header);
+		$this->load->view('Admin/Account/Account_info',$body);
+		$this->load->view("Admin/Footer_admin",$footer);
+		$this->load->view('Admin/Account/Account_info_script');
+	}
+
+	public function _filter_sentiment($user_id,$status,$con){
+		$this->db->join("users as u", "sc.user_id = u.user_id");
+		$this->db->join("admin as a", "sc.admin_id = a.admin_id");
+
+		$this->db->where('sc.user_id',$user_id); 
+		
+		if($status != 'all'){
+			$this->db->where('sc.case_status',$status);
+		}
+		if($con != 'all'){
+			$this->db->where('sc.case_con',$con);
+		}
+	}
+
 }
