@@ -78,6 +78,13 @@
           <span>Meeting Schedule</span></a>
       </li>
 
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url() ?>guidance/calendar/index">
+          <i class="fas fa-calendar"></i>
+          <span>Calendar</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 

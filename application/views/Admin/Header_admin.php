@@ -94,8 +94,8 @@
       </li>
 
       
-       <!-- Nav Item - Charts -->
-       <li class="nav-item">
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url() ?>admin/calendar/index">
           <i class="fas fa-calendar"></i>
           <span>Calendar</span></a>
