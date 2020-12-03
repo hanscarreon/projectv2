@@ -87,40 +87,52 @@ class Meeting extends CI_Controller {
 				$body['msg_error'] = validation_errors();
 				$body["test"]= "err";
 			}else{
+
 				if($body['case'][0]['case_con'] == 'meeting'){
 					$this->session->set_flashdata('msg_error', 'Meeting Already Set!');
 				}else{
-					$body["test"]= "go";
-					$data["admin_id"] =  $this->session->userdata('admin_id');
-					$table = "sentiment_meeting";
-					$data['meet_created'] = $this->getDatetimeNow();
 
-					$last_id = $this->model_base->insert_data($data,$table);
-					// create meeting
+					$this->db->where('meet_date', $data['meet_date']);
+					$existing_meeting =  $this->model_base->get_all('sentiment_meeting');
 
-					$tbname = 'sentiment_case';
-					$col = 'case_id';
-					$id = $data['case_id'];
-					$data_update = array('case_con' =>'meeting',
-										'case_updates' => $this->getDatetimeNow(),
-										'meet_id'=>$last_id
-										);
-					$this->model_base->update_data($id,$col,$data_update,$tbname);
-					// update case con
+					if(count($existing_meeting) >= 1){
+						$this->session->set_flashdata('msg_error', 'Meeting Date Already Book!');
+					}else{
+						$body["test"]= "go";
+						$data["admin_id"] =  $this->session->userdata('admin_id');
+						$table = "sentiment_meeting";
+						$data['meet_created'] = $this->getDatetimeNow();
 
-					$col = "user_id";
-					$table_name = 'users';
-					$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
-					$this->load->library('email');
-					$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
-					$this->email->to($userInfo[0]['user_email']);
-					$this->email->subject('Consultation Date !' );
-					$this->email->message("This is your meeting date ".date("F j, Y, g:i a",strtotime($data['meet_date'])));	
-					$this->email->send();
+						$last_id = $this->model_base->insert_data($data,$table);
+						// create meeting
 
-					$this->session->set_flashdata('msg_success', 'Meeting set!');
+						$tbname = 'sentiment_case';
+						$col = 'case_id';
+						$id = $data['case_id'];
+						$data_update = array('case_con' =>'meeting',
+											'case_updates' => $this->getDatetimeNow(),
+											'meet_id'=>$last_id
+											);
+						$this->model_base->update_data($id,$col,$data_update,$tbname);
+						// update case con
 
-					redirect('guidance/meeting','refresh'); 
+						$col = "user_id";
+						$table_name = 'users';
+						$userInfo = $this->model_base->get_one($user_id,$col,$table_name);
+						$this->load->library('email');
+						$this->email->from('gmsusa@tindahans.com', 'GMSUSA WEB APP');
+						$this->email->to($userInfo[0]['user_email']);
+						$this->email->subject('Consultation Date !' );
+						$this->email->message("This is your meeting date ".date("F j, Y, g:i a",strtotime($data['meet_date'])));	
+						$this->email->send();
+
+						$this->session->set_flashdata('msg_success', 'Meeting set!');
+
+						redirect('guidance/meeting','refresh'); 
+					}
+					
+
+					
 				}
 			}
 		}
