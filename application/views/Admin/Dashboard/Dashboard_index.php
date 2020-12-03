@@ -76,7 +76,6 @@
                         <th>Meeting Date</th>
                         <th>Reasons</th>
                         <th>status</th>
-                        
                         <!-- <th  colspan="3" >Action</th> -->
                         <th >Action</th>
                         <th ></th>

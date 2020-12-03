@@ -50,7 +50,8 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script> -->
   <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -78,9 +79,11 @@
 <!-- Page level plugins -->
 <script src="<?php echo base_url() ?>vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<!-- <script src="<?php echo base_url() ?>js/demo/chart-area-demo.js"></script> -->
-<script src="<?php echo base_url() ?>js/demo/chart-pie-demo.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<?php echo base_url() ?>v2/vendors/fullcalendar/fullcalendar.js"></script>
+<script src="<?php echo base_url() ?>v2/vendors/fullcalendar/gcal.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -92,87 +95,6 @@
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',
         ]
-    } );
-
-    $('#analytics').DataTable( {
-    	pagingType: "full_numbers",
-        dom: 'Bfrtip',
-    	processing: true,
-      initComplete: function () {
-            this.api().columns(3).every( function () {
-                var column = this;
-                var select = $('<select class="filterData"><option value="">All Types</option></select>')
-                    .appendTo( $(column.header()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                            getFilter();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        },
-        buttons: [
-            'copy',
-            {
-                extend: 'csv',
-                messageTop:function(){
-                  var datavalue = $('.filterData').val();
-                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
-                  return datavalue.toUpperCase()+" REPORT";
-                },
-                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
-                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
-                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
-            },
-            {
-                extend: 'excel',
-                messageTop:function(){
-                  var datavalue = $('.filterData').val();
-                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
-                  return datavalue.toUpperCase()+" REPORT";
-                },
-                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
-                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
-                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
-            }, 
-            {
-                extend: 'pdf',
-                messageTop:function(){
-                  var datavalue = $('.filterData').val();
-                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
-                  return datavalue.toUpperCase()+" REPORT";
-                },
-                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
-                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
-                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
-            },  
-            {
-                extend: 'print',
-                messageTop:function(){
-                  var datavalue = $('.filterData').val();
-                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
-                  return'<h1>'+datavalue.toUpperCase()+' REPORTS</h1>'
-                },
-                messageBottom: '<br>From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> <br>'+
-                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> <br>'+
-                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
-            },
-        ],
-      order: [[ 4, "desc" ]],
-      pageLength: 50
-     
-    } );
-
-     $('#analytics2').DataTable( {
-      
-       
     } );
 
     $('#dashboardTable').DataTable( {

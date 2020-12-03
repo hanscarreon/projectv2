@@ -146,21 +146,21 @@ class Analytic extends CI_Controller {
 		$this->db->where("sc.case_result",'negative');
 		$totalNeg = $this->model_base->count_data('sentiment_case as sc');
 		$negpercentage =  $total >= 1 && $totalNeg >= 1  ?  $totalNeg / $total * 100:0;
-		$footer['neg'] = intval($negpercentage);
+		$footer['neg'] = round($negpercentage);
 		// negative
 
 		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'positive');
 		$totalPos = $this->model_base->count_data('sentiment_case as sc');
 		$pospercentage =  $total >= 1 && $totalPos >= 1 ?  $totalPos / $total * 100 : 0 ;
-		$footer['pos'] = intval($pospercentage);
+		$footer['pos'] = round($pospercentage);
 		// pos
 
 		$this->_filter_analytics($from,$to,$case,$gender,$division,$stud,$guidance);
 		$this->db->where("sc.case_result",'neutral');
 		$totalMid = $this->model_base->count_data('sentiment_case as sc');
 		$midpercentage =  $total >= 1 && $totalMid >= 1 ?  $totalMid / $total * 100 :0;
-		$footer['mid'] = intval($midpercentage);
+		$footer['mid'] = round($midpercentage);
 		// chart
 
 		$body['total'] = $total;

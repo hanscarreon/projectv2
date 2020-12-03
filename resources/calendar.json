@@ -1,0 +1,297 @@
+[
+    {
+      "title": "Classes Begin",
+      "start": "2020-06-01",
+      "end": "2020-06-01",
+      "color": "peach",  
+      "textColor": "black"
+    },
+    {
+        "title": "Independence Day",
+        "start": "2020-06-12",
+        "end": "2020-06-12",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Midterm Examination",
+        "start": "2020-06-20",
+        "end": "2020-06-20",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Final Examination",
+        "start": "2020-07-11",
+        "end": "2020-07-11",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Eid-U-Adha",
+        "start": "2020-08-01",
+        "end": "2020-08-01",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Classes Begin",
+        "start": "2020-08-10",
+        "end": "2020-08-10",
+        "color": "peach",  
+        "textColor": "black"
+    },
+    {
+        "title": "Ninoy Aquino Day",
+        "start": "2020-08-21",
+        "end": "2020-08-21",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "National Heroes Day",
+        "start": "2020-08-31",
+        "end": "2020-08-31",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Prelim Examination",
+        "start": "2020-09-14",
+        "end": "2020-09-19",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Midterm Examination",
+        "start": "2020-10-26",
+        "end": "2020-10-31",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "All Saints' Day",
+        "start": "2020-11-01",
+        "end": "2020-11-01",
+        "color": "red",  
+        "textColor": "white"
+    }
+    ,
+    {
+        "title": "Special Non-working Holiday",
+        "start": "2020-11-02",
+        "end": "2020-11-02",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Bonifacio Day",
+        "start": "2020-11-30",
+        "end": "2020-11-30",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Immaculate Conception",
+        "start": "2020-12-08",
+        "end": "2020-12-08",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Final Examination",
+        "start": "2020-12-07",
+        "end": "2020-12-07",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+      "title": "Final Examination",
+      "start": "2020-12-09",
+      "end": "2020-12-12",
+      "color": "yellow",  
+      "textColor": "black"
+    },
+    {
+        "title": "Start of Sem Break & Christmas Vac.",
+        "start": "2020-12-14",
+        "end": "2020-12-14",
+        "color": "peach",  
+        "textColor": "black"
+    },
+    {
+      "title": "Chrismas Eve",
+      "start": "2020-12-25",
+      "end": "2020-12-25",
+      "color": "red",  
+      "textColor": "white"
+    },
+    {
+      "title": "Rizal Day",
+      "start": "2020-12-30",
+      "end": "2020-12-30",
+      "color": "red",  
+      "textColor": "white"
+    },
+    {
+      "title": "New Years Eve",
+      "start": "2020-01-01",
+      "end": "2020-01-01",
+      "color": "red",  
+      "textColor": "white"
+    },
+    {
+        "title": "Classes Begin",
+        "start": "2021-01-18",
+        "end": "2021-01-18",
+        "color": "peach",  
+        "textColor": "black"
+    },
+    {
+        "title": "Mand City Liberation Day",
+        "start": "2021-02-09",
+        "end": "2021-02-09",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Chinese New Year",
+        "start": "2021-02-12",
+        "end": "2021-02-12",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "University Week",
+        "start": "2021-02-15",
+        "end": "2021-02-19",
+        "color": "blue",  
+        "textColor": "white"
+    },
+    {
+        "title": "EDSA Revolution Anniversary",
+        "start": "2021-02-25",
+        "end": "2021-02-25",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Prelim Examination",
+        "start": "2021-03-01",
+        "end": "2021-03-06",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Holy Week",
+        "start": "2021-04-01",
+        "end": "2021-04-03",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Midterm Examination",
+        "start": "2021-04-05",
+        "end": "2021-04-08",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Midterm Examination",
+        "start": "2021-12-10",
+        "end": "2021-12-10",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Araw ng Kagitingan",
+        "start": "2021-04-09",
+        "end": "2021-04-09",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Labor Day",
+        "start": "2021-05-01",
+        "end": "2021-05-01",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Final Examination (Graduating)",
+        "start": "2021-05-06",
+        "end": "2021-05-08",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Eid-Ul-Fitr",
+        "start": "2021-05-13",
+        "end": "2021-05-13",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Final Examination (Non-graduating)",
+        "start": "2021-05-17",
+        "end": "2021-05-22",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Independence Day",
+        "start": "2021-06-12",
+        "end": "2021-06-12",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Commencement Exercises",
+        "start": "2021-06-13",
+        "end": "2021-06-13",
+        "color": "red",  
+        "textColor": "white"
+    },
+    {
+        "title": "Start of Mid-year Term",
+        "start": "2021-06-14",
+        "end": "2021-06-14",
+        "color": "peach",  
+        "textColor": "black"
+    },
+    {
+        "title": "Midterm Examination",
+        "start": "2021-07-03",
+        "end": "2021-07-03",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+        "title": "Final Examination",
+        "start": "2021-07-24",
+        "end": "2021-07-24",
+        "color": "yellow",  
+        "textColor": "black"
+    },
+    {
+      "title": "Graduation Elementary",
+      "start": "2021-06-08",
+      "end": "2021-06-09",
+      "color": "green",  
+      "textColor": "black"
+    },
+    {
+      "title": "Graduation Highschool & Senior Highschool",
+      "start": "2021-06-11",
+      "end": "2021-06-11",
+      "color": "green",  
+      "textColor": "black"
+    },
+    {
+      "title": "Graduation College",
+      "start": "2021-06-13",
+      "end": "2021-06-13",
+      "color": "green",  
+      "textColor": "black"
+    }
+]

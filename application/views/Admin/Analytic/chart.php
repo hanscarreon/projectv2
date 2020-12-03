@@ -406,4 +406,80 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
+
+$('#analytics').DataTable( {
+    	pagingType: "full_numbers",
+        dom: 'Bfrtip',
+    	processing: true,
+      initComplete: function () {
+            this.api().columns(3).every( function () {
+                var column = this;
+                var select = $('<select class="filterData"><option value="">All Types</option></select>')
+                    .appendTo( $(column.header()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                            getFilter();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
+        buttons: [
+            'copy',
+            {
+                extend: 'csv',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },
+            {
+                extend: 'excel',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            }, 
+            {
+                extend: 'pdf',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return datavalue.toUpperCase()+" REPORT";
+                },
+                messageBottom: '\n From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> \n'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> \n'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },  
+            {
+                extend: 'print',
+                messageTop:function(){
+                  var datavalue = $('.filterData').val();
+                  datavalue = datavalue.length >=1 ? datavalue : 'OVERALL';
+                  return'<h1>'+datavalue.toUpperCase()+' REPORTS</h1>'
+                },
+                messageBottom: '<br>From : <?php echo $this->uri->segment(4) == 'date1' ?'ALL':$this->uri->segment(4) ?> <br>'+
+                'To : <?php echo  $this->uri->segment(5) == 'date2' ? 'ALL' : $this->uri->segment(5) ?> <br>'+
+                'Counselor : <?php echo $adss == 'All' ? 'ALL'  :$adss[0]['admin_fname'] ?>'
+            },
+        ],
+      order: [[ 4, "desc" ]],
+      pageLength: 50
+     
+    } );
 </script>
